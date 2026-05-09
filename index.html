@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JLPT N2 Trainer</title>
+<style>
+body { font-family: Arial, sans-serif; padding: 20px; }
+.container { max-width: 800px; margin: auto; }
+.chunk, .selected { display: inline-block; padding: 8px 12px; margin: 5px; border-radius: 8px; cursor: pointer; }
+.chunk { background: #eee; }
+.selected { background: #4caf50; color: white; }
+.area { min-height: 60px; border: 2px dashed #ccc; padding: 10px; margin-bottom: 20px; }
+button { padding: 10px 20px; margin-top: 10px; }
+.correct { color: green; }
+.incorrect { color: red; }
+.star { color: gold; font-weight: bold; }
+.timer { font-size: 18px; margin-bottom: 10px; }
+</style>
+</head>
+<body>
+<div class="container">
+<h2>JLPT N2 Trainer</h2>
+<div id="mode"></div>
+<div class="timer" id="timer"></div>
+<div id="question"></div>
+<div class="area" id="answerArea"></div>
+<div id="chunks"></div>
+<button onclick="checkAnswer()">Submit</button>
+<button onclick="nextQuestion()">Next</button>
+<button onclick="startExam()">Start Exam Mode</button>
+<div id="result"></div>
+</div>
+
+<script>
+let data = [];
+let currentQ = null;
+let selected = [];
+let examMode = false;
+let examQuestions = [];
+let examIndex = 0;
+let examAnswers = [];
+let timeLeft = 0;
+let timerInterval = null;
+
+Promise.all([
+  fetch('questions-n2-core.json').then(res => res.json()),
+  fetch('questions-n2-trap.json').then(res => res.json()),
+  fetch('questions-n2-tagged.json').then(res => res.json())
+]).then(([core, trap, tagged]) => {
+  data = [...core, ...trap, ...tagged];
+  loadQuestion();
+});
+
+function shuffle(array) {
+  return array.sort(() => Math.random() - 0.5);
+}
+
+function loadQuestion(q = null) {
+  currentQ = q || data[Math.floor(Math.random() * data.length)];
+
+  document.getElementById('question').innerHTML =
+    currentQ.prompt.replace('★', '<span class="star">★</span>');
+
+  const chunksDiv = document.getElementById('chunks');
+  const answerArea = document.getElementById('answerArea');
+
+  chunksDiv.innerHTML = '';
+  answerArea.innerHTML = '';
+  selected = [];
+
+  shuffle([...currentQ.chunks]).forEach(chunk => {
+    const el = document.createElement('div');
+    el.className = 'chunk';
+    el.innerText = chunk;
+    el.onclick = () => addChunk(chunk, el);
+    chunksDiv.appendChild(el);
+  });
+}
+
+function addChunk(chunk, el) {
+  selected.push(chunk);
+  const span = document.createElement('span');
+  span.className = 'selected';
+  span.innerText = chunk;
+  span.onclick = () => removeChunk(chunk, span);
+  document.getElementById('answerArea').appendChild(span);
+  el.style.display = 'none';
+}
+
+function removeChunk(chunk, span) {
+  selected.splice(selected.indexOf(chunk), 1);
+  span.remove();
+
+  [...document.getElementById('chunks').children].forEach(child => {
+    if (child.innerText === chunk) child.style.display = 'inline-block';
+  });
+}
+
+function checkAnswer() {
+  const correct = selected.join('|') === currentQ.answer.join('|');
+
+  if (examMode) {
+    examAnswers.push({ q: currentQ, correct });
+    nextQuestion();
+    return;
+  }
+
+  document.getElementById('result').innerHTML =
+    correct ? '<div class="correct">Correct!</div>'
+            : '<div class="incorrect">Incorrect</div>';
+}
+
+function nextQuestion() {
+  if (examMode) {
+    examIndex++;
+
+    if (examIndex >= examQuestions.length) {
+      endExam();
+      return;
+    }
+
+    loadQuestion(examQuestions[examIndex]);
+  } else {
+    loadQuestion();
+  }
+}
+
+function startExam() {
+  examMode = true;
+  examQuestions = shuffle([...data]).slice(0, 20);
+  examIndex = 0;
+  examAnswers = [];
+
+  document.getElementById('mode').innerText = 'Exam Mode';
+
+  timeLeft = 15 * 60;
+  startTimer();
+
+  loadQuestion(examQuestions[0]);
+}
+
+function startTimer() {
+  clearInterval(timerInterval);
+
+  timerInterval = setInterval(() => {
+    timeLeft--;
+
+    const min = Math.floor(timeLeft / 60);
+    const sec = timeLeft % 60;
+
+    document.getElementById('timer').innerText =
+      `Time: ${min}:${sec.toString().padStart(2, '0')}`;
+
+    if (timeLeft <= 0) {
+      endExam();
+    }
+  }, 1000);
+}
+
+function endExam() {
+  clearInterval(timerInterval);
+  examMode = false;
+
+  let correctCount = examAnswers.filter(a => a.correct).length;
+
+  let html = `<h3>Exam Finished</h3>`;
+  html += `<p>Score: ${correctCount} / ${examAnswers.length}</p>`;
+
+  examAnswers.forEach((a, i) => {
+    html += `<div class="${a.correct ? 'correct' : 'incorrect'}">
+      Q${i+1}: ${a.correct ? '✔' : '✘'} (Correct: ${a.q.answer.join('')})
+    </div>`;
+  });
+
+  document.getElementById('question').innerHTML = html;
+  document.getElementById('chunks').innerHTML = '';
+  document.getElementById('answerArea').innerHTML = '';
+}
+</script>
+</body>
+</html>
