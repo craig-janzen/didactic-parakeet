@@ -1,182 +1,919 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>JLPT N2 Trainer</title>
-<style>
-body { font-family: Arial, sans-serif; padding: 20px; }
-.container { max-width: 800px; margin: auto; }
-.chunk, .selected { display: inline-block; padding: 8px 12px; margin: 5px; border-radius: 8px; cursor: pointer; }
-.chunk { background: #eee; }
-.selected { background: #4caf50; color: white; }
-.area { min-height: 60px; border: 2px dashed #ccc; padding: 10px; margin-bottom: 20px; }
-button { padding: 10px 20px; margin-top: 10px; }
-.correct { color: green; }
-.incorrect { color: red; }
-.star { color: gold; font-weight: bold; }
-.timer { font-size: 18px; margin-bottom: 10px; }
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <title>N2 並べ替え練習</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg:          #080e1a;
+      --surface:     #0e1929;
+      --card:        #111f35;
+      --border:      #1d3352;
+      --tile-bg:     #152540;
+      --tile-border: #24405f;
+      --text:        #d8e6f8;
+      --text-muted:  #5a7fa8;
+      --text-dim:    #3b5f82;
+      --accent:      #4a90e2;
+      --accent-glow: rgba(74,144,226,0.25);
+      --correct:     #10b981;
+      --correct-bg:  rgba(16,185,129,0.12);
+      --incorrect:   #f05252;
+      --incorrect-bg:rgba(240,82,82,0.12);
+      --star:        #f59e0b;
+      --star-bg:     rgba(245,158,11,0.15);
+      --radius-sm:   10px;
+      --radius-md:   14px;
+      --radius-lg:   18px;
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0; padding: 0;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    html, body {
+      height: 100%;
+      overscroll-behavior: none;
+    }
+
+    body {
+      font-family: 'Noto Sans JP', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100svh;
+    }
+
+    /* ── Layout ─────────────────────────────────── */
+    #app {
+      max-width: 480px;
+      margin: 0 auto;
+      min-height: 100svh;
+      display: flex;
+      flex-direction: column;
+      padding-bottom: env(safe-area-inset-bottom, 12px);
+    }
+
+    .hidden { display: none !important; }
+
+    /* ── Loading ─────────────────────────────────── */
+    #loading {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      color: var(--text-muted);
+      font-size: 15px;
+    }
+
+    .loader {
+      width: 32px; height: 32px;
+      border: 2px solid var(--border);
+      border-top-color: var(--accent);
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+    }
+
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* ── Header ─────────────────────────────────── */
+    #header {
+      padding: 14px 18px 0;
+      flex-shrink: 0;
+    }
+
+    .progress-track {
+      height: 5px;
+      background: var(--border);
+      border-radius: 99px;
+      overflow: hidden;
+    }
+
+    .progress-fill {
+      height: 100%;
+      background: var(--accent);
+      border-radius: 99px;
+      transition: width 0.5s cubic-bezier(.4,0,.2,1);
+    }
+
+    .progress-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 7px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.06em;
+    }
+
+    .progress-count { color: var(--text-muted); }
+    .progress-score { color: var(--correct); }
+
+    /* ── Main scroll area ────────────────────────── */
+    #quiz-body {
+      flex: 1;
+      padding: 16px 18px 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      overflow-y: auto;
+    }
+
+    /* ── Grammar tag ─────────────────────────────── */
+    .grammar-tag {
+      display: inline-flex;
+      align-items: center;
+      background: rgba(74,144,226,0.1);
+      border: 1px solid rgba(74,144,226,0.28);
+      border-radius: 7px;
+      padding: 4px 10px;
+      font-size: 11.5px;
+      font-family: 'JetBrains Mono', monospace;
+      color: var(--accent);
+      letter-spacing: 0.02em;
+      align-self: flex-start;
+    }
+
+    /* ── Instruction ─────────────────────────────── */
+    .instruction {
+      font-size: 12.5px;
+      color: var(--text-muted);
+      letter-spacing: 0.04em;
+    }
+
+    /* ── Sentence card ───────────────────────────── */
+    .sentence-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 18px 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .sentence-text {
+      font-size: 17px;
+      line-height: 1.75;
+      color: var(--text);
+      word-break: break-all;
+    }
+
+    .sentence-text:empty { display: none; }
+
+    /* ── Slots ───────────────────────────────────── */
+    .slots-row {
+      display: flex;
+      gap: 7px;
+      flex-wrap: wrap;
+    }
+
+    .slot {
+      flex: 1;
+      min-width: 58px;
+      height: 48px;
+      background: transparent;
+      border: 2px dashed var(--border);
+      border-radius: var(--radius-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 15px;
+      position: relative;
+      transition: border-color 0.15s, background 0.15s, transform 0.1s;
+      cursor: default;
+      user-select: none;
+      touch-action: manipulation;
+    }
+
+    .slot.filled {
+      border-style: solid;
+      border-color: var(--accent);
+      background: var(--accent-glow);
+      cursor: pointer;
+    }
+
+    .slot.filled:active { transform: scale(0.93); }
+
+    .slot.correct {
+      border-color: var(--correct) !important;
+      background: var(--correct-bg) !important;
+      cursor: default !important;
+    }
+
+    .slot.incorrect {
+      border-color: var(--incorrect) !important;
+      background: var(--incorrect-bg) !important;
+      cursor: default !important;
+    }
+
+    .slot.answer-shown {
+      border-color: var(--correct) !important;
+      background: var(--correct-bg) !important;
+      cursor: default !important;
+    }
+
+    .slot-word {
+      font-size: 15px;
+    }
+
+    /* Star badge */
+    .star-badge {
+      position: absolute;
+      top: -7px;
+      right: -7px;
+      width: 17px;
+      height: 17px;
+      background: var(--star);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 9px;
+      color: #000;
+      font-weight: bold;
+      z-index: 1;
+      box-shadow: 0 0 6px var(--star-bg);
+    }
+
+    /* Shake on wrong */
+    @keyframes shake {
+      0%,100% { transform: translateX(0); }
+      20%      { transform: translateX(-5px); }
+      40%      { transform: translateX(5px); }
+      60%      { transform: translateX(-4px); }
+      80%      { transform: translateX(4px); }
+    }
+
+    .slots-row.shake { animation: shake 0.4s ease; }
+
+    /* ── Word bank ───────────────────────────────── */
+    .word-bank {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 9px;
+    }
+
+    .tile {
+      height: 52px;
+      background: var(--tile-bg);
+      border: 1.5px solid var(--tile-border);
+      border-radius: var(--radius-md);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      cursor: pointer;
+      transition: all 0.12s ease;
+      box-shadow: 0 3px 0 rgba(0,0,0,0.35);
+      touch-action: manipulation;
+      user-select: none;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .tile::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(255,255,255,0);
+      transition: background 0.1s;
+    }
+
+    .tile:active:not(.used)::after {
+      background: rgba(255,255,255,0.05);
+    }
+
+    .tile:active:not(.used) {
+      transform: translateY(2px);
+      box-shadow: 0 1px 0 rgba(0,0,0,0.35);
+    }
+
+    .tile.used {
+      opacity: 0.22;
+      cursor: default;
+      pointer-events: none;
+    }
+
+    /* ── Check button ────────────────────────────── */
+    .check-btn {
+      width: 100%;
+      height: 52px;
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      border-radius: var(--radius-md);
+      font-family: 'Noto Sans JP', sans-serif;
+      font-size: 16px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.15s ease;
+      touch-action: manipulation;
+      letter-spacing: 0.05em;
+      box-shadow: 0 4px 16px rgba(74,144,226,0.3);
+    }
+
+    .check-btn:disabled {
+      background: var(--surface);
+      color: var(--text-dim);
+      box-shadow: none;
+      cursor: default;
+    }
+
+    .check-btn:not(:disabled):active { transform: scale(0.97); }
+
+    /* ── Result panel ────────────────────────────── */
+    .result-panel {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      animation: fadeUp 0.3s cubic-bezier(.4,0,.2,1);
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(10px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .result-status {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 18px;
+      font-weight: 700;
+    }
+
+    .result-status.correct  { color: var(--correct); }
+    .result-status.incorrect { color: var(--incorrect); }
+
+    .result-icon {
+      font-size: 22px;
+      line-height: 1;
+    }
+
+    .explanation-block {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .explanation-label {
+      font-size: 10.5px;
+      font-family: 'JetBrains Mono', monospace;
+      color: var(--accent);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .explanation-text {
+      font-size: 13.5px;
+      line-height: 1.75;
+      color: var(--text);
+      padding: 12px 14px;
+      background: rgba(255,255,255,0.03);
+      border-radius: var(--radius-sm);
+      border-left: 3px solid var(--accent);
+    }
+
+    .translation-text {
+      font-size: 12.5px;
+      color: var(--text-muted);
+      line-height: 1.6;
+      font-style: italic;
+      padding-left: 2px;
+    }
+
+    /* ── Action buttons ──────────────────────────── */
+    .result-actions {
+      display: flex;
+      gap: 9px;
+    }
+
+    .btn-next {
+      flex: 2;
+      height: 50px;
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      border-radius: var(--radius-md);
+      font-family: 'Noto Sans JP', sans-serif;
+      font-size: 15px;
+      font-weight: 700;
+      cursor: pointer;
+      touch-action: manipulation;
+      transition: all 0.12s;
+      box-shadow: 0 4px 14px rgba(74,144,226,0.25);
+      letter-spacing: 0.04em;
+    }
+
+    .btn-next:active { transform: scale(0.97); }
+
+    .btn-ghost {
+      flex: 1;
+      height: 50px;
+      background: transparent;
+      color: var(--text-muted);
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius-md);
+      font-family: 'Noto Sans JP', sans-serif;
+      font-size: 13.5px;
+      cursor: pointer;
+      touch-action: manipulation;
+      transition: all 0.12s;
+    }
+
+    .btn-ghost:active { background: rgba(255,255,255,0.04); }
+
+    /* ── Complete screen ─────────────────────────── */
+    #complete {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 32px 24px;
+    }
+
+    .complete-inner {
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 14px;
+      animation: fadeUp 0.5s ease;
+    }
+
+    .complete-emoji { font-size: 64px; }
+
+    .complete-title {
+      font-size: 26px;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+    }
+
+    .complete-score-ring {
+      width: 130px;
+      height: 130px;
+      border-radius: 50%;
+      border: 3px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 2px;
+      background: var(--card);
+      margin: 6px 0;
+    }
+
+    .complete-score-num {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 36px;
+      font-weight: 700;
+      color: var(--correct);
+      letter-spacing: -1px;
+    }
+
+    .complete-score-label {
+      font-size: 11px;
+      color: var(--text-muted);
+      letter-spacing: 0.06em;
+    }
+
+    .complete-msg {
+      font-size: 15px;
+      color: var(--text-muted);
+      max-width: 260px;
+      line-height: 1.6;
+    }
+
+    .restart-btn {
+      margin-top: 8px;
+      height: 50px;
+      padding: 0 32px;
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      border-radius: var(--radius-md);
+      font-family: 'Noto Sans JP', sans-serif;
+      font-size: 15px;
+      font-weight: 700;
+      cursor: pointer;
+      touch-action: manipulation;
+      box-shadow: 0 4px 16px rgba(74,144,226,0.3);
+    }
+
+    .restart-btn:active { transform: scale(0.97); }
+  </style>
 </head>
 <body>
-<div class="container">
-<h2>JLPT N2 Trainer</h2>
-<div id="mode"></div>
-<div class="timer" id="timer"></div>
-<div id="question"></div>
-<div class="area" id="answerArea"></div>
-<div id="chunks"></div>
-<button onclick="checkAnswer()">Submit</button>
-<button onclick="nextQuestion()">Next</button>
-<button onclick="startExam()">Start Exam Mode</button>
-<div id="result"></div>
-</div>
+<div id="app">
+
+  <!-- Loading -->
+  <div id="loading">
+    <div class="loader"></div>
+    <span>読み込み中…</span>
+  </div>
+
+  <!-- Quiz -->
+  <div id="quiz" class="hidden">
+
+    <div id="header">
+      <div class="progress-track">
+        <div class="progress-fill" id="progress-fill" style="width:0%"></div>
+      </div>
+      <div class="progress-meta">
+        <span class="progress-count" id="progress-count">1 / 20</span>
+        <span class="progress-score" id="progress-score">✓ 0</span>
+      </div>
+    </div>
+
+    <div id="quiz-body">
+      <div class="grammar-tag" id="grammar-tag"></div>
+      <div class="instruction">正しい順番に並べ替えてください</div>
+
+      <div class="sentence-card">
+        <div class="sentence-text" id="prefix-text"></div>
+        <div class="slots-row" id="slots-row"></div>
+        <div class="sentence-text" id="suffix-text"></div>
+      </div>
+
+      <div class="word-bank" id="word-bank"></div>
+
+      <button class="check-btn" id="check-btn" disabled onclick="checkAnswer()">
+        確認する
+      </button>
+
+      <div class="result-panel hidden" id="result-panel">
+        <div class="result-status" id="result-status">
+          <span class="result-icon" id="result-icon"></span>
+          <span id="result-label"></span>
+        </div>
+        <div class="explanation-block">
+          <div class="explanation-label">解説</div>
+          <div class="explanation-text" id="explanation-text"></div>
+        </div>
+        <div class="translation-text" id="translation-text"></div>
+        <div class="result-actions" id="result-actions"></div>
+      </div>
+    </div>
+
+  </div><!-- /quiz -->
+
+  <!-- Complete -->
+  <div id="complete" class="hidden">
+    <div class="complete-inner">
+      <div class="complete-emoji" id="complete-emoji">🎉</div>
+      <div class="complete-title">練習完了！</div>
+      <div class="complete-score-ring">
+        <div class="complete-score-num" id="complete-num">0</div>
+        <div class="complete-score-label">CORRECT</div>
+      </div>
+      <div class="complete-msg" id="complete-msg"></div>
+      <button class="restart-btn" onclick="restartQuiz()">もう一度挑戦する</button>
+    </div>
+  </div>
+
+</div><!-- /app -->
 
 <script>
-let data = [];
-let currentQ = null;
-let selected = [];
-let examMode = false;
-let examQuestions = [];
-let examIndex = 0;
-let examAnswers = [];
-let timeLeft = 0;
-let timerInterval = null;
+  // ─── State ────────────────────────────────────────────
+  let questions    = [];
+  let questionOrder = [];
+  let currentIdx   = 0;
+  let q            = null;          // current question
+  let bankOrder    = [];            // display order in word bank
+  let slots        = [];            // [word|null, word|null, word|null, word|null]
+  let submitted    = false;
+  let answerShown  = false;
+  let score        = { correct: 0, total: 0 };
 
-Promise.all([
-  fetch('questions-n2-core.json').then(res => res.json()),
-  fetch('questions-n2-trap.json').then(res => res.json()),
-  fetch('questions-n2-tagged.json').then(res => res.json())
-]).then(([core, trap, tagged]) => {
-  data = [...core, ...trap, ...tagged];
-  loadQuestion();
-});
-
-function shuffle(array) {
-  return array.sort(() => Math.random() - 0.5);
-}
-
-function loadQuestion(q = null) {
-  currentQ = q || data[Math.floor(Math.random() * data.length)];
-
-  document.getElementById('question').innerHTML =
-    currentQ.prompt.replace('★', '<span class="star">★</span>');
-
-  const chunksDiv = document.getElementById('chunks');
-  const answerArea = document.getElementById('answerArea');
-
-  chunksDiv.innerHTML = '';
-  answerArea.innerHTML = '';
-  selected = [];
-
-  shuffle([...currentQ.chunks]).forEach(chunk => {
-    const el = document.createElement('div');
-    el.className = 'chunk';
-    el.innerText = chunk;
-    el.onclick = () => addChunk(chunk, el);
-    chunksDiv.appendChild(el);
-  });
-}
-
-function addChunk(chunk, el) {
-  selected.push(chunk);
-  const span = document.createElement('span');
-  span.className = 'selected';
-  span.innerText = chunk;
-  span.onclick = () => removeChunk(chunk, span);
-  document.getElementById('answerArea').appendChild(span);
-  el.style.display = 'none';
-}
-
-function removeChunk(chunk, span) {
-  selected.splice(selected.indexOf(chunk), 1);
-  span.remove();
-
-  [...document.getElementById('chunks').children].forEach(child => {
-    if (child.innerText === chunk) child.style.display = 'inline-block';
-  });
-}
-
-function checkAnswer() {
-  const correct = selected.join('|') === currentQ.answer.join('|');
-
-  if (examMode) {
-    examAnswers.push({ q: currentQ, correct });
-    nextQuestion();
-    return;
+  // ─── Utils ────────────────────────────────────────────
+  function shuffle(arr) {
+    const a = [...arr];
+    for (let i = a.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [a[i], a[j]] = [a[j], a[i]];
+    }
+    return a;
   }
 
-  document.getElementById('result').innerHTML =
-    correct ? '<div class="correct">Correct!</div>'
-            : '<div class="incorrect">Incorrect</div>';
-}
+  function $(id) { return document.getElementById(id); }
 
-function nextQuestion() {
-  if (examMode) {
-    examIndex++;
+  // ─── Boot ────────────────────────────────────────────
+  async function init() {
+    try {
+      const res = await fetch('questions.json');
+      if (!res.ok) throw new Error('HTTP ' + res.status);
+      questions     = await res.json();
+      questionOrder = shuffle(questions.map((_, i) => i));
 
-    if (examIndex >= examQuestions.length) {
-      endExam();
+      $('loading').classList.add('hidden');
+      $('quiz').classList.remove('hidden');
+      loadQuestion();
+    } catch(e) {
+      $('loading').innerHTML =
+        `<span style="color:#f05252;padding:20px;text-align:center">
+          questions.json を読み込めませんでした。<br>
+          index.html と同じフォルダに置いてください。
+        </span>`;
+    }
+  }
+
+  // ─── Load question ────────────────────────────────────
+  function loadQuestion() {
+    if (currentIdx >= questionOrder.length) {
+      showComplete();
       return;
     }
+    q          = questions[questionOrder[currentIdx]];
+    bankOrder  = shuffle([...q.answer]);
+    slots      = [null, null, null, null];
+    submitted  = false;
+    answerShown = false;
 
-    loadQuestion(examQuestions[examIndex]);
-  } else {
-    loadQuestion();
+    // Reset UI
+    $('result-panel').classList.add('hidden');
+    $('check-btn').disabled = true;
+    $('check-btn').style.display = '';
+
+    updateHeader();
+    renderSentence();
+    renderBank();
   }
-}
 
-function startExam() {
-  examMode = true;
-  examQuestions = shuffle([...data]).slice(0, 20);
-  examIndex = 0;
-  examAnswers = [];
+  // ─── Header ───────────────────────────────────────────
+  function updateHeader() {
+    const total   = questionOrder.length;
+    const current = currentIdx + 1;
+    $('progress-fill').style.width = ((currentIdx / total) * 100) + '%';
+    $('progress-count').textContent = `${current} / ${total}`;
+    $('progress-score').textContent = `✓ ${score.correct}`;
+    $('grammar-tag').textContent    = q.grammar;
+  }
 
-  document.getElementById('mode').innerText = 'Exam Mode';
+  // ─── Sentence / slots ─────────────────────────────────
+  function renderSentence() {
+    // Prefix
+    const prefixEl  = $('prefix-text');
+    prefixEl.textContent = q.prefix;
 
-  timeLeft = 15 * 60;
-  startTimer();
+    // Suffix
+    const suffixEl  = $('suffix-text');
+    suffixEl.textContent = q.suffix;
 
-  loadQuestion(examQuestions[0]);
-}
+    // Slots
+    const row = $('slots-row');
+    row.innerHTML = '';
+    row.classList.remove('shake');
 
-function startTimer() {
-  clearInterval(timerInterval);
+    for (let i = 0; i < 4; i++) {
+      const slot = document.createElement('div');
+      slot.className = 'slot';
+      slot.dataset.i = i;
 
-  timerInterval = setInterval(() => {
-    timeLeft--;
+      // Star badge (always visible on this slot)
+      if (i === q.star - 1) {
+        const badge = document.createElement('div');
+        badge.className = 'star-badge';
+        badge.textContent = '★';
+        slot.appendChild(badge);
+      }
 
-    const min = Math.floor(timeLeft / 60);
-    const sec = timeLeft % 60;
+      if (slots[i] !== null) {
+        slot.classList.add('filled');
+        const w = document.createElement('span');
+        w.className = 'slot-word';
+        w.textContent = slots[i];
+        slot.appendChild(w);
 
-    document.getElementById('timer').innerText =
-      `Time: ${min}:${sec.toString().padStart(2, '0')}`;
+        if (!submitted) {
+          slot.addEventListener('click', () => tapSlot(i));
+        }
+      }
 
-    if (timeLeft <= 0) {
-      endExam();
+      // Post-submission coloring
+      if (submitted && !answerShown) {
+        slot.classList.add(q.answer.every((w, j) => w === slots[j]) ? 'correct' : 'incorrect');
+      }
+      if (answerShown) {
+        slot.classList.add('answer-shown');
+      }
+
+      row.appendChild(slot);
     }
-  }, 1000);
-}
+  }
 
-function endExam() {
-  clearInterval(timerInterval);
-  examMode = false;
+  // ─── Word bank ────────────────────────────────────────
+  function renderBank() {
+    const wb = $('word-bank');
+    wb.innerHTML = '';
 
-  let correctCount = examAnswers.filter(a => a.correct).length;
+    for (const word of bankOrder) {
+      const tile = document.createElement('div');
+      tile.className = 'tile';
+      tile.textContent = word;
 
-  let html = `<h3>Exam Finished</h3>`;
-  html += `<p>Score: ${correctCount} / ${examAnswers.length}</p>`;
+      if (slots.includes(word)) {
+        tile.classList.add('used');
+      } else if (!submitted) {
+        tile.addEventListener('click', () => tapTile(word));
+      }
 
-  examAnswers.forEach((a, i) => {
-    html += `<div class="${a.correct ? 'correct' : 'incorrect'}">
-      Q${i+1}: ${a.correct ? '✔' : '✘'} (Correct: ${a.q.answer.join('')})
-    </div>`;
-  });
+      wb.appendChild(tile);
+    }
+  }
 
-  document.getElementById('question').innerHTML = html;
-  document.getElementById('chunks').innerHTML = '';
-  document.getElementById('answerArea').innerHTML = '';
-}
+  // ─── Interactions ─────────────────────────────────────
+  function tapTile(word) {
+    if (submitted) return;
+    if (slots.includes(word)) return;
+
+    const empty = slots.indexOf(null);
+    if (empty === -1) return;
+
+    slots[empty] = word;
+    renderSentence();
+    renderBank();
+
+    $('check-btn').disabled = slots.includes(null);
+  }
+
+  function tapSlot(idx) {
+    if (submitted) return;
+    if (slots[idx] === null) return;
+
+    slots[idx] = null;
+    $('check-btn').disabled = true;
+    renderSentence();
+    renderBank();
+  }
+
+  // ─── Check ────────────────────────────────────────────
+  function checkAnswer() {
+    if (submitted) return;
+    submitted = true;
+    score.total++;
+
+    const isCorrect = q.answer.every((w, i) => w === slots[i]);
+    if (isCorrect) score.correct++;
+
+    $('progress-score').textContent = `✓ ${score.correct}`;
+    $('check-btn').style.display    = 'none';
+
+    renderSentence(); // applies correct/incorrect classes
+
+    if (!isCorrect) {
+      // Shake animation
+      const row = $('slots-row');
+      row.classList.add('shake');
+      setTimeout(() => row.classList.remove('shake'), 450);
+    }
+
+    showResultPanel(isCorrect);
+  }
+
+  // ─── Result panel ─────────────────────────────────────
+  function showResultPanel(isCorrect) {
+    const panel = $('result-panel');
+    panel.classList.remove('hidden');
+
+    // Status
+    const statusEl = $('result-status');
+    statusEl.className = 'result-status ' + (isCorrect ? 'correct' : 'incorrect');
+    $('result-icon').textContent  = isCorrect ? '✓' : '✗';
+    $('result-label').textContent = isCorrect ? '正解！' : '不正解';
+
+    // Explanation & translation
+    $('explanation-text').textContent = q.explanation;
+    $('translation-text').textContent = q.translation;
+
+    // Buttons
+    const actions = $('result-actions');
+    actions.innerHTML = '';
+
+    if (isCorrect) {
+      actions.appendChild(makeNextBtn());
+    } else {
+      const retryBtn = document.createElement('button');
+      retryBtn.className   = 'btn-ghost';
+      retryBtn.textContent = 'リトライ';
+      retryBtn.onclick     = retryQuestion;
+
+      const showBtn = document.createElement('button');
+      showBtn.className   = 'btn-ghost';
+      showBtn.textContent = '答えを見る';
+      showBtn.onclick     = showAnswer;
+
+      const nextBtn = makeNextBtn();
+
+      actions.appendChild(retryBtn);
+      actions.appendChild(showBtn);
+      actions.appendChild(nextBtn);
+    }
+
+    // Scroll result into view smoothly
+    setTimeout(() => panel.scrollIntoView({ behavior: 'smooth', block: 'nearest' }), 80);
+  }
+
+  function makeNextBtn() {
+    const btn = document.createElement('button');
+    btn.className   = 'btn-next';
+    const isLast    = currentIdx + 1 >= questionOrder.length;
+    btn.textContent = isLast ? '結果を見る →' : '次の問題 →';
+    btn.onclick     = nextQuestion;
+    return btn;
+  }
+
+  // ─── Show answer ──────────────────────────────────────
+  function showAnswer() {
+    answerShown = true;
+    slots = [...q.answer];
+
+    renderSentence();
+    renderBank();
+
+    // Update result label
+    $('result-icon').textContent  = '◉';
+    $('result-label').textContent = '正解はこちら';
+    $('result-status').className  = 'result-status';
+    $('result-status').style.color = 'var(--correct)';
+
+    // Replace buttons with just Next
+    const actions = $('result-actions');
+    actions.innerHTML = '';
+    actions.appendChild(makeNextBtn());
+  }
+
+  // ─── Retry ────────────────────────────────────────────
+  function retryQuestion() {
+    bankOrder  = shuffle([...q.answer]);
+    slots      = [null, null, null, null];
+    submitted  = false;
+    answerShown = false;
+
+    $('result-panel').classList.add('hidden');
+    $('check-btn').style.display = '';
+    $('check-btn').disabled      = true;
+    $('result-status').style.color = '';
+
+    renderSentence();
+    renderBank();
+  }
+
+  // ─── Next ─────────────────────────────────────────────
+  function nextQuestion() {
+    currentIdx++;
+    loadQuestion();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  // ─── Complete ─────────────────────────────────────────
+  function showComplete() {
+    $('quiz').classList.add('hidden');
+    $('complete').classList.remove('hidden');
+
+    const total  = score.total;
+    const pct    = total > 0 ? Math.round((score.correct / total) * 100) : 0;
+
+    $('complete-num').textContent = `${score.correct} / ${total}`;
+
+    let emoji, msg;
+    if (pct === 100) {
+      emoji = '🌟'; msg = '満点です！完璧な結果です。引き続きN2合格を目指してください！';
+    } else if (pct >= 80) {
+      emoji = '🎉'; msg = 'よくできました！あと少し練習すれば合格水準に達します。';
+    } else if (pct >= 60) {
+      emoji = '💪'; msg = 'まずまずです。苦手な文法パターンを重点的に復習しましょう。';
+    } else {
+      emoji = '📖'; msg = 'もう少し練習が必要です。あきらめずに続けましょう！';
+    }
+
+    $('complete-emoji').textContent = emoji;
+    $('complete-msg').textContent   = msg;
+  }
+
+  function restartQuiz() {
+    score         = { correct: 0, total: 0 };
+    currentIdx    = 0;
+    questionOrder = shuffle(questions.map((_, i) => i));
+
+    $('complete').classList.add('hidden');
+    $('quiz').classList.remove('hidden');
+    loadQuestion();
+    window.scrollTo({ top: 0 });
+  }
+
+  // ─── Go ───────────────────────────────────────────────
+  init();
 </script>
 </body>
 </html>

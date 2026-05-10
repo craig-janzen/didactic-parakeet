@@ -1,0 +1,202 @@
+[
+  {
+    "id": 1,
+    "prefix": "彫刻家川村たけるが作る動物の彫刻作品は、形はシンプル",
+    "suffix": "生命力にあふれている。",
+    "answer": ["ながら", "今にも", "動き出し", "そうな"],
+    "star": 3,
+    "grammar": "〜ながら（逆接）/ 今にも〜そうな",
+    "explanation": "「ながら」は逆接を表し、「シンプルだが」という意味。「今にも〜そうな」は今すぐにでもその動作が起こりそうな様子を表す。",
+    "translation": "Sculptor Kawamura Takeru's animal works are simple in form, yet so full of life they look as if they could move at any moment."
+  },
+  {
+    "id": 2,
+    "prefix": "海外旅行を",
+    "suffix": "外国語の勉強を始めた。",
+    "answer": ["きっかけに", "して", "英語をはじめ", "とする"],
+    "star": 2,
+    "grammar": "〜をきっかけにして / 〜をはじめとする",
+    "explanation": "「をきっかけにして」は「きっかけとなって」の意味。「英語をはじめとする」は「英語などを含む」という意味で、複数のものを例示するときに使う。",
+    "translation": "Using overseas travel as a catalyst, I started studying foreign languages, including English."
+  },
+  {
+    "id": 3,
+    "prefix": "学生の頃からの",
+    "suffix": "毎日欠かさず日記を書いてきた。",
+    "answer": ["夢だった", "作家に", "なる", "ために"],
+    "star": 4,
+    "grammar": "〜ために（目的）",
+    "explanation": "「ために」は目的を表し、「〜する目的で」という意味。この文では「作家になる」という目標達成のために継続的な努力をしてきたことを表す。",
+    "translation": "In order to fulfill my lifelong dream of becoming a writer, I have kept a diary every single day."
+  },
+  {
+    "id": 4,
+    "prefix": "彼女の論文は",
+    "suffix": "高く評価された。",
+    "answer": ["データに", "基づいた", "分析で", "非常に"],
+    "star": 2,
+    "grammar": "〜に基づく",
+    "explanation": "「に基づく」は「〜を根拠にして」「〜を基準として」という意味のフォーマルな N2 表現。書き言葉でよく使われる。",
+    "translation": "Her thesis was highly praised for its analysis firmly grounded in data."
+  },
+  {
+    "id": 5,
+    "prefix": "この映画は",
+    "suffix": "実は大人も楽しめる深い内容だ。",
+    "answer": ["子供向けの", "ように", "見える", "が"],
+    "star": 3,
+    "grammar": "〜のように見える / 〜が（逆接）",
+    "explanation": "「ように見える」は外見上そう見えるが実際は違うという場合に使う。「が」は逆接の接続助詞で「しかし」「けれど」の意味。",
+    "translation": "This film looks like it's made for children, but it actually has deep content that adults can enjoy too."
+  },
+  {
+    "id": 6,
+    "prefix": "",
+    "suffix": "失敗を恐れないようにしている。",
+    "answer": ["たとえ", "失敗した", "と", "しても"],
+    "star": 4,
+    "grammar": "たとえ〜としても",
+    "explanation": "「たとえ〜としても」は「仮に〜という状況になっても」という仮定の逆接を表す重要な N2 表現。後ろに必ず逆接的な内容が続く。",
+    "translation": "Even if I were to fail, I try not to let that make me fear failure."
+  },
+  {
+    "id": 7,
+    "prefix": "仕事で疲れていても、",
+    "suffix": "わけにはいかない。",
+    "answer": ["子供の", "世話を", "しない", "という"],
+    "star": 3,
+    "grammar": "〜わけにはいかない",
+    "explanation": "「〜わけにはいかない」は社会的義務や常識から「〜することは許されない」という意味。「しないわけにはいかない」の二重否定で「必ずしなければならない」の意味になる。",
+    "translation": "Even when exhausted from work, there is no way I can simply not take care of my children."
+  },
+  {
+    "id": 8,
+    "prefix": "先生に",
+    "suffix": "無事に試験に合格することができた。",
+    "answer": ["丁寧に", "指導して", "もらった", "おかげで"],
+    "star": 4,
+    "grammar": "〜てもらう / 〜おかげで",
+    "explanation": "「〜てもらう」は他者から恩恵を受けることを表す。「おかげで」は良い結果を招いた原因・理由を表し、感謝のニュアンスがある。",
+    "translation": "Thanks to receiving thorough guidance from my teacher, I was able to pass the exam without any trouble."
+  },
+  {
+    "id": 9,
+    "prefix": "新しいダイエットを",
+    "suffix": "続けることができなかった。",
+    "answer": ["始めて", "みた", "ものの", "なかなか"],
+    "star": 3,
+    "grammar": "〜てみる / 〜ものの",
+    "explanation": "「〜てみる」は試しに行うことを表す。「ものの」は逆接の接続助詞で「〜はしたが、しかし期待どおりにはならなかった」というニュアンスを持つ。",
+    "translation": "I gave the new diet a try, but just couldn't manage to keep it up."
+  },
+  {
+    "id": 10,
+    "prefix": "",
+    "suffix": "重要な試験を受けられなかった。",
+    "answer": ["突然", "高熱が", "出た", "せいで"],
+    "star": 4,
+    "grammar": "〜せいで（否定的原因）",
+    "explanation": "「せいで」は好ましくない結果の原因を示す。「おかげで」とは逆で、必ず否定的な結果が続く。話し言葉・書き言葉ともに使われる。",
+    "translation": "Because I suddenly developed a high fever, I was unable to take an important exam."
+  },
+  {
+    "id": 11,
+    "prefix": "まじめな彼が",
+    "suffix": "はずがない。",
+    "answer": ["そんな", "ひどい", "ことを", "するような"],
+    "star": 2,
+    "grammar": "〜はずがない",
+    "explanation": "「はずがない」は論理的に考えてあり得ないことを強く否定する表現。「するような（こと）はずがない」で「そのような行動をとることはありえない」という意味。",
+    "translation": "There is absolutely no way that a serious person like him would do something so terrible."
+  },
+  {
+    "id": 12,
+    "prefix": "去年の夏",
+    "suffix": "気温が高い日が続いている。",
+    "answer": ["に", "比べ", "今年は", "格段に"],
+    "star": 4,
+    "grammar": "〜に比べ / 格段に",
+    "explanation": "「に比べ」は「〜と比較して」という意味の N2 頻出表現。「格段に」は「明らかな差がある程度」「著しく」という意味の副詞で比較表現と相性が良い。",
+    "translation": "Compared to last summer, this year has seen a string of days with markedly higher temperatures."
+  },
+  {
+    "id": 13,
+    "prefix": "ボランティア活動",
+    "suffix": "多くのことを学ぶことができた。",
+    "answer": ["を", "通じて", "人との", "交流から"],
+    "star": 2,
+    "grammar": "〜を通じて",
+    "explanation": "「を通じて」は「〜を手段・媒介として」あるいは「〜の全期間にわたって」という意味。ここでは前者で、ボランティアが学びの媒介となっている。",
+    "translation": "Through volunteer activities and interaction with people, I was able to learn a great deal."
+  },
+  {
+    "id": 14,
+    "prefix": "語学力",
+    "suffix": "就職活動で有利になる。",
+    "answer": ["に", "加えて", "実務経験が", "あると"],
+    "star": 3,
+    "grammar": "〜に加えて",
+    "explanation": "「に加えて」は「〜だけでなく、さらに」という意味で、すでに述べたことに新たな要素を追加するときに使う。フォーマルな表現。",
+    "translation": "In addition to language skills, having practical work experience gives you an advantage in job hunting."
+  },
+  {
+    "id": 15,
+    "prefix": "兄は",
+    "suffix": "夢に向かってがんばっている。",
+    "answer": ["あきらめる", "ことなく", "ひたすら", "自分の"],
+    "star": 1,
+    "grammar": "〜ことなく",
+    "explanation": "「ことなく」は「〜ないで」「〜せずに」という意味で、ある行為をしないまま別のことをすることを表す。書き言葉的でフォーマルなニュアンスがある。",
+    "translation": "Without ever giving up, my older brother keeps pressing single-mindedly toward his own dream."
+  },
+  {
+    "id": 16,
+    "prefix": "実話",
+    "suffix": "この小説は多くの読者に感動を与えた。",
+    "answer": ["を", "もとに", "した", "だけあって"],
+    "star": 2,
+    "grammar": "〜をもとにする / 〜だけあって",
+    "explanation": "「をもとにする」は「〜を基礎・根拠として」の意味。「だけあって」は「〜という理由・根拠があるので当然」という納得の意味を表す。",
+    "translation": "Being based on a true story, this novel moved a great many readers."
+  },
+  {
+    "id": 17,
+    "prefix": "東京",
+    "suffix": "全国各地で観光業が盛んになってきた。",
+    "answer": ["を", "中心と", "して", "はじめ"],
+    "star": 4,
+    "grammar": "〜を中心として / 〜をはじめ",
+    "explanation": "「を中心として」は「〜を核として」という意味。「はじめ」は「を中心として、はじめ（全国各地で）」のように列挙の起点を示す。",
+    "translation": "With Tokyo at its center, the tourism industry has been thriving across the country."
+  },
+  {
+    "id": 18,
+    "prefix": "長年の研究",
+    "suffix": "この新薬の開発に成功した。",
+    "answer": ["に", "際して", "集めた", "データをもとに"],
+    "star": 3,
+    "grammar": "〜に際して / 〜をもとに",
+    "explanation": "「に際して」は「〜という重要な機会に」という意味のフォーマル表現。「データをもとに」は「データを根拠・材料として」の意味。",
+    "translation": "Using data gathered over years of research, we succeeded in developing this new drug."
+  },
+  {
+    "id": 19,
+    "prefix": "彼女は体調が悪い",
+    "suffix": "笑顔で仕事をこなした。",
+    "answer": ["に", "も", "かかわらず", "いつもどおりの"],
+    "star": 3,
+    "grammar": "〜にもかかわらず",
+    "explanation": "「にもかかわらず」は「〜であるのに、それとは逆の結果になった」という逆接を表す。フォーマルで書き言葉的な表現。",
+    "translation": "Despite feeling unwell, she completed her work with her usual smile."
+  },
+  {
+    "id": 20,
+    "prefix": "子供の頃から憧れていた",
+    "suffix": "ついにステージに立つことができた。",
+    "answer": ["歌手に", "なれた", "おかげで", "今日こそ"],
+    "star": 4,
+    "grammar": "〜おかげで / 〜ことができた",
+    "explanation": "「おかげで」は良い結果をもたらした原因を表す。「今日こそ」は「他の日ではなくまさに今日」という強調を含み、長年の夢が叶った感慨を表す。",
+    "translation": "Thanks to finally becoming the singer I had always dreamed of being, today was the day I could stand on stage."
+  }
+]
