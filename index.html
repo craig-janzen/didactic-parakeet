@@ -1,919 +1,1228 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-  <title>N2 並べ替え練習</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --bg:          #080e1a;
-      --surface:     #0e1929;
-      --card:        #111f35;
-      --border:      #1d3352;
-      --tile-bg:     #152540;
-      --tile-border: #24405f;
-      --text:        #d8e6f8;
-      --text-muted:  #5a7fa8;
-      --text-dim:    #3b5f82;
-      --accent:      #4a90e2;
-      --accent-glow: rgba(74,144,226,0.25);
-      --correct:     #10b981;
-      --correct-bg:  rgba(16,185,129,0.12);
-      --incorrect:   #f05252;
-      --incorrect-bg:rgba(240,82,82,0.12);
-      --star:        #f59e0b;
-      --star-bg:     rgba(245,158,11,0.15);
-      --radius-sm:   10px;
-      --radius-md:   14px;
-      --radius-lg:   18px;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<title>N2 Study — 文法 · 並べ替え · マッチング</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* ── Unified theme ─────────────────────────────── */
+:root{
+  --bg:#0b1020;
+  --surface:#131a2e;
+  --card:#1a2340;
+  --card-2:#202a4c;
+  --border:#2a365c;
+  --tile-bg:#1d284a;
+  --tile-border:#2f3d66;
+  --text:#e6edf8;
+  --text-muted:#8a98b8;
+  --text-dim:#4a5a7d;
+  --accent:#6aa6ff;
+  --accent-2:#b07cff;
+  --accent-warm:#ff6b9d;
+  --accent-glow:rgba(106,166,255,.22);
+  --correct:#10b981;
+  --correct-bg:rgba(16,185,129,.12);
+  --wrong:#f05252;
+  --wrong-bg:rgba(240,82,82,.12);
+  --star:#f59e0b;
+  --star-bg:rgba(245,158,11,.15);
+  --radius-sm:10px;
+  --radius-md:14px;
+  --radius-lg:18px;
+  --safe-top:env(safe-area-inset-top,0px);
+  --safe-bot:env(safe-area-inset-bottom,0px);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+html,body{height:100%;overscroll-behavior:none}
+body{
+  font-family:'Noto Sans JP',-apple-system,BlinkMacSystemFont,'Hiragino Sans',sans-serif;
+  background:
+    radial-gradient(1200px 600px at 0% -10%,rgba(106,166,255,.08),transparent 60%),
+    radial-gradient(900px 500px at 100% 0%,rgba(176,124,255,.08),transparent 60%),
+    var(--bg);
+  color:var(--text);
+  min-height:100vh;
+  min-height:100dvh;
+  -webkit-text-size-adjust:100%;
+}
+.hidden{display:none!important}
 
-    *, *::before, *::after {
-      box-sizing: border-box;
-      margin: 0; padding: 0;
-      -webkit-tap-highlight-color: transparent;
-    }
+/* ── Shared top bar ─────────────────────────── */
+#topbar{
+  position:sticky;top:0;z-index:30;
+  padding:calc(var(--safe-top) + 10px) 16px 10px;
+  background:rgba(11,16,32,.85);
+  backdrop-filter:saturate(140%) blur(10px);
+  -webkit-backdrop-filter:saturate(140%) blur(10px);
+  border-bottom:1px solid var(--border);
+  display:flex;align-items:center;justify-content:space-between;gap:12px;
+}
+#topbar .brand{font-size:14px;font-weight:700;letter-spacing:.02em}
+#topbar .brand .dot{color:var(--accent)}
+#topbar .ctx{font-size:12px;color:var(--text-muted);font-family:'JetBrains Mono',monospace}
+.icon-btn{
+  background:none;border:1px solid var(--border);color:var(--text);
+  width:36px;height:36px;border-radius:10px;font-size:16px;cursor:pointer;
+  display:inline-flex;align-items:center;justify-content:center;
+}
+.icon-btn:active{transform:scale(.96)}
 
-    html, body {
-      height: 100%;
-      overscroll-behavior: none;
-    }
+/* ── Layout ─────────────────────────────────── */
+#app{max-width:640px;margin:0 auto;padding:0 0 calc(var(--safe-bot) + 24px);min-height:100dvh;display:flex;flex-direction:column}
+.view{padding:16px}
+.view.hidden{display:none}
 
-    body {
-      font-family: 'Noto Sans JP', sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      min-height: 100svh;
-    }
+/* ── Dashboard ──────────────────────────────── */
+#view-dashboard .hero{
+  padding:20px 4px 8px;
+}
+.hero h1{font-size:26px;font-weight:700;letter-spacing:.01em;margin-bottom:4px}
+.hero p{font-size:13.5px;color:var(--text-muted)}
 
-    /* ── Layout ─────────────────────────────────── */
-    #app {
-      max-width: 480px;
-      margin: 0 auto;
-      min-height: 100svh;
-      display: flex;
-      flex-direction: column;
-      padding-bottom: env(safe-area-inset-bottom, 12px);
-    }
+.stat-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:16px 0 8px}
+.stat{
+  background:var(--card);border:1px solid var(--border);border-radius:var(--radius-md);
+  padding:14px 14px 12px;
+}
+.stat .label{font-size:11px;letter-spacing:.08em;color:var(--text-muted);text-transform:uppercase;font-family:'JetBrains Mono',monospace}
+.stat .value{font-size:26px;font-weight:700;margin-top:4px;letter-spacing:-.01em}
+.stat .sub{font-size:11.5px;color:var(--text-dim);margin-top:2px}
 
-    .hidden { display: none !important; }
+.mode-grid{display:grid;grid-template-columns:1fr;gap:12px;margin:18px 0 10px}
+@media(min-width:520px){.mode-grid{grid-template-columns:1fr 1fr}}
+.mode-card{
+  position:relative;overflow:hidden;
+  background:linear-gradient(180deg,var(--card-2),var(--card));
+  border:1px solid var(--border);border-radius:var(--radius-lg);
+  padding:18px 16px;display:flex;flex-direction:column;gap:10px;
+  cursor:pointer;transition:transform .12s,border-color .12s;
+}
+.mode-card:active{transform:scale(.985)}
+.mode-card.grammar{border-color:rgba(255,107,157,.35)}
+.mode-card.ordering{border-color:rgba(106,166,255,.35)}
+.mode-card.matching{border-color:rgba(176,124,255,.35)}
+.mode-card::before{
+  content:"";position:absolute;inset:-40% -20% auto auto;width:220px;height:220px;border-radius:50%;
+  filter:blur(40px);opacity:.35;pointer-events:none;
+}
+.mode-card.grammar::before{background:var(--accent-warm)}
+.mode-card.ordering::before{background:var(--accent)}
+.mode-card.matching::before{background:var(--accent-2)}
+.mode-card .kicker{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--text-muted);font-family:'JetBrains Mono',monospace}
+.mode-card h2{font-size:20px;font-weight:700}
+.mode-card .desc{font-size:13px;color:var(--text-muted);line-height:1.55}
+.mode-card .row{display:flex;gap:14px;font-size:12px;color:var(--text-muted);margin-top:4px}
+.mode-card .row b{color:var(--text);font-weight:600}
+.mode-card .cta{
+  margin-top:8px;align-self:flex-start;
+  background:var(--accent);color:#08122a;font-weight:700;font-size:14px;
+  padding:10px 16px;border:none;border-radius:10px;cursor:pointer;
+  box-shadow:0 4px 16px rgba(106,166,255,.25);
+}
+.mode-card.grammar .cta{background:var(--accent-warm);box-shadow:0 4px 16px rgba(255,107,157,.25);color:#1a0716}
+.mode-card.matching .cta{background:var(--accent-2);box-shadow:0 4px 16px rgba(176,124,255,.25);color:#140627}
+.mode-card .cta:active{transform:scale(.97)}
 
-    /* ── Loading ─────────────────────────────────── */
-    #loading {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 14px;
-      color: var(--text-muted);
-      font-size: 15px;
-    }
+.history{
+  background:var(--card);border:1px solid var(--border);border-radius:var(--radius-md);
+  padding:14px 16px;margin-top:14px;
+}
+.history h3{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--text-muted);font-family:'JetBrains Mono',monospace;margin-bottom:10px}
+.history .row{display:flex;justify-content:space-between;align-items:center;padding:7px 0;border-bottom:1px solid var(--border);font-size:13.5px}
+.history .row:last-child{border-bottom:none}
+.history .meta{color:var(--text-muted);font-size:12px;font-family:'JetBrains Mono',monospace}
+.history .mode-pill{display:inline-block;font-size:10.5px;padding:2px 8px;border-radius:99px;margin-right:8px;font-family:'JetBrains Mono',monospace;letter-spacing:.04em}
+.history .mode-pill.grammar{background:rgba(255,107,157,.15);color:var(--accent-warm);border:1px solid rgba(255,107,157,.3)}
+.history .mode-pill.ordering{background:rgba(106,166,255,.15);color:var(--accent);border:1px solid rgba(106,166,255,.3)}
+.history .mode-pill.matching{background:rgba(176,124,255,.15);color:var(--accent-2);border:1px solid rgba(176,124,255,.3)}
+.history .pct{font-weight:700;font-family:'JetBrains Mono',monospace}
+.history .pct.good{color:var(--correct)}
+.history .pct.bad{color:var(--wrong)}
+.history .empty{color:var(--text-dim);font-size:13px;text-align:center;padding:10px 0}
 
-    .loader {
-      width: 32px; height: 32px;
-      border: 2px solid var(--border);
-      border-top-color: var(--accent);
-      border-radius: 50%;
-      animation: spin 0.8s linear infinite;
-    }
+/* ── Grammar quiz (adapted from app 1) ──────── */
+#grammar-progress-bg{height:4px;background:var(--border);border-radius:99px;overflow:hidden;margin:4px 0 14px}
+#grammar-progress{height:100%;background:linear-gradient(90deg,var(--accent-warm),#ff9ec0);transition:width .3s;width:0%}
+.grammar-badge{display:inline-block;background:var(--card);border:1px solid var(--accent-warm);color:var(--accent-warm);padding:4px 12px;border-radius:20px;font-size:12px;margin-bottom:8px}
+.section-badge{display:inline-block;background:var(--card);color:var(--text-muted);padding:3px 8px;border-radius:12px;font-size:11px;margin-left:6px}
+#question-text{font-size:19px;line-height:1.75;margin:12px 0 20px;padding:16px;background:var(--card);border-radius:12px;border-left:4px solid var(--accent-warm);word-break:break-word}
+#question-text .blank{border-bottom:2px solid var(--accent-warm);padding:0 16px;margin:0 2px}
+.choices{display:flex;flex-direction:column;gap:10px}
+.choice-btn{padding:14px 16px;border:2px solid var(--border);border-radius:12px;background:var(--card);color:var(--text);font-size:17px;cursor:pointer;text-align:left;transition:all .15s;display:flex;align-items:center;gap:10px;min-height:48px;font-family:inherit}
+.choice-btn:active{transform:scale(.98)}
+.choice-btn .num{display:inline-flex;align-items:center;justify-content:center;width:30px;height:30px;border-radius:50%;background:var(--card-2);font-size:13px;font-weight:700;flex-shrink:0}
+.choice-btn.correct{border-color:var(--correct);background:var(--correct-bg)}
+.choice-btn.correct .num{background:var(--correct);color:#06221a}
+.choice-btn.wrong{border-color:var(--wrong);background:var(--wrong-bg)}
+.choice-btn.wrong .num{background:var(--wrong);color:#fff}
+.choice-btn.reveal-correct{border-color:var(--correct);opacity:.7}
+#feedback{margin-top:16px;padding:14px 16px;border-radius:12px;font-size:15px;display:none}
+#feedback.correct-fb{background:var(--correct-bg);border:1px solid var(--correct);color:var(--correct)}
+#feedback.wrong-fb{background:var(--wrong-bg);border:1px solid var(--wrong);color:var(--wrong)}
+.next-btn{margin-top:20px;width:100%;padding:16px;border:none;border-radius:12px;background:var(--accent-warm);color:#1a0716;font-size:17px;font-weight:700;cursor:pointer;font-family:inherit}
+.next-btn:active{opacity:.85}
 
-    @keyframes spin { to { transform: rotate(360deg); } }
+#grammar-end{text-align:center;padding:16px 0}
+#grammar-end h2{font-size:24px;margin-bottom:8px}
+#grammar-end .final-score{font-size:48px;font-weight:700;margin:16px 0;font-family:'JetBrains Mono',monospace}
+#grammar-end .grade{font-size:22px;margin-bottom:20px}
+.grade-s{color:#ffd700}.grade-a{color:var(--correct)}.grade-b{color:#74b9ff}.grade-c{color:#fdcb6e}.grade-f{color:var(--wrong)}
+#wrong-review{text-align:left;margin:24px 0}
+#wrong-review h3{margin-bottom:12px;font-size:13px;color:var(--accent-warm);letter-spacing:.1em;text-transform:uppercase;font-family:'JetBrains Mono',monospace}
+.wrong-item{background:var(--card);padding:14px;border-radius:12px;margin-bottom:10px;border-left:4px solid var(--wrong);font-size:14px}
+.wrong-item .wi-q{margin-bottom:6px}
+.wrong-item .wi-correct{color:var(--correct)}
+.end-btns{display:flex;flex-direction:column;gap:10px;margin-top:20px}
+.end-btns button{width:100%;padding:14px;border:none;border-radius:12px;font-size:15px;font-weight:700;cursor:pointer;font-family:inherit}
+.btn-primary{background:var(--accent);color:#08122a}
+.btn-warm{background:var(--accent-warm);color:#1a0716}
+.btn-secondary{background:var(--card);color:var(--text);border:1px solid var(--border)!important}
 
-    /* ── Header ─────────────────────────────────── */
-    #header {
-      padding: 14px 18px 0;
-      flex-shrink: 0;
-    }
+/* Filter modal */
+#modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:50}
+#modal-overlay.show{display:block}
+#filter-modal{display:none;position:fixed;bottom:0;left:0;right:0;max-height:88vh;background:var(--surface);border-radius:20px 20px 0 0;z-index:51;overflow-y:auto;padding:20px 16px calc(20px + var(--safe-bot));-webkit-overflow-scrolling:touch}
+#filter-modal.show{display:block}
+#filter-modal h3{font-size:12px;color:var(--text-muted);text-transform:uppercase;letter-spacing:.1em;margin:16px 0 8px;font-family:'JetBrains Mono',monospace}
+#filter-modal h3:first-of-type{margin-top:0}
+.modal-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
+.modal-header h2{font-size:18px;color:var(--accent-warm)}
+.modal-close{background:none;border:none;color:var(--text-muted);font-size:28px;cursor:pointer;padding:4px 8px}
+.group-btns{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px}
+.group-btns button{padding:8px 14px;border:1px solid var(--border);border-radius:8px;background:var(--card);color:var(--text);font-size:13px;font-weight:600;cursor:pointer;font-family:inherit}
+.group-btns button.active{border-color:var(--accent-warm);color:var(--accent-warm)}
+.lesson-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(70px,1fr));gap:6px;margin-bottom:12px}
+.lesson-grid label{display:flex;align-items:center;gap:4px;font-size:13px;padding:6px 4px;cursor:pointer}
+.lesson-grid input{accent-color:var(--accent-warm);width:16px;height:16px}
+.section-checks label{display:flex;align-items:center;gap:8px;padding:4px 0;font-size:14px;cursor:pointer}
+.section-checks input{accent-color:var(--accent-warm);width:16px;height:16px}
+.toggle-row{display:flex;align-items:center;gap:8px;margin:8px 0;font-size:14px}
+.toggle-row input{accent-color:var(--accent-warm)}
+#modal-start{width:100%;padding:14px;margin-top:16px;border:none;border-radius:12px;background:var(--accent-warm);color:#1a0716;font-size:16px;font-weight:700;cursor:pointer;font-family:inherit}
+#modal-wrong{width:100%;padding:12px;margin-top:8px;border:1px solid var(--border);border-radius:12px;background:var(--card);color:var(--text);font-size:14px;font-weight:600;cursor:pointer;font-family:inherit}
 
-    .progress-track {
-      height: 5px;
-      background: var(--border);
-      border-radius: 99px;
-      overflow: hidden;
-    }
+/* ── Ordering quiz (adapted from app 2) ─────── */
+#ordering-header .progress-track{height:5px;background:var(--border);border-radius:99px;overflow:hidden}
+#ordering-header .progress-fill{height:100%;background:var(--accent);border-radius:99px;transition:width .5s cubic-bezier(.4,0,.2,1)}
+#ordering-header .meta{display:flex;justify-content:space-between;margin-top:7px;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.06em}
+#ordering-header .count{color:var(--text-muted)}
+#ordering-header .score{color:var(--correct)}
+.grammar-tag{display:inline-flex;align-items:center;background:rgba(106,166,255,.1);border:1px solid rgba(106,166,255,.3);border-radius:7px;padding:4px 10px;font-size:11.5px;font-family:'JetBrains Mono',monospace;color:var(--accent);letter-spacing:.02em;align-self:flex-start}
+.instruction{font-size:12.5px;color:var(--text-muted);letter-spacing:.04em}
+.sentence-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:18px 16px;display:flex;flex-direction:column;gap:12px}
+.sentence-text{font-size:17px;line-height:1.75;color:var(--text);word-break:break-all}
+.sentence-text:empty{display:none}
+.slots-row{display:flex;gap:7px;flex-wrap:wrap}
+.slot{flex:1;min-width:58px;height:48px;background:transparent;border:2px dashed var(--border);border-radius:var(--radius-sm);display:flex;align-items:center;justify-content:center;font-size:15px;position:relative;transition:border-color .15s,background .15s,transform .1s;cursor:default;user-select:none;touch-action:manipulation}
+.slot.filled{border-style:solid;border-color:var(--accent);background:var(--accent-glow);cursor:pointer}
+.slot.filled:active{transform:scale(.93)}
+.slot.correct{border-color:var(--correct)!important;background:var(--correct-bg)!important;cursor:default!important}
+.slot.incorrect{border-color:var(--wrong)!important;background:var(--wrong-bg)!important;cursor:default!important}
+.slot.answer-shown{border-color:var(--correct)!important;background:var(--correct-bg)!important;cursor:default!important}
+.slot-word{font-size:15px}
+.star-badge{position:absolute;top:-7px;right:-7px;width:17px;height:17px;background:var(--star);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:9px;color:#000;font-weight:bold;z-index:1;box-shadow:0 0 6px var(--star-bg)}
+@keyframes shake{0%,100%{transform:translateX(0)}20%{transform:translateX(-5px)}40%{transform:translateX(5px)}60%{transform:translateX(-4px)}80%{transform:translateX(4px)}}
+.slots-row.shake{animation:shake .4s ease}
+.word-bank{display:grid;grid-template-columns:1fr 1fr;gap:9px}
+.tile{height:52px;background:var(--tile-bg);border:1.5px solid var(--tile-border);border-radius:var(--radius-md);display:flex;align-items:center;justify-content:center;font-size:16px;cursor:pointer;transition:all .12s ease;box-shadow:0 3px 0 rgba(0,0,0,.35);touch-action:manipulation;user-select:none;position:relative;overflow:hidden;font-family:inherit;color:var(--text)}
+.tile:active:not(.used){transform:translateY(2px);box-shadow:0 1px 0 rgba(0,0,0,.35)}
+.tile.used{opacity:.22;cursor:default;pointer-events:none}
+.check-btn{width:100%;height:52px;background:var(--accent);color:#08122a;border:none;border-radius:var(--radius-md);font-family:inherit;font-size:16px;font-weight:700;cursor:pointer;transition:all .15s ease;touch-action:manipulation;letter-spacing:.05em;box-shadow:0 4px 16px rgba(106,166,255,.3)}
+.check-btn:disabled{background:var(--surface);color:var(--text-dim);box-shadow:none;cursor:default}
+.check-btn:not(:disabled):active{transform:scale(.97)}
+.result-panel{background:var(--card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:18px;display:flex;flex-direction:column;gap:14px}
+@keyframes fadeUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+.result-panel:not(.hidden){animation:fadeUp .3s cubic-bezier(.4,0,.2,1)}
+.result-status{display:flex;align-items:center;gap:8px;font-size:18px;font-weight:700}
+.result-status.correct{color:var(--correct)}
+.result-status.incorrect{color:var(--wrong)}
+.result-icon{font-size:22px;line-height:1}
+.explanation-block{display:flex;flex-direction:column;gap:8px}
+.explanation-label{font-size:10.5px;font-family:'JetBrains Mono',monospace;color:var(--accent);letter-spacing:.08em;text-transform:uppercase}
+.explanation-text{font-size:13.5px;line-height:1.75;color:var(--text);padding:12px 14px;background:rgba(255,255,255,.03);border-radius:var(--radius-sm);border-left:3px solid var(--accent)}
+.translation-text{font-size:12.5px;color:var(--text-muted);line-height:1.6;font-style:italic;padding-left:2px}
+.result-actions{display:flex;gap:9px}
+.btn-next{flex:2;height:50px;background:var(--accent);color:#08122a;border:none;border-radius:var(--radius-md);font-family:inherit;font-size:15px;font-weight:700;cursor:pointer;box-shadow:0 4px 14px rgba(106,166,255,.25)}
+.btn-next:active{transform:scale(.97)}
+.btn-ghost{flex:1;height:50px;background:transparent;color:var(--text-muted);border:1.5px solid var(--border);border-radius:var(--radius-md);font-family:inherit;font-size:13.5px;cursor:pointer}
+.btn-ghost:active{background:rgba(255,255,255,.04)}
 
-    .progress-fill {
-      height: 100%;
-      background: var(--accent);
-      border-radius: 99px;
-      transition: width 0.5s cubic-bezier(.4,0,.2,1);
-    }
+#ordering-complete .complete-inner{text-align:center;display:flex;flex-direction:column;align-items:center;gap:14px;padding:32px 24px;animation:fadeUp .5s ease}
+.complete-emoji{font-size:64px}
+.complete-title{font-size:26px;font-weight:700;letter-spacing:.02em}
+.complete-score-ring{width:130px;height:130px;border-radius:50%;border:3px solid var(--border);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;background:var(--card);margin:6px 0}
+.complete-score-num{font-family:'JetBrains Mono',monospace;font-size:28px;font-weight:700;color:var(--correct);letter-spacing:-1px}
+.complete-score-label{font-size:11px;color:var(--text-muted);letter-spacing:.06em}
+.complete-msg{font-size:15px;color:var(--text-muted);max-width:260px;line-height:1.6}
 
-    .progress-meta {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-top: 7px;
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 11px;
-      letter-spacing: 0.06em;
-    }
+/* ── Matching mode ─────────────────────────── */
+#matching-header .progress-track{height:5px;background:var(--border);border-radius:99px;overflow:hidden}
+#matching-header .progress-fill{height:100%;background:var(--accent-2);border-radius:99px;transition:width .4s cubic-bezier(.4,0,.2,1)}
+#matching-header .meta{display:flex;justify-content:space-between;margin-top:7px;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.06em}
+#matching-header .count{color:var(--text-muted)}
+#matching-header .score{color:var(--accent-2)}
+.match-instruction{font-size:12.5px;color:var(--text-muted);letter-spacing:.04em;margin:14px 0 4px}
+.match-board{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.3fr);gap:10px;margin-top:10px}
+.match-col{display:flex;flex-direction:column;gap:8px;min-width:0}
+.match-col h4{font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--text-muted);font-family:'JetBrains Mono',monospace;margin-bottom:2px}
+.match-card{
+  background:var(--tile-bg);border:1.5px solid var(--tile-border);border-radius:var(--radius-md);
+  padding:12px 11px;min-height:60px;display:flex;align-items:center;
+  cursor:pointer;transition:border-color .15s,background .15s,transform .1s,box-shadow .15s;
+  user-select:none;touch-action:manipulation;font-family:inherit;color:var(--text);
+  word-break:break-word;line-height:1.5;
+}
+.match-card.grammar-side{font-size:15px;justify-content:center;font-weight:600;text-align:center}
+.match-card.meaning-side{font-size:12px;color:var(--text-muted)}
+.match-card:active:not(.matched){transform:scale(.98)}
+.match-card.selected{border-color:var(--accent-2);background:rgba(176,124,255,.14);box-shadow:0 0 0 3px rgba(176,124,255,.18);color:var(--text)}
+.match-card.matched{border-color:var(--correct);background:var(--correct-bg);color:var(--correct);cursor:default;opacity:.82}
+.match-card.matched.meaning-side{color:var(--correct)}
+.match-card.wrong-flash{border-color:var(--wrong)!important;background:var(--wrong-bg)!important;animation:shake .4s ease}
 
-    .progress-count { color: var(--text-muted); }
-    .progress-score { color: var(--correct); }
+#matching-complete .complete-score-num{color:var(--accent-2)}
+#matching-complete .complete-score-ring{border-color:rgba(176,124,255,.3)}
 
-    /* ── Main scroll area ────────────────────────── */
-    #quiz-body {
-      flex: 1;
-      padding: 16px 18px 20px;
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-      overflow-y: auto;
-    }
-
-    /* ── Grammar tag ─────────────────────────────── */
-    .grammar-tag {
-      display: inline-flex;
-      align-items: center;
-      background: rgba(74,144,226,0.1);
-      border: 1px solid rgba(74,144,226,0.28);
-      border-radius: 7px;
-      padding: 4px 10px;
-      font-size: 11.5px;
-      font-family: 'JetBrains Mono', monospace;
-      color: var(--accent);
-      letter-spacing: 0.02em;
-      align-self: flex-start;
-    }
-
-    /* ── Instruction ─────────────────────────────── */
-    .instruction {
-      font-size: 12.5px;
-      color: var(--text-muted);
-      letter-spacing: 0.04em;
-    }
-
-    /* ── Sentence card ───────────────────────────── */
-    .sentence-card {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-lg);
-      padding: 18px 16px;
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-    }
-
-    .sentence-text {
-      font-size: 17px;
-      line-height: 1.75;
-      color: var(--text);
-      word-break: break-all;
-    }
-
-    .sentence-text:empty { display: none; }
-
-    /* ── Slots ───────────────────────────────────── */
-    .slots-row {
-      display: flex;
-      gap: 7px;
-      flex-wrap: wrap;
-    }
-
-    .slot {
-      flex: 1;
-      min-width: 58px;
-      height: 48px;
-      background: transparent;
-      border: 2px dashed var(--border);
-      border-radius: var(--radius-sm);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 15px;
-      position: relative;
-      transition: border-color 0.15s, background 0.15s, transform 0.1s;
-      cursor: default;
-      user-select: none;
-      touch-action: manipulation;
-    }
-
-    .slot.filled {
-      border-style: solid;
-      border-color: var(--accent);
-      background: var(--accent-glow);
-      cursor: pointer;
-    }
-
-    .slot.filled:active { transform: scale(0.93); }
-
-    .slot.correct {
-      border-color: var(--correct) !important;
-      background: var(--correct-bg) !important;
-      cursor: default !important;
-    }
-
-    .slot.incorrect {
-      border-color: var(--incorrect) !important;
-      background: var(--incorrect-bg) !important;
-      cursor: default !important;
-    }
-
-    .slot.answer-shown {
-      border-color: var(--correct) !important;
-      background: var(--correct-bg) !important;
-      cursor: default !important;
-    }
-
-    .slot-word {
-      font-size: 15px;
-    }
-
-    /* Star badge */
-    .star-badge {
-      position: absolute;
-      top: -7px;
-      right: -7px;
-      width: 17px;
-      height: 17px;
-      background: var(--star);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 9px;
-      color: #000;
-      font-weight: bold;
-      z-index: 1;
-      box-shadow: 0 0 6px var(--star-bg);
-    }
-
-    /* Shake on wrong */
-    @keyframes shake {
-      0%,100% { transform: translateX(0); }
-      20%      { transform: translateX(-5px); }
-      40%      { transform: translateX(5px); }
-      60%      { transform: translateX(-4px); }
-      80%      { transform: translateX(4px); }
-    }
-
-    .slots-row.shake { animation: shake 0.4s ease; }
-
-    /* ── Word bank ───────────────────────────────── */
-    .word-bank {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 9px;
-    }
-
-    .tile {
-      height: 52px;
-      background: var(--tile-bg);
-      border: 1.5px solid var(--tile-border);
-      border-radius: var(--radius-md);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 16px;
-      cursor: pointer;
-      transition: all 0.12s ease;
-      box-shadow: 0 3px 0 rgba(0,0,0,0.35);
-      touch-action: manipulation;
-      user-select: none;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .tile::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: rgba(255,255,255,0);
-      transition: background 0.1s;
-    }
-
-    .tile:active:not(.used)::after {
-      background: rgba(255,255,255,0.05);
-    }
-
-    .tile:active:not(.used) {
-      transform: translateY(2px);
-      box-shadow: 0 1px 0 rgba(0,0,0,0.35);
-    }
-
-    .tile.used {
-      opacity: 0.22;
-      cursor: default;
-      pointer-events: none;
-    }
-
-    /* ── Check button ────────────────────────────── */
-    .check-btn {
-      width: 100%;
-      height: 52px;
-      background: var(--accent);
-      color: #fff;
-      border: none;
-      border-radius: var(--radius-md);
-      font-family: 'Noto Sans JP', sans-serif;
-      font-size: 16px;
-      font-weight: 700;
-      cursor: pointer;
-      transition: all 0.15s ease;
-      touch-action: manipulation;
-      letter-spacing: 0.05em;
-      box-shadow: 0 4px 16px rgba(74,144,226,0.3);
-    }
-
-    .check-btn:disabled {
-      background: var(--surface);
-      color: var(--text-dim);
-      box-shadow: none;
-      cursor: default;
-    }
-
-    .check-btn:not(:disabled):active { transform: scale(0.97); }
-
-    /* ── Result panel ────────────────────────────── */
-    .result-panel {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-lg);
-      padding: 18px;
-      display: flex;
-      flex-direction: column;
-      gap: 14px;
-      animation: fadeUp 0.3s cubic-bezier(.4,0,.2,1);
-    }
-
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(10px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-
-    .result-status {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      font-size: 18px;
-      font-weight: 700;
-    }
-
-    .result-status.correct  { color: var(--correct); }
-    .result-status.incorrect { color: var(--incorrect); }
-
-    .result-icon {
-      font-size: 22px;
-      line-height: 1;
-    }
-
-    .explanation-block {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-    }
-
-    .explanation-label {
-      font-size: 10.5px;
-      font-family: 'JetBrains Mono', monospace;
-      color: var(--accent);
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-    }
-
-    .explanation-text {
-      font-size: 13.5px;
-      line-height: 1.75;
-      color: var(--text);
-      padding: 12px 14px;
-      background: rgba(255,255,255,0.03);
-      border-radius: var(--radius-sm);
-      border-left: 3px solid var(--accent);
-    }
-
-    .translation-text {
-      font-size: 12.5px;
-      color: var(--text-muted);
-      line-height: 1.6;
-      font-style: italic;
-      padding-left: 2px;
-    }
-
-    /* ── Action buttons ──────────────────────────── */
-    .result-actions {
-      display: flex;
-      gap: 9px;
-    }
-
-    .btn-next {
-      flex: 2;
-      height: 50px;
-      background: var(--accent);
-      color: #fff;
-      border: none;
-      border-radius: var(--radius-md);
-      font-family: 'Noto Sans JP', sans-serif;
-      font-size: 15px;
-      font-weight: 700;
-      cursor: pointer;
-      touch-action: manipulation;
-      transition: all 0.12s;
-      box-shadow: 0 4px 14px rgba(74,144,226,0.25);
-      letter-spacing: 0.04em;
-    }
-
-    .btn-next:active { transform: scale(0.97); }
-
-    .btn-ghost {
-      flex: 1;
-      height: 50px;
-      background: transparent;
-      color: var(--text-muted);
-      border: 1.5px solid var(--border);
-      border-radius: var(--radius-md);
-      font-family: 'Noto Sans JP', sans-serif;
-      font-size: 13.5px;
-      cursor: pointer;
-      touch-action: manipulation;
-      transition: all 0.12s;
-    }
-
-    .btn-ghost:active { background: rgba(255,255,255,0.04); }
-
-    /* ── Complete screen ─────────────────────────── */
-    #complete {
-      flex: 1;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 32px 24px;
-    }
-
-    .complete-inner {
-      text-align: center;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 14px;
-      animation: fadeUp 0.5s ease;
-    }
-
-    .complete-emoji { font-size: 64px; }
-
-    .complete-title {
-      font-size: 26px;
-      font-weight: 700;
-      letter-spacing: 0.02em;
-    }
-
-    .complete-score-ring {
-      width: 130px;
-      height: 130px;
-      border-radius: 50%;
-      border: 3px solid var(--border);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 2px;
-      background: var(--card);
-      margin: 6px 0;
-    }
-
-    .complete-score-num {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 36px;
-      font-weight: 700;
-      color: var(--correct);
-      letter-spacing: -1px;
-    }
-
-    .complete-score-label {
-      font-size: 11px;
-      color: var(--text-muted);
-      letter-spacing: 0.06em;
-    }
-
-    .complete-msg {
-      font-size: 15px;
-      color: var(--text-muted);
-      max-width: 260px;
-      line-height: 1.6;
-    }
-
-    .restart-btn {
-      margin-top: 8px;
-      height: 50px;
-      padding: 0 32px;
-      background: var(--accent);
-      color: #fff;
-      border: none;
-      border-radius: var(--radius-md);
-      font-family: 'Noto Sans JP', sans-serif;
-      font-size: 15px;
-      font-weight: 700;
-      cursor: pointer;
-      touch-action: manipulation;
-      box-shadow: 0 4px 16px rgba(74,144,226,0.3);
-    }
-
-    .restart-btn:active { transform: scale(0.97); }
-  </style>
+/* ── Loading ─────────────────────────────────── */
+#ordering-loading{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;padding:60px 20px;color:var(--text-muted)}
+.loader{width:32px;height:32px;border:2px solid var(--border);border-top-color:var(--accent);border-radius:50%;animation:spin .8s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+</style>
 </head>
 <body>
+
+<div id="topbar">
+  <div>
+    <div class="brand">N2 Study<span class="dot"> ·</span></div>
+    <div class="ctx" id="topbar-ctx">Dashboard</div>
+  </div>
+  <button class="icon-btn hidden" id="topbar-action" onclick="showView('dashboard')" aria-label="Back to dashboard">←</button>
+</div>
+
 <div id="app">
 
-  <!-- Loading -->
-  <div id="loading">
-    <div class="loader"></div>
-    <span>読み込み中…</span>
+  <!-- ═══════ Dashboard ═══════ -->
+  <div id="view-dashboard" class="view">
+    <div class="hero">
+      <h1>今日も頑張ろう</h1>
+      <p>Pick a practice mode below. Your progress is saved locally.</p>
+    </div>
+
+    <div class="stat-grid">
+      <div class="stat">
+        <div class="label">Questions Answered</div>
+        <div class="value" id="stat-total-q">0</div>
+        <div class="sub" id="stat-total-sub">across all modes</div>
+      </div>
+      <div class="stat">
+        <div class="label">Overall Accuracy</div>
+        <div class="value" id="stat-accuracy">—</div>
+        <div class="sub" id="stat-accuracy-sub">all-time</div>
+      </div>
+    </div>
+
+    <div class="mode-grid">
+      <div class="mode-card grammar" onclick="openGrammarConfig()">
+        <div class="kicker">文法 · Multiple choice</div>
+        <h2>Grammar Quiz</h2>
+        <div class="desc">Fill-in-the-blank practice across 26 lessons and 702 questions.</div>
+        <div class="row">
+          <span>Best <b id="dash-g-best">—</b></span>
+          <span>Streak <b id="dash-g-streak">0</b></span>
+        </div>
+        <button class="cta" onclick="event.stopPropagation();openGrammarConfig()">Start →</button>
+      </div>
+
+      <div class="mode-card ordering" onclick="startOrdering()">
+        <div class="kicker">並べ替え · Arrange tiles</div>
+        <h2>Sentence Ordering</h2>
+        <div class="desc">Drop the four word-tiles into the correct order to complete the sentence.</div>
+        <div class="row">
+          <span>Best <b id="dash-o-best">—</b></span>
+          <span>Streak <b id="dash-o-streak">0</b></span>
+        </div>
+        <button class="cta" onclick="event.stopPropagation();startOrdering()">Start →</button>
+      </div>
+
+      <div class="mode-card matching" onclick="startMatching()">
+        <div class="kicker">マッチング · Pair meanings</div>
+        <h2>Grammar Matching</h2>
+        <div class="desc">Match each grammar point to its meaning. Five pairs per round.</div>
+        <div class="row">
+          <span>Best <b id="dash-m-best">—</b></span>
+          <span>Streak <b id="dash-m-streak">0</b></span>
+        </div>
+        <button class="cta" onclick="event.stopPropagation();startMatching()">Start →</button>
+      </div>
+    </div>
+
+    <div class="history">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px">
+        <h3 style="margin:0">Recent Sessions</h3>
+        <button onclick="resetStats()" style="background:none;border:none;color:var(--text-dim);font-size:11px;cursor:pointer;font-family:'JetBrains Mono',monospace;letter-spacing:.1em;text-transform:uppercase">Reset</button>
+      </div>
+      <div id="history-list"></div>
+    </div>
   </div>
 
-  <!-- Quiz -->
-  <div id="quiz" class="hidden">
-
-    <div id="header">
-      <div class="progress-track">
-        <div class="progress-fill" id="progress-fill" style="width:0%"></div>
-      </div>
-      <div class="progress-meta">
-        <span class="progress-count" id="progress-count">1 / 20</span>
-        <span class="progress-score" id="progress-score">✓ 0</span>
-      </div>
+  <!-- ═══════ Grammar quiz view ═══════ -->
+  <div id="view-grammar" class="view hidden">
+    <div id="grammar-progress-bg"><div id="grammar-progress"></div></div>
+    <div id="grammar-content" class="hidden">
+      <span class="grammar-badge" id="grammar-badge"></span>
+      <span class="section-badge" id="section-badge"></span>
+      <div id="question-text"></div>
+      <div class="choices" id="choices"></div>
+      <div id="feedback"></div>
+      <button class="next-btn" id="grammar-next-btn" onclick="grammarNext()">Next →</button>
     </div>
-
-    <div id="quiz-body">
-      <div class="grammar-tag" id="grammar-tag"></div>
-      <div class="instruction">正しい順番に並べ替えてください</div>
-
-      <div class="sentence-card">
-        <div class="sentence-text" id="prefix-text"></div>
-        <div class="slots-row" id="slots-row"></div>
-        <div class="sentence-text" id="suffix-text"></div>
+    <div id="grammar-end" class="hidden">
+      <h2>Quiz Complete!</h2>
+      <div class="final-score" id="final-score"></div>
+      <div class="grade" id="grade"></div>
+      <div id="wrong-review"></div>
+      <div class="end-btns">
+        <button class="btn-warm" onclick="grammarStart()">Retry All</button>
+        <button class="btn-secondary" onclick="grammarStart(true)">Retry Wrong Only</button>
+        <button class="btn-secondary" onclick="showView('dashboard')">← Dashboard</button>
       </div>
-
-      <div class="word-bank" id="word-bank"></div>
-
-      <button class="check-btn" id="check-btn" disabled onclick="checkAnswer()">
-        確認する
-      </button>
-
-      <div class="result-panel hidden" id="result-panel">
-        <div class="result-status" id="result-status">
-          <span class="result-icon" id="result-icon"></span>
-          <span id="result-label"></span>
-        </div>
-        <div class="explanation-block">
-          <div class="explanation-label">解説</div>
-          <div class="explanation-text" id="explanation-text"></div>
-        </div>
-        <div class="translation-text" id="translation-text"></div>
-        <div class="result-actions" id="result-actions"></div>
-      </div>
-    </div>
-
-  </div><!-- /quiz -->
-
-  <!-- Complete -->
-  <div id="complete" class="hidden">
-    <div class="complete-inner">
-      <div class="complete-emoji" id="complete-emoji">🎉</div>
-      <div class="complete-title">練習完了！</div>
-      <div class="complete-score-ring">
-        <div class="complete-score-num" id="complete-num">0</div>
-        <div class="complete-score-label">CORRECT</div>
-      </div>
-      <div class="complete-msg" id="complete-msg"></div>
-      <button class="restart-btn" onclick="restartQuiz()">もう一度挑戦する</button>
     </div>
   </div>
 
-</div><!-- /app -->
+  <!-- ═══════ Ordering quiz view ═══════ -->
+  <div id="view-ordering" class="view hidden">
+    <div id="ordering-loading">
+      <div class="loader"></div>
+      <span>読み込み中…</span>
+    </div>
+    <div id="ordering-quiz" class="hidden">
+      <div id="ordering-header">
+        <div class="progress-track"><div class="progress-fill" id="o-progress-fill" style="width:0%"></div></div>
+        <div class="meta">
+          <span class="count" id="o-progress-count">1 / 20</span>
+          <span class="score" id="o-progress-score">✓ 0</span>
+        </div>
+      </div>
+      <div id="ordering-body" style="display:flex;flex-direction:column;gap:16px;margin-top:16px">
+        <div class="grammar-tag" id="o-grammar-tag"></div>
+        <div class="instruction">正しい順番に並べ替えてください</div>
+        <div class="sentence-card">
+          <div class="sentence-text" id="o-prefix-text"></div>
+          <div class="slots-row" id="o-slots-row"></div>
+          <div class="sentence-text" id="o-suffix-text"></div>
+        </div>
+        <div class="word-bank" id="o-word-bank"></div>
+        <button class="check-btn" id="o-check-btn" disabled onclick="orderingCheck()">確認する</button>
+        <div class="result-panel hidden" id="o-result-panel">
+          <div class="result-status" id="o-result-status">
+            <span class="result-icon" id="o-result-icon"></span>
+            <span id="o-result-label"></span>
+          </div>
+          <div class="explanation-block">
+            <div class="explanation-label">解説</div>
+            <div class="explanation-text" id="o-explanation-text"></div>
+          </div>
+          <div class="translation-text" id="o-translation-text"></div>
+          <div class="result-actions" id="o-result-actions"></div>
+        </div>
+      </div>
+    </div>
+    <div id="ordering-complete" class="hidden">
+      <div class="complete-inner">
+        <div class="complete-emoji" id="o-complete-emoji">🎉</div>
+        <div class="complete-title">練習完了！</div>
+        <div class="complete-score-ring">
+          <div class="complete-score-num" id="o-complete-num">0 / 0</div>
+          <div class="complete-score-label">CORRECT</div>
+        </div>
+        <div class="complete-msg" id="o-complete-msg"></div>
+        <div class="end-btns" style="width:100%;max-width:280px">
+          <button class="btn-primary" onclick="startOrdering()">もう一度</button>
+          <button class="btn-secondary" onclick="showView('dashboard')">← Dashboard</button>
+        </div>
+      </div>
+    </div>
+  </div>
 
+  <!-- ═══════ Matching view ═══════ -->
+  <div id="view-matching" class="view hidden">
+    <div id="matching-loading" style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;padding:60px 20px;color:var(--text-muted)">
+      <div class="loader" style="border-top-color:var(--accent-2)"></div>
+      <span>読み込み中…</span>
+    </div>
+    <div id="matching-board-wrap" class="hidden">
+      <div id="matching-header">
+        <div class="progress-track"><div class="progress-fill" id="m-progress-fill" style="width:0%"></div></div>
+        <div class="meta">
+          <span class="count" id="m-progress-count">0 / 5</span>
+          <span class="score" id="m-progress-score">✓ 0</span>
+        </div>
+      </div>
+      <div class="match-instruction">文法と意味をペアにしてください</div>
+      <div class="match-board">
+        <div class="match-col">
+          <h4>文法</h4>
+          <div id="m-grammar-col" style="display:flex;flex-direction:column;gap:8px"></div>
+        </div>
+        <div class="match-col">
+          <h4>意味</h4>
+          <div id="m-meaning-col" style="display:flex;flex-direction:column;gap:8px"></div>
+        </div>
+      </div>
+    </div>
+    <div id="matching-complete" class="hidden">
+      <div class="complete-inner">
+        <div class="complete-emoji" id="m-complete-emoji">🎉</div>
+        <div class="complete-title">ラウンド完了！</div>
+        <div class="complete-score-ring">
+          <div class="complete-score-num" id="m-complete-num">0 / 5</div>
+          <div class="complete-score-label">FIRST TRY</div>
+        </div>
+        <div class="complete-msg" id="m-complete-msg"></div>
+        <div class="end-btns" style="width:100%;max-width:280px">
+          <button class="btn-primary" onclick="startMatching()" style="background:var(--accent-2);color:#140627">もう一度</button>
+          <button class="btn-secondary" onclick="showView('dashboard')">← Dashboard</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════ Grammar filter modal ═══════ -->
+<div id="modal-overlay" onclick="toggleGrammarModal()"></div>
+<div id="filter-modal">
+  <div class="modal-header">
+    <h2>Grammar Quiz</h2>
+    <button class="modal-close" onclick="toggleGrammarModal()">&times;</button>
+  </div>
+  <h3>Group</h3>
+  <div class="group-btns" id="group-btns">
+    <button onclick="selectGroup('all')" class="active">All</button>
+    <button onclick="selectGroup([1,2,3,4,5])">A 1-5</button>
+    <button onclick="selectGroup([6,7,8,9,10])">B 6-10</button>
+    <button onclick="selectGroup([11,12,13,14,15])">C 11-15</button>
+    <button onclick="selectGroup([16,17,18,19,20])">D 16-20</button>
+    <button onclick="selectGroup([21,22,23,24,25,26])">E 21-26</button>
+  </div>
+  <h3>Lessons</h3>
+  <div class="lesson-grid" id="lesson-grid"></div>
+  <h3>Section Type</h3>
+  <div class="section-checks">
+    <label><input type="checkbox" checked data-section="drill"> Drill (囲)</label>
+    <label><input type="checkbox" checked data-section="mixed"> Mixed Review</label>
+    <label><input type="checkbox" checked data-section="mondai"> 問題</label>
+  </div>
+  <div class="toggle-row"><label><input type="checkbox" id="shuffle-toggle" checked> Shuffle</label></div>
+  <button id="modal-start" onclick="grammarStart();toggleGrammarModal()">Start Quiz</button>
+  <button id="modal-wrong" onclick="grammarStart(true);toggleGrammarModal()">Retry Wrong Answers</button>
+</div>
+
+<script src="grammar-questions.js"></script>
 <script>
-  // ─── State ────────────────────────────────────────────
-  let questions    = [];
-  let questionOrder = [];
-  let currentIdx   = 0;
-  let q            = null;          // current question
-  let bankOrder    = [];            // display order in word bank
-  let slots        = [];            // [word|null, word|null, word|null, word|null]
-  let submitted    = false;
-  let answerShown  = false;
-  let score        = { correct: 0, total: 0 };
+/* ═════════════════════════════════════════════════════
+   Shared stats + router
+   ═════════════════════════════════════════════════════ */
+const STATS_KEY = 'n2_combined_v1';
+const STREAK_THRESHOLD = 80; // % correct to keep the streak going
 
-  // ─── Utils ────────────────────────────────────────────
-  function shuffle(arr) {
-    const a = [...arr];
-    for (let i = a.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [a[i], a[j]] = [a[j], a[i]];
+function loadStats(){
+  try {
+    const stored = JSON.parse(localStorage.getItem(STATS_KEY));
+    if (!stored) return defaultStats();
+    const d = defaultStats();
+    for (const k of ['grammar','ordering','matching']){
+      if (!stored[k]) stored[k] = d[k];
     }
-    return a;
+    if (!Array.isArray(stored.history)) stored.history = [];
+    return stored;
+  } catch { return defaultStats(); }
+}
+function defaultStats(){
+  return {
+    grammar: { bestPct:0, currentStreak:0, bestStreak:0, totalQ:0, totalCorrect:0 },
+    ordering:{ bestPct:0, currentStreak:0, bestStreak:0, totalQ:0, totalCorrect:0 },
+    matching:{ bestPct:0, currentStreak:0, bestStreak:0, totalQ:0, totalCorrect:0 },
+    history: []
+  };
+}
+function saveStats(s){ localStorage.setItem(STATS_KEY, JSON.stringify(s)); }
+
+function recordSession(mode, correct, total){
+  const s = loadStats();
+  const pct = total ? Math.round(correct/total*100) : 0;
+  const m = s[mode];
+  m.totalQ += total;
+  m.totalCorrect += correct;
+  m.bestPct = Math.max(m.bestPct, pct);
+  if (pct >= STREAK_THRESHOLD){
+    m.currentStreak += 1;
+    m.bestStreak = Math.max(m.bestStreak, m.currentStreak);
+  } else {
+    m.currentStreak = 0;
   }
+  s.history.unshift({
+    date: new Date().toISOString().slice(0,10),
+    mode, pct, correct, total,
+    ts: Date.now()
+  });
+  if (s.history.length > 20) s.history.length = 20;
+  saveStats(s);
+  renderDashboard();
+}
 
-  function $(id) { return document.getElementById(id); }
+function renderDashboard(){
+  const s = loadStats();
+  const totalQ = s.grammar.totalQ + s.ordering.totalQ + s.matching.totalQ;
+  const totalC = s.grammar.totalCorrect + s.ordering.totalCorrect + s.matching.totalCorrect;
+  document.getElementById('stat-total-q').textContent = totalQ.toLocaleString();
+  document.getElementById('stat-total-sub').textContent =
+    `${s.grammar.totalQ} 文法 · ${s.ordering.totalQ} 並べ替え · ${s.matching.totalQ} マッチング`;
+  document.getElementById('stat-accuracy').textContent =
+    totalQ ? Math.round(totalC/totalQ*100) + '%' : '—';
+  document.getElementById('stat-accuracy-sub').textContent =
+    totalQ ? `${totalC.toLocaleString()} of ${totalQ.toLocaleString()} correct` : 'complete a session to see stats';
 
-  // ─── Boot ────────────────────────────────────────────
-  async function init() {
+  document.getElementById('dash-g-best').textContent = s.grammar.bestPct ? s.grammar.bestPct + '%' : '—';
+  document.getElementById('dash-g-streak').textContent = s.grammar.currentStreak;
+  document.getElementById('dash-o-best').textContent = s.ordering.bestPct ? s.ordering.bestPct + '%' : '—';
+  document.getElementById('dash-o-streak').textContent = s.ordering.currentStreak;
+  document.getElementById('dash-m-best').textContent = s.matching.bestPct ? s.matching.bestPct + '%' : '—';
+  document.getElementById('dash-m-streak').textContent = s.matching.currentStreak;
+
+  const list = document.getElementById('history-list');
+  if (!s.history.length){
+    list.innerHTML = '<div class="empty">No sessions yet — pick a mode above to start.</div>';
+  } else {
+    const modeLabels = { grammar:'Grammar', ordering:'Ordering', matching:'Matching' };
+    list.innerHTML = s.history.slice(0,10).map(h=>{
+      const cls = h.pct >= STREAK_THRESHOLD ? 'good' : (h.pct >= 60 ? '' : 'bad');
+      const modeLabel = modeLabels[h.mode] || h.mode;
+      return `<div class="row">
+        <div><span class="mode-pill ${h.mode}">${modeLabel}</span><span class="meta">${h.correct}/${h.total}</span></div>
+        <div><span class="pct ${cls}">${h.pct}%</span> <span class="meta" style="margin-left:8px">${h.date}</span></div>
+      </div>`;
+    }).join('');
+  }
+}
+
+function showView(name){
+  ['dashboard','grammar','ordering','matching'].forEach(v=>{
+    document.getElementById('view-'+v).classList.toggle('hidden', v!==name);
+  });
+  const ctx = { dashboard:'Dashboard', grammar:'文法 Grammar', ordering:'並べ替え Ordering', matching:'マッチング Matching' }[name];
+  document.getElementById('topbar-ctx').textContent = ctx;
+  document.getElementById('topbar-action').classList.toggle('hidden', name === 'dashboard');
+  // Close grammar config modal if open when leaving grammar
+  if (name !== 'grammar'){
+    document.getElementById('modal-overlay').classList.remove('show');
+    document.getElementById('filter-modal').classList.remove('show');
+  }
+  window.scrollTo({top:0,behavior:'instant'});
+}
+
+function resetStats(){
+  if (confirm('Reset all local stats and history?')){
+    localStorage.removeItem(STATS_KEY);
+    renderDashboard();
+  }
+}
+
+/* ═════════════════════════════════════════════════════
+   Grammar quiz
+   ═════════════════════════════════════════════════════ */
+let gFiltered=[], gIndex=0, gScore=0, gAnswered=false, gWrongList=[];
+
+function getLessonNums(){ return [...new Set(QUESTIONS.map(q=>q.lesson))].sort((a,b)=>a-b); }
+function getSectionType(s){
+  if (s === '問題') return 'mondai';
+  if (s.match(/^\d+〜\d+$/) || s.match(/^1〜/)) return 'mixed';
+  return 'drill';
+}
+
+function buildLessonGrid(){
+  const grid = document.getElementById('lesson-grid');
+  if (grid.children.length) return;
+  getLessonNums().forEach(n=>{
+    const lbl = document.createElement('label');
+    lbl.innerHTML = `<input type="checkbox" checked data-lesson="${n}">${n}課`;
+    grid.appendChild(lbl);
+  });
+}
+
+function selectGroup(g){
+  const boxes = document.querySelectorAll('[data-lesson]');
+  const btns = document.querySelectorAll('#group-btns button');
+  btns.forEach(b=>b.classList.remove('active'));
+  if (g === 'all'){
+    boxes.forEach(b=>b.checked=true);
+    btns[0].classList.add('active');
+  } else {
+    boxes.forEach(b=>b.checked=false);
+    g.forEach(n=>{ const cb = document.querySelector(`[data-lesson="${n}"]`); if (cb) cb.checked=true; });
+    const idx = g[0] <= 5 ? 1 : g[0] <= 10 ? 2 : g[0] <= 15 ? 3 : g[0] <= 20 ? 4 : 5;
+    btns[idx].classList.add('active');
+  }
+}
+
+function getFiltered(){
+  const lessons = [...document.querySelectorAll('[data-lesson]:checked')].map(e=>+e.dataset.lesson);
+  const sections = [...document.querySelectorAll('[data-section]:checked')].map(e=>e.dataset.section);
+  return QUESTIONS.filter(q => lessons.includes(q.lesson) && sections.includes(getSectionType(q.section)));
+}
+
+function shuffleArr(arr){
+  for (let i = arr.length - 1; i > 0; i--){
+    const j = Math.floor(Math.random()*(i+1));
+    [arr[i],arr[j]] = [arr[j],arr[i]];
+  }
+  return arr;
+}
+
+function openGrammarConfig(){
+  showView('grammar');
+  document.getElementById('grammar-content').classList.add('hidden');
+  document.getElementById('grammar-end').classList.add('hidden');
+  buildLessonGrid();
+  toggleGrammarModal(true);
+}
+
+function toggleGrammarModal(forceShow){
+  const overlay = document.getElementById('modal-overlay');
+  const modal = document.getElementById('filter-modal');
+  const show = forceShow === true ? true : !overlay.classList.contains('show');
+  overlay.classList.toggle('show', show);
+  modal.classList.toggle('show', show);
+}
+
+function grammarStart(wrongOnly=false){
+  if (wrongOnly && gWrongList.length > 0){ gFiltered = [...gWrongList]; }
+  else { gFiltered = getFiltered(); }
+  if (gFiltered.length === 0){ alert('No questions selected.'); return; }
+  if (document.getElementById('shuffle-toggle').checked) shuffleArr(gFiltered);
+  gIndex = 0; gScore = 0; gWrongList = []; gAnswered = false;
+  document.getElementById('grammar-end').classList.add('hidden');
+  document.getElementById('grammar-content').classList.remove('hidden');
+  showGrammarQuestion();
+}
+
+function showGrammarQuestion(){
+  const q = gFiltered[gIndex];
+  document.getElementById('grammar-badge').textContent = q.lesson + '課 ' + q.grammar;
+  document.getElementById('section-badge').textContent = q.section;
+  document.getElementById('question-text').innerHTML = q.q.replace(/（\s*）/g, '<span class="blank">　　　</span>');
+  const wrap = document.getElementById('choices');
+  wrap.innerHTML = '';
+  q.c.forEach((c, i)=>{
+    const btn = document.createElement('button');
+    btn.className = 'choice-btn';
+    btn.innerHTML = `<span class="num">${i+1}</span><span>${c}</span>`;
+    btn.onclick = () => grammarPick(i);
+    wrap.appendChild(btn);
+  });
+  const fb = document.getElementById('feedback');
+  fb.style.display = 'none'; fb.className = '';
+  document.getElementById('grammar-next-btn').style.display = 'none';
+  gAnswered = false;
+  updateGrammarProgress();
+}
+
+function grammarPick(i){
+  if (gAnswered) return;
+  gAnswered = true;
+  const q = gFiltered[gIndex];
+  const btns = document.querySelectorAll('#view-grammar .choice-btn');
+  const fb = document.getElementById('feedback');
+  if (i === q.a){
+    gScore++;
+    btns[i].classList.add('correct');
+    fb.textContent = '✓ Correct!';
+    fb.className = 'correct-fb';
+  } else {
+    btns[i].classList.add('wrong');
+    btns[q.a].classList.add('reveal-correct');
+    fb.textContent = '✗ → ' + (q.a+1) + ' ' + q.c[q.a];
+    fb.className = 'wrong-fb';
+    gWrongList.push(q);
+  }
+  fb.style.display = 'block';
+  document.getElementById('grammar-next-btn').style.display = 'block';
+  updateGrammarProgress();
+}
+
+function grammarNext(){
+  gIndex++;
+  if (gIndex >= gFiltered.length){ grammarEnd(); return; }
+  showGrammarQuestion();
+}
+
+function updateGrammarProgress(){
+  const pct = gFiltered.length ? (gIndex / gFiltered.length * 100) : 0;
+  document.getElementById('grammar-progress').style.width = pct + '%';
+  document.getElementById('topbar-ctx').textContent =
+    `文法 · ${gIndex + 1}/${gFiltered.length} · ${gScore} correct`;
+}
+
+function grammarEnd(){
+  document.getElementById('grammar-content').classList.add('hidden');
+  const total = gFiltered.length;
+  const pct = Math.round(gScore / total * 100);
+  document.getElementById('final-score').textContent = gScore + '/' + total + ' (' + pct + '%)';
+  let g, gc;
+  if (pct >= 95){ g='S'; gc='grade-s'; }
+  else if (pct >= 85){ g='A'; gc='grade-a'; }
+  else if (pct >= 70){ g='B'; gc='grade-b'; }
+  else if (pct >= 50){ g='C'; gc='grade-c'; }
+  else { g='F'; gc='grade-f'; }
+  const gel = document.getElementById('grade');
+  gel.textContent = 'Grade: ' + g;
+  gel.className = 'grade ' + gc;
+  const wr = document.getElementById('wrong-review');
+  if (gWrongList.length){
+    let h = `<h3>Review (${gWrongList.length} wrong)</h3>`;
+    gWrongList.forEach(q=>{
+      h += `<div class="wrong-item"><div class="wi-q">${q.lesson}課 ${q.section}: ${q.q}</div><div class="wi-correct">→ ${q.c[q.a]}</div></div>`;
+    });
+    wr.innerHTML = h;
+  } else {
+    wr.innerHTML = '<p style="color:var(--correct);font-size:18px;margin:20px 0;text-align:center">Perfect score!</p>';
+  }
+  document.getElementById('grammar-end').classList.remove('hidden');
+  document.getElementById('topbar-ctx').textContent = `文法 · Complete`;
+  recordSession('grammar', gScore, total);
+}
+
+/* ═════════════════════════════════════════════════════
+   Ordering quiz
+   ═════════════════════════════════════════════════════ */
+let orderingQuestions = null;
+let oOrder = [], oIdx = 0, oQ = null, oBank = [], oSlots = [null,null,null,null];
+let oSubmitted = false, oAnswerShown = false;
+let oScore = { correct:0, total:0 };
+
+async function startOrdering(){
+  showView('ordering');
+  document.getElementById('ordering-loading').classList.remove('hidden');
+  document.getElementById('ordering-quiz').classList.add('hidden');
+  document.getElementById('ordering-complete').classList.add('hidden');
+
+  if (!orderingQuestions){
     try {
-      const res = await fetch('questions.json');
+      const res = await fetch('ordering-questions.json');
       if (!res.ok) throw new Error('HTTP ' + res.status);
-      questions     = await res.json();
-      questionOrder = shuffle(questions.map((_, i) => i));
-
-      $('loading').classList.add('hidden');
-      $('quiz').classList.remove('hidden');
-      loadQuestion();
-    } catch(e) {
-      $('loading').innerHTML =
-        `<span style="color:#f05252;padding:20px;text-align:center">
-          questions.json を読み込めませんでした。<br>
-          index.html と同じフォルダに置いてください。
+      orderingQuestions = await res.json();
+    } catch(e){
+      document.getElementById('ordering-loading').innerHTML =
+        `<span style="color:var(--wrong);padding:20px;text-align:center">
+          ordering-questions.json を読み込めませんでした。<br>
+          同じフォルダに置いてください。
         </span>`;
-    }
-  }
-
-  // ─── Load question ────────────────────────────────────
-  function loadQuestion() {
-    if (currentIdx >= questionOrder.length) {
-      showComplete();
       return;
     }
-    q          = questions[questionOrder[currentIdx]];
-    bankOrder  = shuffle([...q.answer]);
-    slots      = [null, null, null, null];
-    submitted  = false;
-    answerShown = false;
-
-    // Reset UI
-    $('result-panel').classList.add('hidden');
-    $('check-btn').disabled = true;
-    $('check-btn').style.display = '';
-
-    updateHeader();
-    renderSentence();
-    renderBank();
   }
 
-  // ─── Header ───────────────────────────────────────────
-  function updateHeader() {
-    const total   = questionOrder.length;
-    const current = currentIdx + 1;
-    $('progress-fill').style.width = ((currentIdx / total) * 100) + '%';
-    $('progress-count').textContent = `${current} / ${total}`;
-    $('progress-score').textContent = `✓ ${score.correct}`;
-    $('grammar-tag').textContent    = q.grammar;
+  oOrder = shuffleArr(orderingQuestions.map((_, i) => i));
+  oIdx = 0;
+  oScore = { correct:0, total:0 };
+  document.getElementById('ordering-loading').classList.add('hidden');
+  document.getElementById('ordering-quiz').classList.remove('hidden');
+  loadOrderingQuestion();
+}
+
+function loadOrderingQuestion(){
+  if (oIdx >= oOrder.length){ orderingComplete(); return; }
+  oQ = orderingQuestions[oOrder[oIdx]];
+  oBank = shuffleArr([...oQ.answer]);
+  oSlots = [null,null,null,null];
+  oSubmitted = false;
+  oAnswerShown = false;
+
+  document.getElementById('o-result-panel').classList.add('hidden');
+  document.getElementById('o-check-btn').disabled = true;
+  document.getElementById('o-check-btn').style.display = '';
+
+  updateOrderingHeader();
+  renderSentence();
+  renderBank();
+}
+
+function updateOrderingHeader(){
+  const total = oOrder.length;
+  const current = oIdx + 1;
+  document.getElementById('o-progress-fill').style.width = (oIdx / total * 100) + '%';
+  document.getElementById('o-progress-count').textContent = `${current} / ${total}`;
+  document.getElementById('o-progress-score').textContent = `✓ ${oScore.correct}`;
+  document.getElementById('o-grammar-tag').textContent = oQ.grammar;
+  document.getElementById('topbar-ctx').textContent =
+    `並べ替え · ${current}/${total} · ${oScore.correct} correct`;
+}
+
+function renderSentence(){
+  document.getElementById('o-prefix-text').textContent = oQ.prefix;
+  document.getElementById('o-suffix-text').textContent = oQ.suffix;
+  const row = document.getElementById('o-slots-row');
+  row.innerHTML = '';
+  row.classList.remove('shake');
+
+  const isCorrect = oQ.answer.every((w, j) => w === oSlots[j]);
+
+  for (let i = 0; i < 4; i++){
+    const slot = document.createElement('div');
+    slot.className = 'slot';
+    slot.dataset.i = i;
+
+    if (i === oQ.star - 1){
+      const badge = document.createElement('div');
+      badge.className = 'star-badge';
+      badge.textContent = '★';
+      slot.appendChild(badge);
+    }
+
+    if (oSlots[i] !== null){
+      slot.classList.add('filled');
+      const w = document.createElement('span');
+      w.className = 'slot-word';
+      w.textContent = oSlots[i];
+      slot.appendChild(w);
+      if (!oSubmitted) slot.addEventListener('click', () => tapSlot(i));
+    }
+
+    if (oSubmitted && !oAnswerShown){
+      slot.classList.add(isCorrect ? 'correct' : 'incorrect');
+    }
+    if (oAnswerShown) slot.classList.add('answer-shown');
+
+    row.appendChild(slot);
   }
+}
 
-  // ─── Sentence / slots ─────────────────────────────────
-  function renderSentence() {
-    // Prefix
-    const prefixEl  = $('prefix-text');
-    prefixEl.textContent = q.prefix;
+function renderBank(){
+  const wb = document.getElementById('o-word-bank');
+  wb.innerHTML = '';
+  for (const word of oBank){
+    const tile = document.createElement('div');
+    tile.className = 'tile';
+    tile.textContent = word;
+    if (oSlots.includes(word)) tile.classList.add('used');
+    else if (!oSubmitted) tile.addEventListener('click', () => tapTile(word));
+    wb.appendChild(tile);
+  }
+}
 
-    // Suffix
-    const suffixEl  = $('suffix-text');
-    suffixEl.textContent = q.suffix;
+function tapTile(word){
+  if (oSubmitted) return;
+  if (oSlots.includes(word)) return;
+  const empty = oSlots.indexOf(null);
+  if (empty === -1) return;
+  oSlots[empty] = word;
+  renderSentence();
+  renderBank();
+  document.getElementById('o-check-btn').disabled = oSlots.includes(null);
+}
 
-    // Slots
-    const row = $('slots-row');
-    row.innerHTML = '';
-    row.classList.remove('shake');
+function tapSlot(idx){
+  if (oSubmitted) return;
+  if (oSlots[idx] === null) return;
+  oSlots[idx] = null;
+  document.getElementById('o-check-btn').disabled = true;
+  renderSentence();
+  renderBank();
+}
 
-    for (let i = 0; i < 4; i++) {
-      const slot = document.createElement('div');
-      slot.className = 'slot';
-      slot.dataset.i = i;
+function orderingCheck(){
+  if (oSubmitted) return;
+  oSubmitted = true;
+  oScore.total++;
+  const isCorrect = oQ.answer.every((w, i) => w === oSlots[i]);
+  if (isCorrect) oScore.correct++;
+  updateOrderingHeader();
+  document.getElementById('o-check-btn').style.display = 'none';
+  renderSentence();
+  if (!isCorrect){
+    const row = document.getElementById('o-slots-row');
+    row.classList.add('shake');
+    setTimeout(() => row.classList.remove('shake'), 450);
+  }
+  showResultPanel(isCorrect);
+}
 
-      // Star badge (always visible on this slot)
-      if (i === q.star - 1) {
-        const badge = document.createElement('div');
-        badge.className = 'star-badge';
-        badge.textContent = '★';
-        slot.appendChild(badge);
-      }
+function showResultPanel(isCorrect){
+  const panel = document.getElementById('o-result-panel');
+  panel.classList.remove('hidden');
+  const statusEl = document.getElementById('o-result-status');
+  statusEl.className = 'result-status ' + (isCorrect ? 'correct' : 'incorrect');
+  statusEl.style.color = '';
+  document.getElementById('o-result-icon').textContent = isCorrect ? '✓' : '✗';
+  document.getElementById('o-result-label').textContent = isCorrect ? '正解！' : '不正解';
+  document.getElementById('o-explanation-text').textContent = oQ.explanation;
+  document.getElementById('o-translation-text').textContent = oQ.translation;
 
-      if (slots[i] !== null) {
-        slot.classList.add('filled');
-        const w = document.createElement('span');
-        w.className = 'slot-word';
-        w.textContent = slots[i];
-        slot.appendChild(w);
+  const actions = document.getElementById('o-result-actions');
+  actions.innerHTML = '';
+  if (isCorrect){
+    actions.appendChild(makeOrderingNextBtn());
+  } else {
+    const retryBtn = document.createElement('button');
+    retryBtn.className = 'btn-ghost';
+    retryBtn.textContent = 'リトライ';
+    retryBtn.onclick = orderingRetry;
 
-        if (!submitted) {
-          slot.addEventListener('click', () => tapSlot(i));
-        }
-      }
+    const showBtn = document.createElement('button');
+    showBtn.className = 'btn-ghost';
+    showBtn.textContent = '答えを見る';
+    showBtn.onclick = orderingShowAnswer;
 
-      // Post-submission coloring
-      if (submitted && !answerShown) {
-        slot.classList.add(q.answer.every((w, j) => w === slots[j]) ? 'correct' : 'incorrect');
-      }
-      if (answerShown) {
-        slot.classList.add('answer-shown');
-      }
+    actions.appendChild(retryBtn);
+    actions.appendChild(showBtn);
+    actions.appendChild(makeOrderingNextBtn());
+  }
+  setTimeout(() => panel.scrollIntoView({ behavior:'smooth', block:'nearest' }), 80);
+}
 
-      row.appendChild(slot);
+function makeOrderingNextBtn(){
+  const btn = document.createElement('button');
+  btn.className = 'btn-next';
+  const isLast = oIdx + 1 >= oOrder.length;
+  btn.textContent = isLast ? '結果を見る →' : '次の問題 →';
+  btn.onclick = orderingNext;
+  return btn;
+}
+
+function orderingShowAnswer(){
+  oAnswerShown = true;
+  oSlots = [...oQ.answer];
+  renderSentence();
+  renderBank();
+  document.getElementById('o-result-icon').textContent = '◉';
+  document.getElementById('o-result-label').textContent = '正解はこちら';
+  const statusEl = document.getElementById('o-result-status');
+  statusEl.className = 'result-status';
+  statusEl.style.color = 'var(--correct)';
+  const actions = document.getElementById('o-result-actions');
+  actions.innerHTML = '';
+  actions.appendChild(makeOrderingNextBtn());
+}
+
+function orderingRetry(){
+  oBank = shuffleArr([...oQ.answer]);
+  oSlots = [null,null,null,null];
+  oSubmitted = false;
+  oAnswerShown = false;
+  document.getElementById('o-result-panel').classList.add('hidden');
+  document.getElementById('o-check-btn').style.display = '';
+  document.getElementById('o-check-btn').disabled = true;
+  document.getElementById('o-result-status').style.color = '';
+  renderSentence();
+  renderBank();
+}
+
+function orderingNext(){
+  oIdx++;
+  loadOrderingQuestion();
+  window.scrollTo({ top:0, behavior:'smooth' });
+}
+
+function orderingComplete(){
+  document.getElementById('ordering-quiz').classList.add('hidden');
+  document.getElementById('ordering-complete').classList.remove('hidden');
+  const total = oScore.total;
+  const pct = total ? Math.round(oScore.correct / total * 100) : 0;
+  document.getElementById('o-complete-num').textContent = `${oScore.correct} / ${total}`;
+  let emoji, msg;
+  if (pct === 100){ emoji='🌟'; msg='満点です！完璧な結果です。引き続きN2合格を目指してください！'; }
+  else if (pct >= 80){ emoji='🎉'; msg='よくできました！あと少し練習すれば合格水準に達します。'; }
+  else if (pct >= 60){ emoji='💪'; msg='まずまずです。苦手な文法パターンを重点的に復習しましょう。'; }
+  else { emoji='📖'; msg='もう少し練習が必要です。あきらめずに続けましょう！'; }
+  document.getElementById('o-complete-emoji').textContent = emoji;
+  document.getElementById('o-complete-msg').textContent = msg;
+  document.getElementById('topbar-ctx').textContent = '並べ替え · Complete';
+  recordSession('ordering', oScore.correct, total);
+}
+
+/* ═════════════════════════════════════════════════════
+   Matching mode
+   ═════════════════════════════════════════════════════ */
+let mPairs = [], mMeaningOrder = [];
+let mMatchedPairs = new Set();
+let mWrongPairs = new Set();
+let mSelected = null; // {side:'grammar'|'meaning', idx:number}
+const M_PAIRS_PER_ROUND = 5;
+
+async function startMatching(){
+  showView('matching');
+  document.getElementById('matching-loading').classList.remove('hidden');
+  document.getElementById('matching-board-wrap').classList.add('hidden');
+  document.getElementById('matching-complete').classList.add('hidden');
+
+  if (!orderingQuestions){
+    try {
+      const res = await fetch('ordering-questions.json');
+      if (!res.ok) throw new Error('HTTP ' + res.status);
+      orderingQuestions = await res.json();
+    } catch(e){
+      document.getElementById('matching-loading').innerHTML =
+        `<span style="color:var(--wrong);padding:20px;text-align:center">
+          ordering-questions.json を読み込めませんでした。<br>
+          同じフォルダに置いてください。
+        </span>`;
+      return;
     }
   }
 
-  // ─── Word bank ────────────────────────────────────────
-  function renderBank() {
-    const wb = $('word-bank');
-    wb.innerHTML = '';
+  // De-duplicate by grammar key in case the bank has repeats
+  const seen = new Set();
+  const pool = [];
+  for (const q of orderingQuestions){
+    if (!q.grammar || !q.explanation) continue;
+    if (seen.has(q.grammar)) continue;
+    seen.add(q.grammar);
+    pool.push(q);
+  }
+  mPairs = shuffleArr([...pool]).slice(0, M_PAIRS_PER_ROUND);
+  mMeaningOrder = shuffleArr(mPairs.map((_, i) => i));
+  mMatchedPairs = new Set();
+  mWrongPairs = new Set();
+  mSelected = null;
 
-    for (const word of bankOrder) {
-      const tile = document.createElement('div');
-      tile.className = 'tile';
-      tile.textContent = word;
+  document.getElementById('matching-loading').classList.add('hidden');
+  document.getElementById('matching-board-wrap').classList.remove('hidden');
+  renderMatching();
+  updateMatchingHeader();
+}
 
-      if (slots.includes(word)) {
-        tile.classList.add('used');
-      } else if (!submitted) {
-        tile.addEventListener('click', () => tapTile(word));
-      }
+function updateMatchingHeader(){
+  const matched = mMatchedPairs.size;
+  const pct = Math.round(matched / M_PAIRS_PER_ROUND * 100);
+  document.getElementById('m-progress-fill').style.width = pct + '%';
+  document.getElementById('m-progress-count').textContent = `${matched} / ${M_PAIRS_PER_ROUND}`;
+  const firstTry = matched - [...mWrongPairs].filter(i => mMatchedPairs.has(i)).length;
+  document.getElementById('m-progress-score').textContent = `✓ ${firstTry}`;
+}
 
-      wb.appendChild(tile);
+function renderMatching(){
+  const gCol = document.getElementById('m-grammar-col');
+  const mCol = document.getElementById('m-meaning-col');
+  gCol.innerHTML = '';
+  mCol.innerHTML = '';
+
+  mPairs.forEach((p, i) => {
+    const el = document.createElement('div');
+    el.className = 'match-card grammar-side';
+    el.textContent = p.grammar;
+    if (mMatchedPairs.has(i)) el.classList.add('matched');
+    if (mSelected && mSelected.side === 'grammar' && mSelected.idx === i) el.classList.add('selected');
+    el.onclick = () => tapMatchCard('grammar', i);
+    gCol.appendChild(el);
+  });
+
+  mMeaningOrder.forEach((pairIdx, j) => {
+    const p = mPairs[pairIdx];
+    const el = document.createElement('div');
+    el.className = 'match-card meaning-side';
+    el.textContent = p.explanation;
+    if (mMatchedPairs.has(pairIdx)) el.classList.add('matched');
+    if (mSelected && mSelected.side === 'meaning' && mSelected.idx === j) el.classList.add('selected');
+    el.onclick = () => tapMatchCard('meaning', j);
+    mCol.appendChild(el);
+  });
+}
+
+function tapMatchCard(side, idx){
+  // Resolve the underlying pair index for this tap
+  const pairIdx = side === 'grammar' ? idx : mMeaningOrder[idx];
+  if (mMatchedPairs.has(pairIdx)) return; // already matched
+
+  // Tap on already-selected card → deselect
+  if (mSelected && mSelected.side === side && mSelected.idx === idx){
+    mSelected = null;
+    renderMatching();
+    return;
+  }
+
+  // No prior selection, or switching within same side
+  if (!mSelected || mSelected.side === side){
+    mSelected = { side, idx };
+    renderMatching();
+    return;
+  }
+
+  // Opposite side → check match
+  const prev = mSelected;
+  const prevPairIdx = prev.side === 'grammar' ? prev.idx : mMeaningOrder[prev.idx];
+  const curPairIdx = pairIdx;
+
+  if (prevPairIdx === curPairIdx){
+    // Correct match
+    mMatchedPairs.add(curPairIdx);
+    mSelected = null;
+    renderMatching();
+    updateMatchingHeader();
+    if (mMatchedPairs.size === M_PAIRS_PER_ROUND){
+      setTimeout(matchingComplete, 350);
     }
+  } else {
+    // Wrong: taint both involved pairs
+    mWrongPairs.add(prevPairIdx);
+    mWrongPairs.add(curPairIdx);
+    flashWrong(prev, { side, idx });
+    mSelected = null;
   }
+}
 
-  // ─── Interactions ─────────────────────────────────────
-  function tapTile(word) {
-    if (submitted) return;
-    if (slots.includes(word)) return;
+function flashWrong(a, b){
+  const gCol = document.getElementById('m-grammar-col');
+  const mCol = document.getElementById('m-meaning-col');
+  const pick = (ref) => (ref.side === 'grammar' ? gCol : mCol).children[ref.idx];
+  const el1 = pick(a), el2 = pick(b);
+  [el1, el2].forEach(el => { if (el){ el.classList.remove('selected'); el.classList.add('wrong-flash'); }});
+  setTimeout(() => {
+    [el1, el2].forEach(el => { if (el) el.classList.remove('wrong-flash'); });
+    renderMatching();
+  }, 450);
+}
 
-    const empty = slots.indexOf(null);
-    if (empty === -1) return;
+function matchingComplete(){
+  document.getElementById('matching-board-wrap').classList.add('hidden');
+  document.getElementById('matching-complete').classList.remove('hidden');
+  const firstTry = M_PAIRS_PER_ROUND - mWrongPairs.size;
+  const pct = Math.round(firstTry / M_PAIRS_PER_ROUND * 100);
+  document.getElementById('m-complete-num').textContent = `${firstTry} / ${M_PAIRS_PER_ROUND}`;
+  let emoji, msg;
+  if (pct === 100){ emoji='🌟'; msg='完璧！全ペアを一発で正解しました。'; }
+  else if (pct >= 80){ emoji='🎉'; msg='よくできました！ほぼ一発で当てられています。'; }
+  else if (pct >= 60){ emoji='💪'; msg='まずまずです。間違えた文法を復習しましょう。'; }
+  else { emoji='📖'; msg='意味の対応をもう一度確認しましょう。'; }
+  document.getElementById('m-complete-emoji').textContent = emoji;
+  document.getElementById('m-complete-msg').textContent = msg;
+  document.getElementById('topbar-ctx').textContent = 'マッチング · Complete';
+  recordSession('matching', firstTry, M_PAIRS_PER_ROUND);
+}
 
-    slots[empty] = word;
-    renderSentence();
-    renderBank();
-
-    $('check-btn').disabled = slots.includes(null);
+/* ═════════════════════════════════════════════════════
+   Keyboard shortcuts (grammar only)
+   ═════════════════════════════════════════════════════ */
+document.addEventListener('keydown', e=>{
+  if (document.getElementById('view-grammar').classList.contains('hidden')) return;
+  if (!gAnswered && e.key >= '1' && e.key <= '4'){
+    const i = +e.key - 1;
+    const btns = document.querySelectorAll('#view-grammar .choice-btn');
+    if (i < btns.length) grammarPick(i);
   }
-
-  function tapSlot(idx) {
-    if (submitted) return;
-    if (slots[idx] === null) return;
-
-    slots[idx] = null;
-    $('check-btn').disabled = true;
-    renderSentence();
-    renderBank();
+  if (gAnswered && (e.key === 'Enter' || e.key === ' ')){
+    e.preventDefault();
+    grammarNext();
   }
+});
 
-  // ─── Check ────────────────────────────────────────────
-  function checkAnswer() {
-    if (submitted) return;
-    submitted = true;
-    score.total++;
-
-    const isCorrect = q.answer.every((w, i) => w === slots[i]);
-    if (isCorrect) score.correct++;
-
-    $('progress-score').textContent = `✓ ${score.correct}`;
-    $('check-btn').style.display    = 'none';
-
-    renderSentence(); // applies correct/incorrect classes
-
-    if (!isCorrect) {
-      // Shake animation
-      const row = $('slots-row');
-      row.classList.add('shake');
-      setTimeout(() => row.classList.remove('shake'), 450);
-    }
-
-    showResultPanel(isCorrect);
-  }
-
-  // ─── Result panel ─────────────────────────────────────
-  function showResultPanel(isCorrect) {
-    const panel = $('result-panel');
-    panel.classList.remove('hidden');
-
-    // Status
-    const statusEl = $('result-status');
-    statusEl.className = 'result-status ' + (isCorrect ? 'correct' : 'incorrect');
-    $('result-icon').textContent  = isCorrect ? '✓' : '✗';
-    $('result-label').textContent = isCorrect ? '正解！' : '不正解';
-
-    // Explanation & translation
-    $('explanation-text').textContent = q.explanation;
-    $('translation-text').textContent = q.translation;
-
-    // Buttons
-    const actions = $('result-actions');
-    actions.innerHTML = '';
-
-    if (isCorrect) {
-      actions.appendChild(makeNextBtn());
-    } else {
-      const retryBtn = document.createElement('button');
-      retryBtn.className   = 'btn-ghost';
-      retryBtn.textContent = 'リトライ';
-      retryBtn.onclick     = retryQuestion;
-
-      const showBtn = document.createElement('button');
-      showBtn.className   = 'btn-ghost';
-      showBtn.textContent = '答えを見る';
-      showBtn.onclick     = showAnswer;
-
-      const nextBtn = makeNextBtn();
-
-      actions.appendChild(retryBtn);
-      actions.appendChild(showBtn);
-      actions.appendChild(nextBtn);
-    }
-
-    // Scroll result into view smoothly
-    setTimeout(() => panel.scrollIntoView({ behavior: 'smooth', block: 'nearest' }), 80);
-  }
-
-  function makeNextBtn() {
-    const btn = document.createElement('button');
-    btn.className   = 'btn-next';
-    const isLast    = currentIdx + 1 >= questionOrder.length;
-    btn.textContent = isLast ? '結果を見る →' : '次の問題 →';
-    btn.onclick     = nextQuestion;
-    return btn;
-  }
-
-  // ─── Show answer ──────────────────────────────────────
-  function showAnswer() {
-    answerShown = true;
-    slots = [...q.answer];
-
-    renderSentence();
-    renderBank();
-
-    // Update result label
-    $('result-icon').textContent  = '◉';
-    $('result-label').textContent = '正解はこちら';
-    $('result-status').className  = 'result-status';
-    $('result-status').style.color = 'var(--correct)';
-
-    // Replace buttons with just Next
-    const actions = $('result-actions');
-    actions.innerHTML = '';
-    actions.appendChild(makeNextBtn());
-  }
-
-  // ─── Retry ────────────────────────────────────────────
-  function retryQuestion() {
-    bankOrder  = shuffle([...q.answer]);
-    slots      = [null, null, null, null];
-    submitted  = false;
-    answerShown = false;
-
-    $('result-panel').classList.add('hidden');
-    $('check-btn').style.display = '';
-    $('check-btn').disabled      = true;
-    $('result-status').style.color = '';
-
-    renderSentence();
-    renderBank();
-  }
-
-  // ─── Next ─────────────────────────────────────────────
-  function nextQuestion() {
-    currentIdx++;
-    loadQuestion();
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  }
-
-  // ─── Complete ─────────────────────────────────────────
-  function showComplete() {
-    $('quiz').classList.add('hidden');
-    $('complete').classList.remove('hidden');
-
-    const total  = score.total;
-    const pct    = total > 0 ? Math.round((score.correct / total) * 100) : 0;
-
-    $('complete-num').textContent = `${score.correct} / ${total}`;
-
-    let emoji, msg;
-    if (pct === 100) {
-      emoji = '🌟'; msg = '満点です！完璧な結果です。引き続きN2合格を目指してください！';
-    } else if (pct >= 80) {
-      emoji = '🎉'; msg = 'よくできました！あと少し練習すれば合格水準に達します。';
-    } else if (pct >= 60) {
-      emoji = '💪'; msg = 'まずまずです。苦手な文法パターンを重点的に復習しましょう。';
-    } else {
-      emoji = '📖'; msg = 'もう少し練習が必要です。あきらめずに続けましょう！';
-    }
-
-    $('complete-emoji').textContent = emoji;
-    $('complete-msg').textContent   = msg;
-  }
-
-  function restartQuiz() {
-    score         = { correct: 0, total: 0 };
-    currentIdx    = 0;
-    questionOrder = shuffle(questions.map((_, i) => i));
-
-    $('complete').classList.add('hidden');
-    $('quiz').classList.remove('hidden');
-    loadQuestion();
-    window.scrollTo({ top: 0 });
-  }
-
-  // ─── Go ───────────────────────────────────────────────
-  init();
+/* ═════════════════════════════════════════════════════
+   Init
+   ═════════════════════════════════════════════════════ */
+renderDashboard();
+showView('dashboard');
 </script>
 </body>
 </html>
