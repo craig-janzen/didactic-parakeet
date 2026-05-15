@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<title>N2 Study — 文法 · 並べ替え · マッチング</title>
+<title>N2 Study — 文法 · 並べ替え · マッチング · 接続言葉 · 接辞 · 語彙</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
@@ -31,6 +31,9 @@
   --wrong-bg:rgba(240,82,82,.12);
   --star:#f59e0b;
   --star-bg:rgba(245,158,11,.15);
+  --accent-teal:#2dd4bf;
+  --accent-orange:#f97316;
+  --accent-green:#22c55e;
   --radius-sm:10px;
   --radius-md:14px;
   --radius-lg:18px;
@@ -106,6 +109,9 @@ body{
 .mode-card.grammar{border-color:rgba(255,107,157,.35)}
 .mode-card.ordering{border-color:rgba(106,166,255,.35)}
 .mode-card.matching{border-color:rgba(176,124,255,.35)}
+.mode-card.setsuzoku{border-color:rgba(45,212,191,.35)}
+.mode-card.affix{border-color:rgba(249,115,22,.35)}
+.mode-card.usage{border-color:rgba(34,197,94,.35)}
 .mode-card::before{
   content:"";position:absolute;inset:-40% -20% auto auto;width:220px;height:220px;border-radius:50%;
   filter:blur(40px);opacity:.35;pointer-events:none;
@@ -113,6 +119,9 @@ body{
 .mode-card.grammar::before{background:var(--accent-warm)}
 .mode-card.ordering::before{background:var(--accent)}
 .mode-card.matching::before{background:var(--accent-2)}
+.mode-card.setsuzoku::before{background:var(--accent-teal)}
+.mode-card.affix::before{background:var(--accent-orange)}
+.mode-card.usage::before{background:var(--accent-green)}
 .mode-card .kicker{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--text-muted);font-family:'JetBrains Mono',monospace}
 .mode-card h2{font-size:20px;font-weight:700}
 .mode-card .desc{font-size:13px;color:var(--text-muted);line-height:1.55}
@@ -126,6 +135,9 @@ body{
 }
 .mode-card.grammar .cta{background:var(--accent-warm);box-shadow:0 4px 16px rgba(255,107,157,.25);color:#1a0716}
 .mode-card.matching .cta{background:var(--accent-2);box-shadow:0 4px 16px rgba(176,124,255,.25);color:#140627}
+.mode-card.setsuzoku .cta{background:var(--accent-teal);box-shadow:0 4px 16px rgba(45,212,191,.25);color:#06221a}
+.mode-card.affix .cta{background:var(--accent-orange);box-shadow:0 4px 16px rgba(249,115,22,.25);color:#1a0a02}
+.mode-card.usage .cta{background:var(--accent-green);box-shadow:0 4px 16px rgba(34,197,94,.25);color:#052e16}
 .mode-card .cta:active{transform:scale(.97)}
 
 .history{
@@ -140,6 +152,9 @@ body{
 .history .mode-pill.grammar{background:rgba(255,107,157,.15);color:var(--accent-warm);border:1px solid rgba(255,107,157,.3)}
 .history .mode-pill.ordering{background:rgba(106,166,255,.15);color:var(--accent);border:1px solid rgba(106,166,255,.3)}
 .history .mode-pill.matching{background:rgba(176,124,255,.15);color:var(--accent-2);border:1px solid rgba(176,124,255,.3)}
+.history .mode-pill.setsuzoku{background:rgba(45,212,191,.15);color:var(--accent-teal);border:1px solid rgba(45,212,191,.3)}
+.history .mode-pill.affix{background:rgba(249,115,22,.15);color:var(--accent-orange);border:1px solid rgba(249,115,22,.3)}
+.history .mode-pill.usage{background:rgba(34,197,94,.15);color:var(--accent-green);border:1px solid rgba(34,197,94,.3)}
 .history .pct{font-weight:700;font-family:'JetBrains Mono',monospace}
 .history .pct.good{color:var(--correct)}
 .history .pct.bad{color:var(--wrong)}
@@ -209,9 +224,11 @@ body{
 /* ── Ordering quiz (adapted from app 2) ─────── */
 #ordering-header .progress-track{height:5px;background:var(--border);border-radius:99px;overflow:hidden}
 #ordering-header .progress-fill{height:100%;background:var(--accent);border-radius:99px;transition:width .5s cubic-bezier(.4,0,.2,1)}
-#ordering-header .meta{display:flex;justify-content:space-between;margin-top:7px;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.06em}
+#ordering-header .meta{display:flex;justify-content:space-between;align-items:center;margin-top:7px;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.06em}
 #ordering-header .count{color:var(--text-muted)}
 #ordering-header .score{color:var(--correct)}
+.end-early-btn{background:none;border:1px solid var(--border);color:var(--text-muted);padding:4px 10px;border-radius:7px;font-size:11px;font-family:'JetBrains Mono',monospace;cursor:pointer;letter-spacing:.04em;transition:border-color .15s,color .15s}
+.end-early-btn:active{border-color:var(--accent);color:var(--accent)}
 .grammar-tag{display:inline-flex;align-items:center;background:rgba(106,166,255,.1);border:1px solid rgba(106,166,255,.3);border-radius:7px;padding:4px 10px;font-size:11.5px;font-family:'JetBrains Mono',monospace;color:var(--accent);letter-spacing:.02em;align-self:flex-start}
 .instruction{font-size:12.5px;color:var(--text-muted);letter-spacing:.04em}
 .sentence-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:18px 16px;display:flex;flex-direction:column;gap:12px}
@@ -288,6 +305,69 @@ body{
 #matching-complete .complete-score-num{color:var(--accent-2)}
 #matching-complete .complete-score-ring{border-color:rgba(176,124,255,.3)}
 
+/* ── Setsuzoku (connecting words) mode ───── */
+#setsuzoku-header .progress-track{height:5px;background:var(--border);border-radius:99px;overflow:hidden}
+#setsuzoku-header .progress-fill{height:100%;background:var(--accent-teal);border-radius:99px;transition:width .4s cubic-bezier(.4,0,.2,1)}
+#setsuzoku-header .meta{display:flex;justify-content:space-between;align-items:center;margin-top:7px;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.06em}
+#setsuzoku-header .count{color:var(--text-muted)}
+#setsuzoku-header .score{color:var(--accent-teal)}
+.setsuzoku-badge{display:inline-block;background:var(--card);border:1px solid var(--accent-teal);color:var(--accent-teal);padding:4px 12px;border-radius:20px;font-size:12px;margin-bottom:4px}
+.setsuzoku-cat-badge{display:inline-block;background:var(--card);color:var(--text-muted);padding:3px 8px;border-radius:12px;font-size:11px;margin-left:6px}
+#setsuzoku-question{font-size:17px;line-height:1.85;margin:12px 0 20px;padding:16px;background:var(--card);border-radius:12px;border-left:4px solid var(--accent-teal);word-break:break-word}
+#setsuzoku-question .blank{display:inline-block;border-bottom:2px solid var(--accent-teal);padding:0 20px;margin:0 4px;min-width:60px;text-align:center;color:var(--accent-teal);font-weight:600}
+#setsuzoku-feedback{margin-top:16px;padding:14px 16px;border-radius:12px;font-size:15px;display:none}
+#setsuzoku-feedback.correct-fb{background:var(--correct-bg);border:1px solid var(--correct);color:var(--correct)}
+#setsuzoku-feedback.wrong-fb{background:var(--wrong-bg);border:1px solid var(--wrong);color:var(--wrong)}
+#setsuzoku-feedback .meaning{font-size:13px;margin-top:4px;opacity:.85}
+.setsuzoku-next-btn{margin-top:20px;width:100%;padding:16px;border:none;border-radius:12px;background:var(--accent-teal);color:#06221a;font-size:17px;font-weight:700;cursor:pointer;font-family:inherit}
+.setsuzoku-next-btn:active{opacity:.85}
+#setsuzoku-complete .complete-score-num{color:var(--accent-teal)}
+#setsuzoku-complete .complete-score-ring{border-color:rgba(45,212,191,.3)}
+
+/* ── Affix (prefix/suffix) mode ────────── */
+#affix-header .progress-track{height:5px;background:var(--border);border-radius:99px;overflow:hidden}
+#affix-header .progress-fill{height:100%;background:var(--accent-orange);border-radius:99px;transition:width .4s cubic-bezier(.4,0,.2,1)}
+#affix-header .meta{display:flex;justify-content:space-between;align-items:center;margin-top:7px;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.06em}
+#affix-header .count{color:var(--text-muted)}
+#affix-header .score{color:var(--accent-orange)}
+.affix-badge{display:inline-block;background:var(--card);border:1px solid var(--accent-orange);color:var(--accent-orange);padding:4px 12px;border-radius:20px;font-size:12px;margin-bottom:4px}
+.affix-type-badge{display:inline-block;background:var(--card);color:var(--text-muted);padding:3px 8px;border-radius:12px;font-size:11px;margin-left:6px}
+#affix-question{font-size:17px;line-height:1.85;margin:12px 0 20px;padding:16px;background:var(--card);border-radius:12px;border-left:4px solid var(--accent-orange);word-break:break-word}
+#affix-question .blank{display:inline-block;border-bottom:2px solid var(--accent-orange);padding:0 14px;min-width:40px;text-align:center;color:var(--accent-orange);font-weight:600}
+#affix-feedback{margin-top:16px;padding:14px 16px;border-radius:12px;font-size:15px;display:none}
+#affix-feedback.correct-fb{background:var(--correct-bg);border:1px solid var(--correct);color:var(--correct)}
+#affix-feedback.wrong-fb{background:var(--wrong-bg);border:1px solid var(--wrong);color:var(--wrong)}
+#affix-feedback .meaning{font-size:13px;margin-top:4px;opacity:.85}
+.affix-next-btn{margin-top:20px;width:100%;padding:16px;border:none;border-radius:12px;background:var(--accent-orange);color:#1a0a02;font-size:17px;font-weight:700;cursor:pointer;font-family:inherit}
+.affix-next-btn:active{opacity:.85}
+#affix-complete .complete-score-num{color:var(--accent-orange)}
+#affix-complete .complete-score-ring{border-color:rgba(249,115,22,.3)}
+
+/* ── Usage (vocabulary context) mode ───── */
+#usage-header .progress-track{height:5px;background:var(--border);border-radius:99px;overflow:hidden}
+#usage-header .progress-fill{height:100%;background:var(--accent-green);border-radius:99px;transition:width .4s cubic-bezier(.4,0,.2,1)}
+#usage-header .meta{display:flex;justify-content:space-between;align-items:center;margin-top:7px;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.06em}
+#usage-header .count{color:var(--text-muted)}
+#usage-header .score{color:var(--accent-green)}
+.usage-word-display{text-align:center;padding:18px 16px;background:var(--card);border:1px solid var(--border);border-radius:var(--radius-lg);margin:14px 0 16px}
+.usage-word-display .word{font-size:28px;font-weight:700;letter-spacing:.02em}
+.usage-word-display .reading{font-size:13px;color:var(--text-muted);margin-top:4px;font-family:'JetBrains Mono',monospace}
+.usage-sentence-btn{padding:14px 16px;border:2px solid var(--border);border-radius:12px;background:var(--card);color:var(--text);font-size:15px;cursor:pointer;text-align:left;transition:all .15s;display:flex;align-items:flex-start;gap:10px;min-height:48px;font-family:inherit;line-height:1.7;width:100%}
+.usage-sentence-btn:active{transform:scale(.98)}
+.usage-sentence-btn .num{display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:50%;background:var(--card-2);font-size:13px;font-weight:700;flex-shrink:0;margin-top:2px}
+.usage-sentence-btn.correct{border-color:var(--correct);background:var(--correct-bg)}
+.usage-sentence-btn.correct .num{background:var(--correct);color:#06221a}
+.usage-sentence-btn.wrong{border-color:var(--wrong);background:var(--wrong-bg)}
+.usage-sentence-btn.wrong .num{background:var(--wrong);color:#fff}
+.usage-sentence-btn.reveal-correct{border-color:var(--correct);opacity:.7}
+#usage-feedback{margin-top:16px;padding:14px 16px;border-radius:12px;font-size:14px;display:none;line-height:1.7}
+#usage-feedback.correct-fb{background:var(--correct-bg);border:1px solid var(--correct);color:var(--correct)}
+#usage-feedback.wrong-fb{background:var(--wrong-bg);border:1px solid var(--wrong);color:var(--wrong)}
+.usage-next-btn{margin-top:20px;width:100%;padding:16px;border:none;border-radius:12px;background:var(--accent-green);color:#052e16;font-size:17px;font-weight:700;cursor:pointer;font-family:inherit}
+.usage-next-btn:active{opacity:.85}
+#usage-complete .complete-score-num{color:var(--accent-green)}
+#usage-complete .complete-score-ring{border-color:rgba(34,197,94,.3)}
+
 /* ── Loading ─────────────────────────────────── */
 #ordering-loading{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;padding:60px 20px;color:var(--text-muted)}
 .loader{width:32px;height:32px;border:2px solid var(--border);border-top-color:var(--accent);border-radius:50%;animation:spin .8s linear infinite}
@@ -341,7 +421,7 @@ body{
       <div class="mode-card ordering" onclick="startOrdering()">
         <div class="kicker">並べ替え · Arrange tiles</div>
         <h2>Sentence Ordering</h2>
-        <div class="desc">Drop the four word-tiles into the correct order to complete the sentence.</div>
+        <div class="desc">Drop the four word-tiles into the correct order. 10 random questions per round.</div>
         <div class="row">
           <span>Best <b id="dash-o-best">—</b></span>
           <span>Streak <b id="dash-o-streak">0</b></span>
@@ -358,6 +438,39 @@ body{
           <span>Streak <b id="dash-m-streak">0</b></span>
         </div>
         <button class="cta" onclick="event.stopPropagation();startMatching()">Start →</button>
+      </div>
+
+      <div class="mode-card setsuzoku" onclick="startSetsuzoku()">
+        <div class="kicker">接続言葉 · Multiple choice</div>
+        <h2>Connecting Words</h2>
+        <div class="desc">Fill in the blank with the correct connecting word. N5–N1, 10 per round.</div>
+        <div class="row">
+          <span>Best <b id="dash-s-best">—</b></span>
+          <span>Streak <b id="dash-s-streak">0</b></span>
+        </div>
+        <button class="cta" onclick="event.stopPropagation();startSetsuzoku()">Start →</button>
+      </div>
+
+      <div class="mode-card affix" onclick="startAffix()">
+        <div class="kicker">接辞 · Multiple choice</div>
+        <h2>Prefix &amp; Suffix</h2>
+        <div class="desc">Pick the correct prefix or suffix to complete the word in context. 10 per round.</div>
+        <div class="row">
+          <span>Best <b id="dash-a-best">—</b></span>
+          <span>Streak <b id="dash-a-streak">0</b></span>
+        </div>
+        <button class="cta" onclick="event.stopPropagation();startAffix()">Start →</button>
+      </div>
+
+      <div class="mode-card usage" onclick="startUsage()">
+        <div class="kicker">語彙 · Correct usage</div>
+        <h2>Vocabulary Usage</h2>
+        <div class="desc">Pick the sentence that uses the word correctly. 80 N2 words, 10 per round.</div>
+        <div class="row">
+          <span>Best <b id="dash-u-best">—</b></span>
+          <span>Streak <b id="dash-u-streak">0</b></span>
+        </div>
+        <button class="cta" onclick="event.stopPropagation();startUsage()">Start →</button>
       </div>
     </div>
 
@@ -404,8 +517,9 @@ body{
       <div id="ordering-header">
         <div class="progress-track"><div class="progress-fill" id="o-progress-fill" style="width:0%"></div></div>
         <div class="meta">
-          <span class="count" id="o-progress-count">1 / 20</span>
+          <span class="count" id="o-progress-count">1 / 10</span>
           <span class="score" id="o-progress-score">✓ 0</span>
+          <button class="end-early-btn" onclick="orderingEndEarly()">End &amp; Score</button>
         </div>
       </div>
       <div id="ordering-body" style="display:flex;flex-direction:column;gap:16px;margin-top:16px">
@@ -491,6 +605,131 @@ body{
       </div>
     </div>
   </div>
+
+  <!-- ═══════ Setsuzoku (connecting words) view ═══════ -->
+  <div id="view-setsuzoku" class="view hidden">
+    <div id="setsuzoku-loading" style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;padding:60px 20px;color:var(--text-muted)">
+      <div class="loader" style="border-top-color:var(--accent-teal)"></div>
+      <span>読み込み中…</span>
+    </div>
+    <div id="setsuzoku-quiz" class="hidden">
+      <div id="setsuzoku-header">
+        <div class="progress-track"><div class="progress-fill" id="s-progress-fill" style="width:0%"></div></div>
+        <div class="meta">
+          <span class="count" id="s-progress-count">1 / 10</span>
+          <span class="score" id="s-progress-score">✓ 0</span>
+          <button class="end-early-btn" onclick="setsuzokuEndEarly()">End &amp; Score</button>
+        </div>
+      </div>
+      <div id="setsuzoku-body" style="margin-top:14px">
+        <span class="setsuzoku-badge" id="s-level-badge"></span>
+        <span class="setsuzoku-cat-badge" id="s-cat-badge"></span>
+        <div id="setsuzoku-question"></div>
+        <div class="choices" id="s-choices"></div>
+        <div id="setsuzoku-feedback"></div>
+        <button class="setsuzoku-next-btn" id="setsuzoku-next-btn" onclick="setsuzokuNext()" style="display:none">Next →</button>
+      </div>
+    </div>
+    <div id="setsuzoku-complete" class="hidden">
+      <div class="complete-inner">
+        <div class="complete-emoji" id="s-complete-emoji">🎉</div>
+        <div class="complete-title">練習完了！</div>
+        <div class="complete-score-ring">
+          <div class="complete-score-num" id="s-complete-num">0 / 0</div>
+          <div class="complete-score-label">CORRECT</div>
+        </div>
+        <div class="complete-msg" id="s-complete-msg"></div>
+        <div class="end-btns" style="width:100%;max-width:280px">
+          <button class="btn-primary" onclick="startSetsuzoku()" style="background:var(--accent-teal);color:#06221a">もう一度</button>
+          <button class="btn-secondary" onclick="showView('dashboard')">← Dashboard</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════ Affix (prefix/suffix) view ═══════ -->
+  <div id="view-affix" class="view hidden">
+    <div id="affix-loading" style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;padding:60px 20px;color:var(--text-muted)">
+      <div class="loader" style="border-top-color:var(--accent-orange)"></div>
+      <span>読み込み中…</span>
+    </div>
+    <div id="affix-quiz" class="hidden">
+      <div id="affix-header">
+        <div class="progress-track"><div class="progress-fill" id="a-progress-fill" style="width:0%"></div></div>
+        <div class="meta">
+          <span class="count" id="a-progress-count">1 / 10</span>
+          <span class="score" id="a-progress-score">✓ 0</span>
+          <button class="end-early-btn" onclick="affixEndEarly()">End &amp; Score</button>
+        </div>
+      </div>
+      <div id="affix-body" style="margin-top:14px">
+        <span class="affix-badge" id="a-affix-badge"></span>
+        <span class="affix-type-badge" id="a-type-badge"></span>
+        <div id="affix-question"></div>
+        <div class="choices" id="a-choices"></div>
+        <div id="affix-feedback"></div>
+        <button class="affix-next-btn" id="affix-next-btn" onclick="affixNext()" style="display:none">Next →</button>
+      </div>
+    </div>
+    <div id="affix-complete" class="hidden">
+      <div class="complete-inner">
+        <div class="complete-emoji" id="a-complete-emoji">🎉</div>
+        <div class="complete-title">練習完了！</div>
+        <div class="complete-score-ring">
+          <div class="complete-score-num" id="a-complete-num">0 / 0</div>
+          <div class="complete-score-label">CORRECT</div>
+        </div>
+        <div class="complete-msg" id="a-complete-msg"></div>
+        <div class="end-btns" style="width:100%;max-width:280px">
+          <button class="btn-primary" onclick="startAffix()" style="background:var(--accent-orange);color:#1a0a02">もう一度</button>
+          <button class="btn-secondary" onclick="showView('dashboard')">← Dashboard</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════ Usage (vocabulary context) view ═══════ -->
+  <div id="view-usage" class="view hidden">
+    <div id="usage-loading" style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;padding:60px 20px;color:var(--text-muted)">
+      <div class="loader" style="border-top-color:var(--accent-green)"></div>
+      <span>読み込み中…</span>
+    </div>
+    <div id="usage-quiz" class="hidden">
+      <div id="usage-header">
+        <div class="progress-track"><div class="progress-fill" id="u-progress-fill" style="width:0%"></div></div>
+        <div class="meta">
+          <span class="count" id="u-progress-count">1 / 10</span>
+          <span class="score" id="u-progress-score">✓ 0</span>
+          <button class="end-early-btn" onclick="usageEndEarly()">End &amp; Score</button>
+        </div>
+      </div>
+      <div id="usage-body">
+        <div class="usage-word-display">
+          <div class="word" id="u-word"></div>
+          <div class="reading" id="u-reading"></div>
+        </div>
+        <div style="font-size:12.5px;color:var(--text-muted);letter-spacing:.04em;margin-bottom:10px">正しい使い方の文を選んでください</div>
+        <div class="choices" id="u-choices" style="gap:12px"></div>
+        <div id="usage-feedback"></div>
+        <button class="usage-next-btn" id="usage-next-btn" onclick="usageNext()" style="display:none">Next →</button>
+      </div>
+    </div>
+    <div id="usage-complete" class="hidden">
+      <div class="complete-inner">
+        <div class="complete-emoji" id="u-complete-emoji">🎉</div>
+        <div class="complete-title">練習完了！</div>
+        <div class="complete-score-ring">
+          <div class="complete-score-num" id="u-complete-num">0 / 0</div>
+          <div class="complete-score-label">CORRECT</div>
+        </div>
+        <div class="complete-msg" id="u-complete-msg"></div>
+        <div class="end-btns" style="width:100%;max-width:280px">
+          <button class="btn-primary" onclick="startUsage()" style="background:var(--accent-green);color:#052e16">もう一度</button>
+          <button class="btn-secondary" onclick="showView('dashboard')">← Dashboard</button>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 
 <!-- ═══════ Grammar filter modal ═══════ -->
@@ -535,7 +774,7 @@ function loadStats(){
     const stored = JSON.parse(localStorage.getItem(STATS_KEY));
     if (!stored) return defaultStats();
     const d = defaultStats();
-    for (const k of ['grammar','ordering','matching']){
+    for (const k of ['grammar','ordering','matching','setsuzoku','affix','usage']){
       if (!stored[k]) stored[k] = d[k];
     }
     if (!Array.isArray(stored.history)) stored.history = [];
@@ -547,6 +786,9 @@ function defaultStats(){
     grammar: { bestPct:0, currentStreak:0, bestStreak:0, totalQ:0, totalCorrect:0 },
     ordering:{ bestPct:0, currentStreak:0, bestStreak:0, totalQ:0, totalCorrect:0 },
     matching:{ bestPct:0, currentStreak:0, bestStreak:0, totalQ:0, totalCorrect:0 },
+    setsuzoku:{ bestPct:0, currentStreak:0, bestStreak:0, totalQ:0, totalCorrect:0 },
+    affix:{ bestPct:0, currentStreak:0, bestStreak:0, totalQ:0, totalCorrect:0 },
+    usage:{ bestPct:0, currentStreak:0, bestStreak:0, totalQ:0, totalCorrect:0 },
     history: []
   };
 }
@@ -577,11 +819,11 @@ function recordSession(mode, correct, total){
 
 function renderDashboard(){
   const s = loadStats();
-  const totalQ = s.grammar.totalQ + s.ordering.totalQ + s.matching.totalQ;
-  const totalC = s.grammar.totalCorrect + s.ordering.totalCorrect + s.matching.totalCorrect;
+  const totalQ = s.grammar.totalQ + s.ordering.totalQ + s.matching.totalQ + s.setsuzoku.totalQ + s.affix.totalQ + s.usage.totalQ;
+  const totalC = s.grammar.totalCorrect + s.ordering.totalCorrect + s.matching.totalCorrect + s.setsuzoku.totalCorrect + s.affix.totalCorrect + s.usage.totalCorrect;
   document.getElementById('stat-total-q').textContent = totalQ.toLocaleString();
   document.getElementById('stat-total-sub').textContent =
-    `${s.grammar.totalQ} 文法 · ${s.ordering.totalQ} 並べ替え · ${s.matching.totalQ} マッチング`;
+    `${s.grammar.totalQ} 文法 · ${s.ordering.totalQ} 並べ替え · ${s.matching.totalQ} マッチング · ${s.setsuzoku.totalQ} 接続 · ${s.affix.totalQ} 接辞 · ${s.usage.totalQ} 語彙`;
   document.getElementById('stat-accuracy').textContent =
     totalQ ? Math.round(totalC/totalQ*100) + '%' : '—';
   document.getElementById('stat-accuracy-sub').textContent =
@@ -593,12 +835,18 @@ function renderDashboard(){
   document.getElementById('dash-o-streak').textContent = s.ordering.currentStreak;
   document.getElementById('dash-m-best').textContent = s.matching.bestPct ? s.matching.bestPct + '%' : '—';
   document.getElementById('dash-m-streak').textContent = s.matching.currentStreak;
+  document.getElementById('dash-s-best').textContent = s.setsuzoku.bestPct ? s.setsuzoku.bestPct + '%' : '—';
+  document.getElementById('dash-s-streak').textContent = s.setsuzoku.currentStreak;
+  document.getElementById('dash-a-best').textContent = s.affix.bestPct ? s.affix.bestPct + '%' : '—';
+  document.getElementById('dash-a-streak').textContent = s.affix.currentStreak;
+  document.getElementById('dash-u-best').textContent = s.usage.bestPct ? s.usage.bestPct + '%' : '—';
+  document.getElementById('dash-u-streak').textContent = s.usage.currentStreak;
 
   const list = document.getElementById('history-list');
   if (!s.history.length){
     list.innerHTML = '<div class="empty">No sessions yet — pick a mode above to start.</div>';
   } else {
-    const modeLabels = { grammar:'Grammar', ordering:'Ordering', matching:'Matching' };
+    const modeLabels = { grammar:'Grammar', ordering:'Ordering', matching:'Matching', setsuzoku:'Setsuzoku', affix:'Affix', usage:'Usage' };
     list.innerHTML = s.history.slice(0,10).map(h=>{
       const cls = h.pct >= STREAK_THRESHOLD ? 'good' : (h.pct >= 60 ? '' : 'bad');
       const modeLabel = modeLabels[h.mode] || h.mode;
@@ -611,10 +859,10 @@ function renderDashboard(){
 }
 
 function showView(name){
-  ['dashboard','grammar','ordering','matching'].forEach(v=>{
+  ['dashboard','grammar','ordering','matching','setsuzoku','affix','usage'].forEach(v=>{
     document.getElementById('view-'+v).classList.toggle('hidden', v!==name);
   });
-  const ctx = { dashboard:'Dashboard', grammar:'文法 Grammar', ordering:'並べ替え Ordering', matching:'マッチング Matching' }[name];
+  const ctx = { dashboard:'Dashboard', grammar:'文法 Grammar', ordering:'並べ替え Ordering', matching:'マッチング Matching', setsuzoku:'接続言葉 Setsuzoku', affix:'接辞 Prefix/Suffix', usage:'語彙 Usage' }[name];
   document.getElementById('topbar-ctx').textContent = ctx;
   document.getElementById('topbar-action').classList.toggle('hidden', name === 'dashboard');
   // Close grammar config modal if open when leaving grammar
@@ -803,6 +1051,7 @@ let orderingQuestions = null;
 let oOrder = [], oIdx = 0, oQ = null, oBank = [], oSlots = [null,null,null,null];
 let oSubmitted = false, oAnswerShown = false;
 let oScore = { correct:0, total:0 };
+const O_BATCH_SIZE = 10;
 
 async function startOrdering(){
   showView('ordering');
@@ -825,7 +1074,7 @@ async function startOrdering(){
     }
   }
 
-  oOrder = shuffleArr(orderingQuestions.map((_, i) => i));
+  oOrder = shuffleArr(orderingQuestions.map((_, i) => i)).slice(0, O_BATCH_SIZE);
   oIdx = 0;
   oScore = { correct:0, total:0 };
   document.getElementById('ordering-loading').classList.add('hidden');
@@ -1026,6 +1275,11 @@ function orderingNext(){
   window.scrollTo({ top:0, behavior:'smooth' });
 }
 
+function orderingEndEarly(){
+  if (oScore.total === 0){ showView('dashboard'); return; }
+  orderingComplete();
+}
+
 function orderingComplete(){
   document.getElementById('ordering-quiz').classList.add('hidden');
   document.getElementById('ordering-complete').classList.remove('hidden');
@@ -1203,18 +1457,435 @@ function matchingComplete(){
 }
 
 /* ═════════════════════════════════════════════════════
-   Keyboard shortcuts (grammar only)
+   Setsuzoku (connecting words) quiz
+   ═════════════════════════════════════════════════════ */
+let setsuzokuQuestions = null;
+let sOrder = [], sIdx = 0, sQ = null, sAnswered = false;
+let sScore = { correct:0, total:0 };
+const S_BATCH_SIZE = 10;
+
+async function startSetsuzoku(){
+  showView('setsuzoku');
+  document.getElementById('setsuzoku-loading').classList.remove('hidden');
+  document.getElementById('setsuzoku-quiz').classList.add('hidden');
+  document.getElementById('setsuzoku-complete').classList.add('hidden');
+
+  if (!setsuzokuQuestions){
+    try {
+      const res = await fetch('setsuzoku-questions.json');
+      if (!res.ok) throw new Error('HTTP ' + res.status);
+      setsuzokuQuestions = await res.json();
+    } catch(e){
+      document.getElementById('setsuzoku-loading').innerHTML =
+        `<span style="color:var(--wrong);padding:20px;text-align:center">
+          setsuzoku-questions.json を読み込めませんでした。<br>
+          同じフォルダに置いてください。
+        </span>`;
+      return;
+    }
+  }
+
+  sOrder = shuffleArr(setsuzokuQuestions.map((_, i) => i)).slice(0, S_BATCH_SIZE);
+  sIdx = 0;
+  sScore = { correct:0, total:0 };
+  document.getElementById('setsuzoku-loading').classList.add('hidden');
+  document.getElementById('setsuzoku-quiz').classList.remove('hidden');
+  loadSetsuzokuQuestion();
+}
+
+function loadSetsuzokuQuestion(){
+  if (sIdx >= sOrder.length){ setsuzokuComplete(); return; }
+  sQ = setsuzokuQuestions[sOrder[sIdx]];
+  sAnswered = false;
+
+  const fb = document.getElementById('setsuzoku-feedback');
+  fb.style.display = 'none'; fb.className = '';
+  document.getElementById('setsuzoku-next-btn').style.display = 'none';
+
+  updateSetsuzokuHeader();
+
+  document.getElementById('s-level-badge').textContent = sQ.level;
+  document.getElementById('s-cat-badge').textContent = sQ.category;
+
+  document.getElementById('setsuzoku-question').innerHTML =
+    `<div>${sQ.sentence1}</div>` +
+    `<div style="margin:8px 0"><span class="blank">？</span></div>` +
+    `<div>${sQ.sentence2}</div>`;
+
+  const wrap = document.getElementById('s-choices');
+  wrap.innerHTML = '';
+  sQ.choices.forEach((c, i) => {
+    const btn = document.createElement('button');
+    btn.className = 'choice-btn';
+    btn.innerHTML = `<span class="num">${i+1}</span><span>${c}</span>`;
+    btn.onclick = () => setsuzokuPick(i);
+    wrap.appendChild(btn);
+  });
+}
+
+function updateSetsuzokuHeader(){
+  const total = sOrder.length;
+  const current = sIdx + 1;
+  document.getElementById('s-progress-fill').style.width = (sIdx / total * 100) + '%';
+  document.getElementById('s-progress-count').textContent = `${current} / ${total}`;
+  document.getElementById('s-progress-score').textContent = `✓ ${sScore.correct}`;
+  document.getElementById('topbar-ctx').textContent =
+    `接続言葉 · ${current}/${total} · ${sScore.correct} correct`;
+}
+
+function setsuzokuPick(i){
+  if (sAnswered) return;
+  sAnswered = true;
+  sScore.total++;
+  const btns = document.querySelectorAll('#s-choices .choice-btn');
+  const fb = document.getElementById('setsuzoku-feedback');
+
+  if (i === sQ.answer){
+    sScore.correct++;
+    btns[i].classList.add('correct');
+    fb.innerHTML = `<div>✓ 正解！ 「${sQ.setsuzoku}」</div><div class="meaning">${sQ.meaning}</div>`;
+    fb.className = 'correct-fb';
+  } else {
+    btns[i].classList.add('wrong');
+    btns[sQ.answer].classList.add('reveal-correct');
+    fb.innerHTML = `<div>✗ → ${sQ.choices[sQ.answer]}（${sQ.meaning}）</div><div class="meaning">${sQ.explanation}</div>`;
+    fb.className = 'wrong-fb';
+  }
+  fb.style.display = 'block';
+  document.getElementById('setsuzoku-next-btn').style.display = 'block';
+  updateSetsuzokuHeader();
+}
+
+function setsuzokuNext(){
+  sIdx++;
+  loadSetsuzokuQuestion();
+  window.scrollTo({ top:0, behavior:'smooth' });
+}
+
+function setsuzokuEndEarly(){
+  if (sScore.total === 0){ showView('dashboard'); return; }
+  setsuzokuComplete();
+}
+
+function setsuzokuComplete(){
+  document.getElementById('setsuzoku-quiz').classList.add('hidden');
+  document.getElementById('setsuzoku-complete').classList.remove('hidden');
+  const total = sScore.total;
+  const pct = total ? Math.round(sScore.correct / total * 100) : 0;
+  document.getElementById('s-complete-num').textContent = `${sScore.correct} / ${total}`;
+  let emoji, msg;
+  if (pct === 100){ emoji='🌟'; msg='満点です！接続言葉を完璧に理解しています！'; }
+  else if (pct >= 80){ emoji='🎉'; msg='よくできました！接続言葉の使い分けがしっかりできています。'; }
+  else if (pct >= 60){ emoji='💪'; msg='まずまずです。似た意味の接続言葉を比較して覚えましょう。'; }
+  else { emoji='📖'; msg='接続言葉の意味と使い方をもう一度確認しましょう。'; }
+  document.getElementById('s-complete-emoji').textContent = emoji;
+  document.getElementById('s-complete-msg').textContent = msg;
+  document.getElementById('topbar-ctx').textContent = '接続言葉 · Complete';
+  recordSession('setsuzoku', sScore.correct, total);
+}
+
+/* ═════════════════════════════════════════════════════
+   Affix (prefix/suffix) quiz
+   ═════════════════════════════════════════════════════ */
+let affixQuestions = null;
+let aOrder = [], aIdx = 0, aQ = null, aAnswered = false;
+let aScore = { correct:0, total:0 };
+const A_BATCH_SIZE = 10;
+
+async function startAffix(){
+  showView('affix');
+  document.getElementById('affix-loading').classList.remove('hidden');
+  document.getElementById('affix-quiz').classList.add('hidden');
+  document.getElementById('affix-complete').classList.add('hidden');
+
+  if (!affixQuestions){
+    try {
+      const res = await fetch('affix-questions.json');
+      if (!res.ok) throw new Error('HTTP ' + res.status);
+      affixQuestions = await res.json();
+    } catch(e){
+      document.getElementById('affix-loading').innerHTML =
+        `<span style="color:var(--wrong);padding:20px;text-align:center">
+          affix-questions.json を読み込めませんでした。<br>
+          同じフォルダに置いてください。
+        </span>`;
+      return;
+    }
+  }
+
+  aOrder = shuffleArr(affixQuestions.map((_, i) => i)).slice(0, A_BATCH_SIZE);
+  aIdx = 0;
+  aScore = { correct:0, total:0 };
+  document.getElementById('affix-loading').classList.add('hidden');
+  document.getElementById('affix-quiz').classList.remove('hidden');
+  loadAffixQuestion();
+}
+
+function loadAffixQuestion(){
+  if (aIdx >= aOrder.length){ affixComplete(); return; }
+  aQ = affixQuestions[aOrder[aIdx]];
+  aAnswered = false;
+
+  const fb = document.getElementById('affix-feedback');
+  fb.style.display = 'none'; fb.className = '';
+  document.getElementById('affix-next-btn').style.display = 'none';
+
+  updateAffixHeader();
+
+  const typeLabel = aQ.type === 'prefix' ? '接頭語' : '接尾語';
+  document.getElementById('a-affix-badge').textContent = aQ.affix + '（' + aQ.reading + '）';
+  document.getElementById('a-type-badge').textContent = typeLabel;
+
+  document.getElementById('affix-question').innerHTML =
+    `<div>${aQ.sentence.replace('（＿＿）', '<span class="blank">？</span>')}</div>`;
+
+  const wrap = document.getElementById('a-choices');
+  wrap.innerHTML = '';
+  aQ.choices.forEach((c, i) => {
+    const btn = document.createElement('button');
+    btn.className = 'choice-btn';
+    btn.innerHTML = `<span class="num">${i+1}</span><span>${c}</span>`;
+    btn.onclick = () => affixPick(i);
+    wrap.appendChild(btn);
+  });
+}
+
+function updateAffixHeader(){
+  const total = aOrder.length;
+  const current = aIdx + 1;
+  document.getElementById('a-progress-fill').style.width = (aIdx / total * 100) + '%';
+  document.getElementById('a-progress-count').textContent = `${current} / ${total}`;
+  document.getElementById('a-progress-score').textContent = `✓ ${aScore.correct}`;
+  document.getElementById('topbar-ctx').textContent =
+    `接辞 · ${current}/${total} · ${aScore.correct} correct`;
+}
+
+function affixPick(i){
+  if (aAnswered) return;
+  aAnswered = true;
+  aScore.total++;
+  const btns = document.querySelectorAll('#a-choices .choice-btn');
+  const fb = document.getElementById('affix-feedback');
+
+  if (i === aQ.answer){
+    aScore.correct++;
+    btns[i].classList.add('correct');
+    fb.innerHTML = `<div>✓ 正解！ 「${aQ.completed}」</div><div class="meaning">${aQ.meaning}</div>`;
+    fb.className = 'correct-fb';
+  } else {
+    btns[i].classList.add('wrong');
+    btns[aQ.answer].classList.add('reveal-correct');
+    fb.innerHTML = `<div>✗ → ${aQ.choices[aQ.answer]}（${aQ.completed}）</div><div class="meaning">${aQ.explanation}</div>`;
+    fb.className = 'wrong-fb';
+  }
+  fb.style.display = 'block';
+  document.getElementById('affix-next-btn').style.display = 'block';
+  updateAffixHeader();
+}
+
+function affixNext(){
+  aIdx++;
+  loadAffixQuestion();
+  window.scrollTo({ top:0, behavior:'smooth' });
+}
+
+function affixEndEarly(){
+  if (aScore.total === 0){ showView('dashboard'); return; }
+  affixComplete();
+}
+
+function affixComplete(){
+  document.getElementById('affix-quiz').classList.add('hidden');
+  document.getElementById('affix-complete').classList.remove('hidden');
+  const total = aScore.total;
+  const pct = total ? Math.round(aScore.correct / total * 100) : 0;
+  document.getElementById('a-complete-num').textContent = `${aScore.correct} / ${total}`;
+  let emoji, msg;
+  if (pct === 100){ emoji='🌟'; msg='満点です！接頭語・接尾語を完璧に使いこなせています！'; }
+  else if (pct >= 80){ emoji='🎉'; msg='よくできました！語彙力がしっかりしています。'; }
+  else if (pct >= 60){ emoji='💪'; msg='まずまずです。似ている接辞の違いを確認しましょう。'; }
+  else { emoji='📖'; msg='接頭語と接尾語の意味を確認してもう一度挑戦しましょう。'; }
+  document.getElementById('a-complete-emoji').textContent = emoji;
+  document.getElementById('a-complete-msg').textContent = msg;
+  document.getElementById('topbar-ctx').textContent = '接辞 · Complete';
+  recordSession('affix', aScore.correct, total);
+}
+
+/* ═════════════════════════════════════════════════════
+   Usage (vocabulary context) quiz
+   ═════════════════════════════════════════════════════ */
+let usageQuestions = null;
+let uOrder = [], uIdx = 0, uQ = null, uAnswered = false;
+let uScore = { correct:0, total:0 };
+const U_BATCH_SIZE = 10;
+
+async function startUsage(){
+  showView('usage');
+  document.getElementById('usage-loading').classList.remove('hidden');
+  document.getElementById('usage-quiz').classList.add('hidden');
+  document.getElementById('usage-complete').classList.add('hidden');
+
+  if (!usageQuestions){
+    try {
+      const res = await fetch('usage-questions.json');
+      if (!res.ok) throw new Error('HTTP ' + res.status);
+      usageQuestions = await res.json();
+    } catch(e){
+      document.getElementById('usage-loading').innerHTML =
+        `<span style="color:var(--wrong);padding:20px;text-align:center">
+          usage-questions.json を読み込めませんでした。<br>
+          同じフォルダに置いてください。
+        </span>`;
+      return;
+    }
+  }
+
+  uOrder = shuffleArr(usageQuestions.map((_, i) => i)).slice(0, U_BATCH_SIZE);
+  uIdx = 0;
+  uScore = { correct:0, total:0 };
+  document.getElementById('usage-loading').classList.add('hidden');
+  document.getElementById('usage-quiz').classList.remove('hidden');
+  loadUsageQuestion();
+}
+
+function loadUsageQuestion(){
+  if (uIdx >= uOrder.length){ usageComplete(); return; }
+  uQ = usageQuestions[uOrder[uIdx]];
+  uAnswered = false;
+
+  const fb = document.getElementById('usage-feedback');
+  fb.style.display = 'none'; fb.className = '';
+  document.getElementById('usage-next-btn').style.display = 'none';
+
+  updateUsageHeader();
+
+  document.getElementById('u-word').textContent = uQ.word;
+  document.getElementById('u-reading').textContent = uQ.reading;
+
+  const wrap = document.getElementById('u-choices');
+  wrap.innerHTML = '';
+  uQ.sentences.forEach((s, i) => {
+    const btn = document.createElement('button');
+    btn.className = 'usage-sentence-btn';
+    btn.innerHTML = `<span class="num">${i+1}</span><span>${s}</span>`;
+    btn.onclick = () => usagePick(i);
+    wrap.appendChild(btn);
+  });
+}
+
+function updateUsageHeader(){
+  const total = uOrder.length;
+  const current = uIdx + 1;
+  document.getElementById('u-progress-fill').style.width = (uIdx / total * 100) + '%';
+  document.getElementById('u-progress-count').textContent = `${current} / ${total}`;
+  document.getElementById('u-progress-score').textContent = `✓ ${uScore.correct}`;
+  document.getElementById('topbar-ctx').textContent =
+    `語彙 · ${current}/${total} · ${uScore.correct} correct`;
+}
+
+function usagePick(i){
+  if (uAnswered) return;
+  uAnswered = true;
+  uScore.total++;
+  const btns = document.querySelectorAll('#u-choices .usage-sentence-btn');
+  const fb = document.getElementById('usage-feedback');
+
+  if (i === uQ.answer){
+    uScore.correct++;
+    btns[i].classList.add('correct');
+    fb.textContent = '✓ 正解！';
+    fb.className = 'correct-fb';
+  } else {
+    btns[i].classList.add('wrong');
+    btns[uQ.answer].classList.add('reveal-correct');
+    fb.innerHTML = `<div>✗ 正解は ${uQ.answer + 1} です</div><div style="margin-top:6px;opacity:.85">${uQ.explanation}</div>`;
+    fb.className = 'wrong-fb';
+  }
+  fb.style.display = 'block';
+  document.getElementById('usage-next-btn').style.display = 'block';
+  updateUsageHeader();
+}
+
+function usageNext(){
+  uIdx++;
+  loadUsageQuestion();
+  window.scrollTo({ top:0, behavior:'smooth' });
+}
+
+function usageEndEarly(){
+  if (uScore.total === 0){ showView('dashboard'); return; }
+  usageComplete();
+}
+
+function usageComplete(){
+  document.getElementById('usage-quiz').classList.add('hidden');
+  document.getElementById('usage-complete').classList.remove('hidden');
+  const total = uScore.total;
+  const pct = total ? Math.round(uScore.correct / total * 100) : 0;
+  document.getElementById('u-complete-num').textContent = `${uScore.correct} / ${total}`;
+  let emoji, msg;
+  if (pct === 100){ emoji='🌟'; msg='満点です！語彙の使い方を完璧に理解しています！'; }
+  else if (pct >= 80){ emoji='🎉'; msg='よくできました！語彙力がしっかりしています。'; }
+  else if (pct >= 60){ emoji='💪'; msg='まずまずです。間違えた語彙の使い方を確認しましょう。'; }
+  else { emoji='📖'; msg='語彙の正しい使い方をもう一度勉強しましょう。'; }
+  document.getElementById('u-complete-emoji').textContent = emoji;
+  document.getElementById('u-complete-msg').textContent = msg;
+  document.getElementById('topbar-ctx').textContent = '語彙 · Complete';
+  recordSession('usage', uScore.correct, total);
+}
+
+/* ═════════════════════════════════════════════════════
+   Keyboard shortcuts
    ═════════════════════════════════════════════════════ */
 document.addEventListener('keydown', e=>{
-  if (document.getElementById('view-grammar').classList.contains('hidden')) return;
-  if (!gAnswered && e.key >= '1' && e.key <= '4'){
-    const i = +e.key - 1;
-    const btns = document.querySelectorAll('#view-grammar .choice-btn');
-    if (i < btns.length) grammarPick(i);
+  const grammarVisible = !document.getElementById('view-grammar').classList.contains('hidden');
+  const setsuzokuVisible = !document.getElementById('view-setsuzoku').classList.contains('hidden');
+  const affixVisible = !document.getElementById('view-affix').classList.contains('hidden');
+  const usageVisible = !document.getElementById('view-usage').classList.contains('hidden');
+
+  if (grammarVisible){
+    if (!gAnswered && e.key >= '1' && e.key <= '4'){
+      const i = +e.key - 1;
+      const btns = document.querySelectorAll('#view-grammar .choice-btn');
+      if (i < btns.length) grammarPick(i);
+    }
+    if (gAnswered && (e.key === 'Enter' || e.key === ' ')){
+      e.preventDefault();
+      grammarNext();
+    }
   }
-  if (gAnswered && (e.key === 'Enter' || e.key === ' ')){
-    e.preventDefault();
-    grammarNext();
+
+  if (setsuzokuVisible){
+    if (!sAnswered && e.key >= '1' && e.key <= '4'){
+      const i = +e.key - 1;
+      if (i < sQ.choices.length) setsuzokuPick(i);
+    }
+    if (sAnswered && (e.key === 'Enter' || e.key === ' ')){
+      e.preventDefault();
+      setsuzokuNext();
+    }
+  }
+
+  if (affixVisible){
+    if (!aAnswered && e.key >= '1' && e.key <= '4'){
+      const i = +e.key - 1;
+      if (i < aQ.choices.length) affixPick(i);
+    }
+    if (aAnswered && (e.key === 'Enter' || e.key === ' ')){
+      e.preventDefault();
+      affixNext();
+    }
+  }
+
+  if (usageVisible){
+    if (!uAnswered && e.key >= '1' && e.key <= '4'){
+      const i = +e.key - 1;
+      if (i < uQ.sentences.length) usagePick(i);
+    }
+    if (uAnswered && (e.key === 'Enter' || e.key === ' ')){
+      e.preventDefault();
+      usageNext();
+    }
   }
 });
 
