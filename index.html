@@ -584,7 +584,7 @@ body{
           <div id="m-grammar-col" style="display:flex;flex-direction:column;gap:8px"></div>
         </div>
         <div class="match-col">
-          <h4>意味</h4>
+          <h4>Meaning</h4>
           <div id="m-meaning-col" style="display:flex;flex-direction:column;gap:8px"></div>
         </div>
       </div>
@@ -1331,7 +1331,7 @@ async function startMatching(){
   const seen = new Set();
   const pool = [];
   for (const q of orderingQuestions){
-    if (!q.grammar || !q.explanation) continue;
+    if (!q.grammar || !q.meaning_en) continue;
     if (seen.has(q.grammar)) continue;
     seen.add(q.grammar);
     pool.push(q);
@@ -1377,7 +1377,7 @@ function renderMatching(){
     const p = mPairs[pairIdx];
     const el = document.createElement('div');
     el.className = 'match-card meaning-side';
-    el.textContent = p.explanation;
+    el.textContent = p.meaning_en;
     if (mMatchedPairs.has(pairIdx)) el.classList.add('matched');
     if (mSelected && mSelected.side === 'meaning' && mSelected.idx === j) el.classList.add('selected');
     el.onclick = () => tapMatchCard('meaning', j);

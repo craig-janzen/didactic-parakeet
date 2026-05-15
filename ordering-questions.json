@@ -2,2065 +2,2194 @@
   {
     "id": 1,
     "lesson": 1,
-    "prefix": "",
-    "suffix": "法律を事前に調べておくべきだ。",
+    "prefix": "海外へ出張する",
+    "suffix": "現地の法律を事前に調べておくべきだ。",
     "answer": [
-      "海外へ",
-      "出張する",
-      "際には",
-      "現地の"
+      "際に",
+      "は",
+      "必ず",
+      "その国の"
     ],
-    "star": 3,
+    "star": 2,
     "grammar": "～際に",
     "explanation": "「～とき」の硬い表現で、改まった場面や書き言葉でよく使われる。",
-    "translation": "When traveling abroad for business, you should look into local laws in advance."
+    "translation": "When traveling abroad for business, you should always look into that country's laws in advance.",
+    "meaning_en": "when; on the occasion of (formal)"
   },
   {
     "id": 2,
     "lesson": 1,
-    "prefix": "",
-    "suffix": "歓迎の言葉を述べた。",
+    "prefix": "新しい事業を",
+    "suffix": "十分な準備が必要だ。",
     "answer": [
-      "新入生を",
-      "迎えるに",
-      "あたり",
-      "校長が"
+      "始める",
+      "に",
+      "あたって",
+      "は"
     ],
     "star": 3,
     "grammar": "～にあたって",
     "explanation": "何か重要なことを始める場面で「～する時に」の意味を表す改まった表現。",
-    "translation": "On the occasion of welcoming the new students, the principal gave a welcoming address."
+    "translation": "When starting a new business, thorough preparation is necessary.",
+    "meaning_en": "on the occasion of; when embarking on"
   },
   {
     "id": 3,
     "lesson": 1,
-    "prefix": "",
-    "suffix": "外に飛び出していった。",
+    "prefix": "玄関の",
+    "suffix": "冷たい風が吹き込んできた。",
     "answer": [
       "ドアを",
       "開けた",
-      "とたん",
-      "猫が"
+      "とたんに",
+      "強い"
     ],
     "star": 2,
     "grammar": "～とたんに",
     "explanation": "動作の直後に予想外の出来事が起こることを表す。前後がほぼ同時。",
-    "translation": "The moment I opened the door, the cat ran outside."
+    "translation": "The moment I opened the front door, a strong cold wind blew in.",
+    "meaning_en": "the moment ~; as soon as (unexpected result)"
   },
   {
     "id": 4,
     "lesson": 1,
-    "prefix": "",
-    "suffix": "すぐ友達の家へ出かけた。",
+    "prefix": "赤ちゃんが",
+    "suffix": "もう泣き始めた。",
     "answer": [
-      "娘は",
-      "学校から",
-      "帰ったかと",
+      "やっと",
+      "寝た",
+      "かと",
       "思うと"
     ],
     "star": 3,
     "grammar": "～かと思うと",
     "explanation": "ある動作の直後にすぐ別のことが起こる様子を表す。意外性を伴うことが多い。",
-    "translation": "No sooner had my daughter come home from school than she went to a friend's house."
+    "translation": "Just when the baby finally fell asleep, it started crying again.",
+    "meaning_en": "no sooner ~ than; just when I thought ~"
   },
   {
     "id": 5,
     "lesson": 1,
-    "prefix": "",
-    "suffix": "うちに走って乗り込んだ。",
+    "prefix": "ベルが",
+    "suffix": "学生たちは教室を飛び出した。",
     "answer": [
-      "電車の",
-      "ドアが",
-      "閉まるか",
-      "閉まらないかの"
+      "鳴るか",
+      "鳴ら",
+      "ないかの",
+      "うちに"
     ],
-    "star": 3,
+    "star": 2,
     "grammar": "～かのうちに",
     "explanation": "二つの動作がほぼ同時に起こることを表す。するかしないかのギリギリのタイミング。",
-    "translation": "The moment the train doors were about to close, I ran in and boarded."
+    "translation": "The moment the bell rang, the students rushed out of the classroom.",
+    "meaning_en": "just as ~ was about to; at the very moment"
   },
   {
     "id": 6,
     "lesson": 2,
-    "prefix": "",
-    "suffix": "鳴ってしまい、恥ずかしかった。",
+    "prefix": "論文を書いている",
+    "suffix": "停電が起きてデータが消えてしまった。",
     "answer": [
-      "会議の",
-      "最中に",
+      "最中",
+      "に",
       "突然",
-      "携帯が"
+      "の"
     ],
-    "star": 2,
+    "star": 1,
     "grammar": "～最中に",
     "explanation": "まさに進行中の動作の途中で別の出来事が割り込むことを強調する表現。",
-    "translation": "Right in the middle of the meeting, my phone suddenly rang, and it was embarrassing."
+    "translation": "Right in the middle of writing my thesis, a power outage suddenly erased my data.",
+    "meaning_en": "right in the middle of"
   },
   {
     "id": 7,
     "lesson": 2,
-    "prefix": "",
-    "suffix": "取り込んでおこう。",
+    "prefix": "若い",
+    "suffix": "いろいろな経験をしておいた方がいい。",
     "answer": [
-      "雨が",
-      "降らない",
-      "うちに",
-      "洗濯物を"
+      "うち",
+      "に",
+      "できる",
+      "だけ"
     ],
-    "star": 3,
+    "star": 1,
     "grammar": "～うちに",
     "explanation": "ある状態が続いている間に行動すべきだという含みを持つ。状態が変わる前にという意味。",
-    "translation": "Let's bring the laundry in before it starts to rain."
+    "translation": "While you're young, you should gain as many experiences as possible.",
+    "meaning_en": "while; before the situation changes"
   },
   {
     "id": 8,
     "lesson": 2,
-    "prefix": "",
-    "suffix": "一方だ。",
+    "prefix": "地方の人口は",
+    "suffix": "このままでは地域社会が崩壊しかねない。",
     "answer": [
-      "インターネットの",
-      "普及で",
-      "情報量は",
-      "増える"
+      "減る",
+      "一方",
+      "で",
+      "あり"
     ],
-    "star": 4,
+    "star": 2,
     "grammar": "～一方だ",
     "explanation": "変化が一方向にますます進み続けている様子を表す。止まらない傾向。",
-    "translation": "With the spread of the internet, the amount of information just keeps increasing."
+    "translation": "The population in rural areas keeps declining, and at this rate, local communities may collapse.",
+    "meaning_en": "keeps ~ing; more and more (one-way trend)"
   },
   {
     "id": 9,
     "lesson": 2,
-    "prefix": "",
-    "suffix": "ので、電話に出られなかった。",
+    "prefix": "ちょうどお風呂に",
+    "suffix": "電話が鳴った。",
     "answer": [
-      "ちょうど",
-      "晩ご飯を",
-      "食べる",
-      "ところだった"
+      "入ろう",
+      "と",
+      "した",
+      "ところに"
     ],
-    "star": 3,
+    "star": 2,
     "grammar": "～ところだ",
     "explanation": "動作の段階（直前・最中・直後）を表す。「ちょうど今」のタイミングを示す。",
-    "translation": "I couldn't answer the phone because I was just about to eat dinner."
+    "translation": "Just as I was about to get in the bath, the phone rang.",
+    "meaning_en": "about to / in the middle of / just finished"
   },
   {
     "id": 10,
     "lesson": 2,
-    "prefix": "",
-    "suffix": "と言われている。",
+    "prefix": "少子高齢化が進む中、",
+    "suffix": "と専門家は指摘している。",
     "answer": [
-      "地球の",
-      "温暖化は",
-      "急速に",
-      "進行しつつある"
+      "社会の",
+      "構造",
+      "は",
+      "変化しつつある"
     ],
     "star": 4,
     "grammar": "～つつある",
     "explanation": "変化が徐々に継続している様子を書き言葉で表す。フォーマルな進行表現。",
-    "translation": "It is said that global warming is progressing rapidly."
+    "translation": "Experts point out that as declining birth rates and aging progress, the structure of society is changing.",
+    "meaning_en": "is gradually ~ing (formal, ongoing change)"
   },
   {
     "id": 11,
     "lesson": 2,
-    "prefix": "",
-    "suffix": "のはとても大変だ。",
+    "prefix": "悪いと",
+    "suffix": "甘いものを食べてしまう。",
     "answer": [
-      "仕事を",
-      "続けつつ",
-      "大学院で",
-      "勉強する"
+      "知り",
+      "つつ",
+      "も",
+      "つい"
     ],
     "star": 2,
     "grammar": "～つつ/ながら",
-    "explanation": "二つの動作の同時進行を表す、やや硬い表現。",
-    "translation": "Continuing to work while studying in graduate school is extremely demanding."
+    "explanation": "二つの動作の同時進行、または逆接を表す、やや硬い表現。",
+    "translation": "Even though I know it's bad, I end up eating sweets.",
+    "meaning_en": "while ~ing; even though (formal)"
   },
   {
     "id": 12,
     "lesson": 2,
-    "prefix": "",
-    "suffix": "ところです。",
+    "prefix": "今",
+    "suffix": "ので、少々お待ちください。",
     "answer": [
-      "今",
-      "母は",
-      "台所で",
-      "料理をしている"
+      "担当者",
+      "が",
+      "確認",
+      "しているところ"
     ],
     "star": 4,
     "grammar": "～している(進行中)",
     "explanation": "動作の進行中や状態の継続を表す基本表現。",
-    "translation": "Right now my mother is in the kitchen cooking."
+    "translation": "The person in charge is checking right now, so please wait a moment.",
+    "meaning_en": "is currently ~ing (in progress)"
   },
   {
     "id": 13,
     "lesson": 3,
-    "prefix": "",
-    "suffix": "はじめて実感した。",
+    "prefix": "外国で",
+    "suffix": "日本の良さに気づいた。",
     "answer": [
-      "親に",
-      "なってから",
-      "子育ての",
-      "大変さを"
+      "生活",
+      "して",
+      "はじめて",
+      "本当の"
     ],
-    "star": 4,
+    "star": 3,
     "grammar": "～はじめて",
     "explanation": "経験を通じて初めて何かに気づくことを表す。それまで知らなかったという含み。",
-    "translation": "Only after becoming a parent did I truly realize how difficult child-rearing is."
+    "translation": "Only after living abroad did I realize the true merits of Japan.",
+    "meaning_en": "only after ~; not until ~ did I realize"
   },
   {
     "id": 14,
     "lesson": 3,
-    "prefix": "",
-    "suffix": "してください。",
+    "prefix": "この薬は医師の説明を",
+    "suffix": "服用してください。",
     "answer": [
-      "契約書を",
-      "よく読んだ",
-      "上で",
-      "サインを"
+      "よく",
+      "聞いた",
+      "上",
+      "で"
     ],
-    "star": 2,
+    "star": 3,
     "grammar": "～上で",
     "explanation": "ある動作をしてから、その結果を踏まえて次の行動をすることを示す。順序と根拠の表現。",
-    "translation": "Please sign only after carefully reading the contract."
+    "translation": "Please take this medicine only after listening carefully to the doctor's explanation.",
+    "meaning_en": "after doing ~; upon; based on"
   },
   {
     "id": 15,
     "lesson": 3,
-    "prefix": "",
-    "suffix": "すぐに知らせます。",
+    "prefix": "予約の",
+    "suffix": "ご連絡いたします。",
     "answer": [
-      "先方から",
-      "連絡が",
-      "あり",
+      "空き",
+      "が",
+      "出",
       "次第"
     ],
     "star": 4,
     "grammar": "～次第",
     "explanation": "ある動作が完了したらすぐに次の行動を起こすことを表す。ビジネスでよく使われる。",
-    "translation": "As soon as we hear back from the other party, I'll let you know immediately."
+    "translation": "We will contact you as soon as an opening becomes available.",
+    "meaning_en": "as soon as ~; depending on ~"
   },
   {
     "id": 16,
     "lesson": 3,
-    "prefix": "",
-    "suffix": "二度と車に乗っていない。",
+    "prefix": "大学を",
+    "suffix": "一度も会っていない。",
     "answer": [
-      "あの",
-      "事故",
+      "卒業",
+      "して",
       "以来",
-      "彼は"
+      "彼とは"
     ],
     "star": 3,
     "grammar": "～以来",
     "explanation": "ある出来事を起点として、それからずっと続いている状態を表す。",
-    "translation": "Ever since that accident, he has not gotten into a car again."
+    "translation": "I haven't seen him once since graduating from university.",
+    "meaning_en": "ever since ~; from ~ onward"
   },
   {
     "id": 17,
     "lesson": 3,
-    "prefix": "",
-    "suffix": "ご利用いただけません。",
+    "prefix": "必要書類を全て",
+    "suffix": "手続きを進めることはできません。",
     "answer": [
-      "登録を",
-      "済ませて",
+      "提出",
+      "して",
       "からでないと",
-      "会員サービスは"
+      "この"
     ],
     "star": 3,
     "grammar": "～からでないと",
     "explanation": "先にある動作を完了しなければ次のことができないという必要条件を示す。",
-    "translation": "You cannot use our member services until after you have completed registration."
+    "translation": "This procedure cannot proceed unless all required documents have been submitted first.",
+    "meaning_en": "unless ~ first; not until ~ is done"
   },
   {
     "id": 18,
     "lesson": 3,
-    "prefix": "",
-    "suffix": "送ってください。",
+    "prefix": "十分に",
+    "suffix": "結論を出しましょう。",
     "answer": [
-      "会議が",
-      "終わった",
-      "後で",
-      "資料を"
+      "検討",
+      "した",
+      "後",
+      "で"
     ],
     "star": 3,
     "grammar": "～後で",
     "explanation": "時間の前後関係を明確にし、ある動作の後に次の行動をすることを示す基本表現。",
-    "translation": "Please send the materials after the meeting is over."
+    "translation": "Let's reach a conclusion after thorough consideration.",
+    "meaning_en": "after ~; later"
   },
   {
     "id": 19,
     "lesson": 4,
-    "prefix": "",
-    "suffix": "都市で人口が集中している。",
+    "prefix": "この美術館には",
+    "suffix": "世界中の名画が展示されている。",
     "answer": [
-      "日本は",
-      "東京を",
+      "ゴッホ",
+      "を",
       "はじめ",
-      "多くの"
+      "として"
     ],
     "star": 3,
     "grammar": "～をはじめ",
     "explanation": "多くのものの中から代表的な一つを挙げ、他にもあることを示す例示表現。",
-    "translation": "In Japan, starting with Tokyo, population is concentrated in many cities."
+    "translation": "This museum exhibits masterpieces from around the world, starting with Van Gogh.",
+    "meaning_en": "starting with ~; including ~ and others"
   },
   {
     "id": 20,
     "lesson": 4,
-    "prefix": "",
-    "suffix": "プロの腕前だとわかる。",
+    "prefix": "あの人は",
+    "suffix": "何か隠している気がする。",
     "answer": [
-      "あの",
-      "店は",
-      "料理の",
-      "見た目からして"
+      "話し方",
+      "からして",
+      "もう",
+      "すでに"
     ],
-    "star": 4,
+    "star": 1,
     "grammar": "～からして",
     "explanation": "一つの例や手がかりだけで全体を強く推測できることを表す。",
-    "translation": "At that restaurant, the very look of the food tells you it's prepared by professionals."
+    "translation": "Judging from the way that person talks, I feel they're already hiding something.",
+    "meaning_en": "judging from ~; even just ~ alone shows"
   },
   {
     "id": 21,
     "lesson": 4,
-    "prefix": "",
-    "suffix": "続けられてきた。",
+    "prefix": "この橋の工事は",
+    "suffix": "続けられた大プロジェクトだった。",
     "answer": [
-      "この",
-      "調査は",
-      "10年に",
-      "わたって"
+      "5年",
+      "に",
+      "わたって",
+      "もの長い期間"
     ],
-    "star": 4,
+    "star": 3,
     "grammar": "～にわたって",
     "explanation": "時間や範囲の広がりを表し、その全範囲で何かが行われたことを示す。",
-    "translation": "This research has been carried out over a span of ten years."
+    "translation": "The construction of this bridge was a major project that spanned five long years.",
+    "meaning_en": "over; spanning; throughout (a range/period)"
   },
   {
     "id": 22,
     "lesson": 4,
-    "prefix": "",
-    "suffix": "得ることができる。",
+    "prefix": "ボランティア活動",
+    "suffix": "地域の人々と交流を深めた。",
     "answer": [
-      "読書を",
-      "通じて",
-      "様々な",
-      "知識を"
+      "を",
+      "通じ",
+      "て",
+      "たくさんの"
     ],
     "star": 2,
     "grammar": "～を通じて",
     "explanation": "手段・経路として何かを利用すること、または期間の全体を通してという意味。",
-    "translation": "Through reading, one can acquire various kinds of knowledge."
+    "translation": "Through volunteer activities, I deepened my connections with many local people.",
+    "meaning_en": "through; by means of; throughout"
   },
   {
     "id": 23,
     "lesson": 4,
-    "prefix": "",
-    "suffix": "戦いたい。",
+    "prefix": "できる",
+    "suffix": "のことはやったつもりだ。",
     "answer": [
-      "力の",
       "限り",
-      "最後まで",
-      "諦めずに"
+      "の",
+      "全て",
+      "自分"
     ],
-    "star": 2,
+    "star": 1,
     "grammar": "～限り",
     "explanation": "範囲や期間の上限を示し、その範囲の全てという意味を表す。",
-    "translation": "I want to fight to the very end with all my strength, without giving up."
+    "translation": "I believe I did everything I could to the best of my ability.",
+    "meaning_en": "as far as; to the extent of; as long as"
   },
   {
     "id": 24,
     "lesson": 4,
-    "prefix": "",
-    "suffix": "と言われた。",
+    "prefix": "好きな",
+    "suffix": "持っていっていいですよ。",
     "answer": [
-      "好きな",
-      "だけ",
-      "食べて",
-      "いいですよ"
+      "もの",
+      "を",
+      "いくつ",
+      "でも"
     ],
-    "star": 2,
+    "star": 1,
     "grammar": "～だけ",
     "explanation": "制限なしにその範囲のすべてを行ってよいことを示す。好きなように、という許可。",
-    "translation": "I was told, \"You can eat as much as you like.\""
+    "translation": "You can take as many as you like.",
+    "meaning_en": "as much as; to whatever extent"
   },
   {
     "id": 25,
     "lesson": 5,
-    "prefix": "",
-    "suffix": "ご購入いただけます。",
+    "prefix": "会員の方",
+    "suffix": "特別価格でご利用いただけます。",
     "answer": [
-      "本日に",
+      "に",
       "限り",
-      "全商品が",
-      "半額で"
+      "本日は",
+      "この"
     ],
     "star": 2,
     "grammar": "～に限り",
     "explanation": "ある条件の場合のみ特別に許可されることを表す。案内文や告知でよく使われる。",
-    "translation": "For today only, all items may be purchased at half price."
+    "translation": "For members only, this can be used at a special price today.",
+    "meaning_en": "limited to; only for (special condition)"
   },
   {
     "id": 26,
     "lesson": 5,
-    "prefix": "",
-    "suffix": "まだ帰国していない。",
+    "prefix": "私が",
+    "suffix": "そのような事実はない。",
     "answer": [
-      "私が",
-      "知っている",
-      "限りでは",
-      "彼は"
+      "調べた",
+      "限り",
+      "では",
+      "現時点で"
     ],
-    "star": 3,
+    "star": 2,
     "grammar": "～限りでは",
     "explanation": "自分の知識や情報の範囲を限定して判断を述べる表現。断定を避ける効果がある。",
-    "translation": "As far as I know, he has not yet returned to his home country."
+    "translation": "As far as I've investigated, there is no such fact at this point.",
+    "meaning_en": "as far as (I know / can tell)"
   },
   {
     "id": 27,
     "lesson": 5,
-    "prefix": "",
-    "suffix": "遅れるものだ。",
+    "prefix": "大事な用事がある日",
+    "suffix": "体調を崩すものだ。",
     "answer": [
-      "急いで",
-      "いる時に",
+      "に",
       "限って",
-      "電車が"
+      "なぜか",
+      "必ず"
     ],
-    "star": 3,
+    "star": 2,
     "grammar": "～に限って",
     "explanation": "よりにもよって最悪のタイミングで悪いことが起こるという不運を強調する表現。",
-    "translation": "It's precisely when you're in a hurry that the trains tend to be delayed."
+    "translation": "It's always on days when I have something important that I inevitably get sick.",
+    "meaning_en": "it's always when ~; precisely when ~ (Murphy's law)"
   },
   {
     "id": 28,
     "lesson": 11,
-    "prefix": "",
-    "suffix": "楽しむことができる。",
+    "prefix": "この講座は",
+    "suffix": "どなたでもご参加いただけます。",
     "answer": [
-      "このアプリは",
-      "年齢を",
-      "問わず",
-      "誰でも"
+      "経験",
+      "の",
+      "有無を",
+      "問わず"
     ],
-    "star": 3,
+    "star": 4,
     "grammar": "～を問わず",
     "explanation": "条件や属性に関係なく、すべてに当てはまることを示す。制限なしの表現。",
-    "translation": "This app can be enjoyed by anyone, regardless of age."
+    "translation": "This course is open to anyone, regardless of experience.",
+    "meaning_en": "regardless of; irrespective of"
   },
   {
     "id": 29,
     "lesson": 11,
-    "prefix": "",
-    "suffix": "行われます。",
+    "prefix": "結果",
+    "suffix": "全力を尽くすことが大切だ。",
     "answer": [
-      "天候に",
-      "かかわらず",
-      "試合は",
-      "予定通り"
+      "が",
+      "どう",
+      "なろう",
+      "とかかわらず"
     ],
-    "star": 2,
+    "star": 4,
     "grammar": "～にかかわらず",
     "explanation": "外部の条件に影響を受けないことを強調する。どんな状況でも変わらない。",
-    "translation": "Regardless of the weather, the match will be held as scheduled."
+    "translation": "Regardless of what the outcome may be, it is important to give your all.",
+    "meaning_en": "regardless of; no matter"
   },
   {
     "id": 30,
     "lesson": 11,
-    "prefix": "",
-    "suffix": "泣き出した。",
+    "prefix": "彼女は周囲の",
+    "suffix": "大声で電話をしていた。",
     "answer": [
-      "彼は",
-      "人目も",
-      "かまわず",
-      "大声で"
+      "迷惑",
+      "も",
+      "かまわ",
+      "ず"
     ],
     "star": 3,
     "grammar": "～もかまわず",
     "explanation": "普通は気を遣うべき場面で、それを全く気にしない様子を表す。",
-    "translation": "He broke into loud sobs, not caring who might see him."
+    "translation": "She was talking loudly on the phone, oblivious to the inconvenience to those around her.",
+    "meaning_en": "without caring about; oblivious to"
   },
   {
     "id": 31,
     "lesson": 11,
-    "prefix": "",
-    "suffix": "手ごろだ。",
+    "prefix": "デザインは",
+    "suffix": "この製品の機能性は高い。",
     "answer": [
-      "味は",
-      "ともかく",
-      "値段は",
-      "とても"
+      "とも",
+      "かく",
+      "として",
+      "も"
     ],
     "star": 2,
     "grammar": "～はともかく",
     "explanation": "一つの話題を一旦脇に置いて、別の側面に焦点を当てる表現。",
-    "translation": "Setting taste aside, the price is very reasonable."
+    "translation": "Design aside, this product has high functionality.",
+    "meaning_en": "setting ~ aside; leaving ~ for now"
   },
   {
     "id": 32,
     "lesson": 11,
-    "prefix": "",
-    "suffix": "か。",
+    "prefix": "それ",
+    "suffix": "本題に入りましょう。",
     "answer": [
-      "冗談は",
-      "さておき",
-      "本題に",
-      "入りましょう"
+      "は",
+      "さて",
+      "おき",
+      "まずは"
     ],
-    "star": 2,
+    "star": 3,
     "grammar": "～はさておき",
     "explanation": "今の話題を後回しにして、別の（より重要な）話題に切り替える表現。",
-    "translation": "Jokes aside, shall we get down to the main topic?"
+    "translation": "Setting that aside, let's get to the main topic.",
+    "meaning_en": "putting ~ aside; setting ~ aside (topic change)"
   },
   {
     "id": 33,
     "lesson": 12,
-    "prefix": "",
-    "suffix": "。",
+    "prefix": "あれだけ優しい彼が",
+    "suffix": "絶対にありえない。",
     "answer": [
-      "彼が",
-      "そんな",
-      "嘘を",
-      "つくわけがない"
+      "人を",
+      "だます",
+      "わけ",
+      "が"
     ],
-    "star": 4,
+    "star": 3,
     "grammar": "～わけがない",
     "explanation": "ある事態の可能性を強く否定する。「そんなことは絶対にありえない」という確信。",
-    "translation": "There's no way he would tell such a lie."
+    "translation": "There's no way someone as kind as him would deceive people.",
+    "meaning_en": "there's no way ~; ~ is impossible"
   },
   {
     "id": 34,
     "lesson": 12,
-    "prefix": "",
-    "suffix": "始めてもいない。",
+    "prefix": "日本語は",
+    "suffix": "まだ自己紹介もまともにできない。",
     "answer": [
-      "宿題を",
-      "終える",
-      "どころか",
-      "まだ"
+      "話せる",
+      "どころ",
+      "か",
+      "実は"
     ],
-    "star": 3,
+    "star": 2,
     "grammar": "～どころか",
     "explanation": "期待や予想よりもはるかに低い（または高い）現実を示す。強い否定や対比の表現。",
-    "translation": "Far from finishing my homework, I haven't even started it."
+    "translation": "Far from being able to speak Japanese, I can't even introduce myself properly.",
+    "meaning_en": "far from ~; let alone ~"
   },
   {
     "id": 35,
     "lesson": 12,
-    "prefix": "",
-    "suffix": "。",
+    "prefix": "あんなひどいことを言う人",
+    "suffix": "二度と関わるものか。",
     "answer": [
-      "あんな",
-      "失礼な店に",
-      "二度と",
-      "行くもんか"
+      "と",
+      "は",
+      "もう",
+      "絶対に"
     ],
-    "star": 4,
+    "star": 1,
     "grammar": "～もんか",
     "explanation": "話し言葉で「絶対に～しない」という強い拒否を表す。感情的な否定。",
-    "translation": "There's no way I'm ever going back to that rude restaurant."
+    "translation": "I will never deal with someone who says such terrible things again.",
+    "meaning_en": "no way I'd ~!; as if I'd ~! (strong refusal)"
   },
   {
     "id": 36,
     "lesson": 12,
-    "prefix": "",
-    "suffix": "あまり食べたくない。",
+    "prefix": "全員に反対",
+    "suffix": "もう少し意見を聞きたい。",
     "answer": [
-      "嫌いだ",
       "という",
-      "わけではない",
-      "が"
+      "わけ",
+      "ではない",
+      "がただ"
     ],
-    "star": 3,
+    "star": 2,
     "grammar": "～というわけではない",
     "explanation": "部分否定で「完全にそうとは限らない」と和らげて言う表現。ニュアンスを調整する。",
-    "translation": "It's not that I dislike it, but I don't really feel like eating it."
+    "translation": "It's not that I'm opposed to everyone, but I'd like to hear a few more opinions.",
+    "meaning_en": "it's not that ~; it doesn't mean ~"
   },
   {
     "id": 37,
     "lesson": 12,
-    "prefix": "",
-    "suffix": "。",
+    "prefix": "努力すれば",
+    "suffix": "才能や環境も影響する。",
     "answer": [
-      "値段が",
-      "高ければ",
-      "いいという",
+      "必ず",
+      "成功する",
+      "という",
       "ものではない"
     ],
-    "star": 4,
+    "star": 2,
     "grammar": "～というものではない",
     "explanation": "一般的な考えや常識を否定する。「必ずしもそうとは言えない」という反論。",
-    "translation": "It's not as though something is good simply because it's expensive."
+    "translation": "It's not necessarily true that effort always leads to success—talent and environment matter too.",
+    "meaning_en": "it's not necessarily the case that ~"
   },
   {
     "id": 38,
     "lesson": 13,
-    "prefix": "",
-    "suffix": "知らなかった。",
+    "prefix": "まさか彼",
+    "suffix": "夢にも思わなかった。",
     "answer": [
-      "締め切りが",
-      "明日",
-      "だとは",
-      "全く"
+      "が",
+      "転職",
+      "する",
+      "とは"
     ],
-    "star": 3,
+    "star": 4,
     "grammar": "～とは",
     "explanation": "驚きや意外性を表す。「～なんて信じられない」という気持ちを込める。",
-    "translation": "I had no idea at all that the deadline was tomorrow."
+    "translation": "I never dreamed that he would change jobs.",
+    "meaning_en": "to think that ~!; I can't believe ~ (surprise)"
   },
   {
     "id": 39,
     "lesson": 13,
-    "prefix": "",
-    "suffix": "神社が有名だ。",
+    "prefix": "日本の秋",
+    "suffix": "各地で美しい紅葉が楽しめる。",
     "answer": [
-      "京都",
-      "といえば",
+      "と",
+      "いえば",
       "やはり",
-      "寺や"
+      "紅葉で"
     ],
     "star": 2,
     "grammar": "～といえば",
     "explanation": "話題を導入し、そこから連想される代表的な情報を続ける表現。",
-    "translation": "Speaking of Kyoto, it's of course famous for its temples and shrines."
+    "translation": "Speaking of autumn in Japan, you can enjoy beautiful fall foliage all over the country.",
+    "meaning_en": "speaking of ~; when you mention ~"
   },
   {
     "id": 40,
     "lesson": 13,
-    "prefix": "",
-    "suffix": "できないほどだ。",
+    "prefix": "初めてオーロラを見た時",
+    "suffix": "言葉では表現できなかった。",
     "answer": [
-      "富士山の",
-      "美しさ",
-      "といったら",
-      "言葉に"
+      "の",
+      "感動",
+      "と",
+      "いったら"
     ],
-    "star": 3,
+    "star": 4,
     "grammar": "～といったら",
     "explanation": "強い感情や驚きを伴う評価を表す。程度が非常に大きいことを強調。",
-    "translation": "The beauty of Mt. Fuji is almost beyond words."
+    "translation": "The emotion I felt when I first saw the aurora was beyond words.",
+    "meaning_en": "when it comes to ~; the ~ was incredible"
   },
   {
     "id": 41,
     "lesson": 13,
-    "prefix": "",
-    "suffix": "興奮する。",
+    "prefix": "いつもは冷静な彼女",
+    "suffix": "感情的になってしまう。",
     "answer": [
-      "普段は",
-      "冷静な",
-      "父も",
-      "野球のこととなると"
+      "も",
+      "子供",
+      "のこと",
+      "となると"
     ],
     "star": 4,
     "grammar": "～のこととなると",
     "explanation": "特定の話題になると、普段とは違う特別な反応を見せることを表す。",
-    "translation": "My normally calm father gets excited whenever the topic turns to baseball."
+    "translation": "Even she, who is usually calm, gets emotional when it comes to her children.",
+    "meaning_en": "when it comes to ~ (different reaction than usual)"
   },
   {
     "id": 42,
     "lesson": 14,
-    "prefix": "",
-    "suffix": "続行された。",
+    "prefix": "何度も警告した",
+    "suffix": "事態は悪化し続けた。",
     "answer": [
-      "雨が",
-      "降っているに",
-      "もかかわらず",
-      "試合は"
+      "に",
+      "も",
+      "かかわら",
+      "ず"
     ],
     "star": 3,
     "grammar": "～にもかかわらず",
     "explanation": "逆接を強調する硬い表現。普通なら影響を受けるはずの状況でも結果が変わらない。",
-    "translation": "Despite the fact that it was raining, the match continued."
+    "translation": "Despite repeated warnings, the situation continued to worsen.",
+    "meaning_en": "despite; in spite of; nevertheless"
   },
   {
     "id": 43,
     "lesson": 14,
-    "prefix": "",
-    "suffix": "新聞は読みにくい。",
+    "prefix": "その本を買った",
+    "suffix": "結局一度も読んでいない。",
     "answer": [
-      "日本語を",
-      "10年勉強した",
       "ものの",
+      "忙しく",
+      "て",
       "まだ"
     ],
-    "star": 3,
+    "star": 1,
     "grammar": "～ものの",
     "explanation": "「～したけれど」の意味で、予想と違う結果を導く逆接表現。やや書き言葉的。",
-    "translation": "Although I've studied Japanese for ten years, newspapers are still difficult for me."
+    "translation": "Although I bought that book, I've been busy and still haven't read it once.",
+    "meaning_en": "although; even though (but result differs)"
   },
   {
     "id": 44,
     "lesson": 14,
-    "prefix": "",
-    "suffix": "落ち着く。",
+    "prefix": "彼は若い",
+    "suffix": "しっかりした考えを持っている。",
     "answer": [
-      "狭い",
       "ながら",
-      "我が家は",
-      "とても"
+      "も",
+      "非常",
+      "に"
     ],
-    "star": 2,
+    "star": 1,
     "grammar": "～ながら",
     "explanation": "逆接で「～だけれども」の意味。形容詞や名詞に接続し、状態の対比を表す。",
-    "translation": "Small though it may be, my home is very relaxing."
+    "translation": "Though he is young, he holds very solid views.",
+    "meaning_en": "though; while being ~ (concessive)"
   },
   {
     "id": 45,
     "lesson": 14,
-    "prefix": "",
-    "suffix": "やめられない。",
+    "prefix": "ダイエット中だと",
+    "suffix": "ケーキを食べてしまった。",
     "answer": [
-      "体に",
-      "悪いと",
-      "知りつつ",
-      "夜食を"
+      "分かっ",
+      "て",
+      "い",
+      "つつ"
     ],
-    "star": 3,
+    "star": 4,
     "grammar": "～つつ",
     "explanation": "「～しているのに」の逆接を表す書き言葉的な表現。意識と行動の矛盾に使うことが多い。",
-    "translation": "Even though I know it's bad for me, I can't stop my late-night snacking."
+    "translation": "Even though I knew I was on a diet, I ended up eating cake.",
+    "meaning_en": "while ~ing; even though ~ (formal concessive)"
   },
   {
     "id": 46,
     "lesson": 14,
-    "prefix": "",
-    "suffix": "とは限らない。",
+    "prefix": "有名だ",
+    "suffix": "必ずしも美味しいとは言えない。",
     "answer": [
-      "安い",
-      "からといって",
-      "品質が",
-      "悪い"
+      "から",
+      "と",
+      "いって",
+      "レストランが"
     ],
-    "star": 2,
+    "star": 3,
     "grammar": "～からといって",
     "explanation": "ある理由だけで当然のように結論を出すことを否定する文脈で使う。",
-    "translation": "Just because something is cheap doesn't necessarily mean its quality is poor."
+    "translation": "Just because a restaurant is famous doesn't necessarily mean it's delicious.",
+    "meaning_en": "just because ~ doesn't mean"
   },
   {
     "id": 47,
     "lesson": 15,
-    "prefix": "",
-    "suffix": "着くだろうか。",
+    "prefix": "もし明日",
+    "suffix": "スケジュールを変更しなければならない。",
     "answer": [
-      "今から",
-      "出発する",
-      "とすれば",
-      "何時に"
+      "雨",
+      "が",
+      "降る",
+      "とすれば"
     ],
-    "star": 3,
+    "star": 4,
     "grammar": "～とすれば",
     "explanation": "仮定を立てて、その上での推量や結論を述べる表現。「仮に～したら」の意味。",
-    "translation": "If we leave now, what time do you think we'll arrive?"
+    "translation": "If it rains tomorrow, we'll have to change the schedule.",
+    "meaning_en": "if we assume ~; supposing that ~"
   },
   {
     "id": 48,
     "lesson": 15,
-    "prefix": "",
-    "suffix": "戻りたい。",
+    "prefix": "過去に",
+    "suffix": "何を変えたいですか。",
     "answer": [
-      "できる",
-      "ものなら",
-      "もう一度",
-      "学生時代に"
+      "戻れる",
+      "もの",
+      "なら",
+      "一番"
     ],
     "star": 2,
     "grammar": "～ものなら",
     "explanation": "実現が非常に難しい願望を表す仮定表現。「もしも可能なら」という切ない気持ち。",
-    "translation": "If I could, I would love to return to my student days once more."
+    "translation": "If you could go back to the past, what would you most want to change?",
+    "meaning_en": "if only I could ~; if it were possible to ~"
   },
   {
     "id": 49,
     "lesson": 15,
-    "prefix": "",
-    "suffix": "信用されないだろう。",
+    "prefix": "この秘密を他人に",
+    "suffix": "取り返しのつかないことになる。",
     "answer": [
-      "約束を",
-      "破ろう",
-      "ものなら",
-      "二度と"
+      "話そう",
+      "もの",
+      "なら",
+      "大変な"
     ],
-    "star": 3,
+    "star": 2,
     "grammar": "～ようものなら",
     "explanation": "「もし～したら大変なことになる」と悪い結果を警告する強い仮定表現。",
-    "translation": "If you were to break the promise, you would never be trusted again."
+    "translation": "If you were to tell anyone this secret, it would lead to terrible consequences.",
+    "meaning_en": "if you dare ~; if ~ happens (bad consequence)"
   },
   {
     "id": 50,
     "lesson": 15,
-    "prefix": "",
-    "suffix": "しようがない。",
+    "prefix": "実際にその場に",
+    "suffix": "本当のことはわからない。",
     "answer": [
-      "実物を",
-      "見ない",
-      "ことには",
-      "判断"
+      "行って",
+      "み",
+      "ないことに",
+      "は"
     ],
     "star": 3,
     "grammar": "～ないことには",
     "explanation": "「～しなければ…できない」という必要条件を表す。それなしでは不可能という意味。",
-    "translation": "Without actually seeing the real thing, there's no way to make a judgment."
+    "translation": "Unless you actually go there and see for yourself, you won't know the truth.",
+    "meaning_en": "unless ~; without doing ~, you can't"
   },
   {
     "id": 51,
     "lesson": 15,
-    "prefix": "",
-    "suffix": "プロジェクトは成功しなかっただろう。",
+    "prefix": "彼女の努力",
+    "suffix": "この成果は生まれなかっただろう。",
     "answer": [
-      "彼の",
-      "協力を",
-      "抜きにしては",
-      "この"
+      "を",
+      "抜き",
+      "にして",
+      "は"
     ],
-    "star": 3,
+    "star": 2,
     "grammar": "～抜きにしては",
     "explanation": "不可欠な要素を強調する。「～なしでは成り立たない」という意味。",
-    "translation": "Without his cooperation, this project would not have succeeded."
+    "translation": "Without her effort, this result would not have been possible.",
+    "meaning_en": "without ~; leaving ~ out, it's impossible"
   },
   {
     "id": 52,
     "lesson": 15,
-    "prefix": "",
-    "suffix": "遅刻はよくない。",
+    "prefix": "たとえどんな事情",
+    "suffix": "約束は守るべきだ。",
     "answer": [
-      "どんな",
-      "理由が",
-      "あったに",
+      "が",
+      "あった",
+      "に",
       "せよ"
     ],
     "star": 4,
     "grammar": "～にせよ",
     "explanation": "「～であっても」の意味で、どんな場合でも結論が変わらないことを示す譲歩表現。",
-    "translation": "Whatever the reason may have been, being late is not acceptable."
+    "translation": "Whatever the circumstances may have been, one should keep promises.",
+    "meaning_en": "even if; regardless of whether"
   },
   {
     "id": 53,
     "lesson": 6,
-    "prefix": "",
-    "suffix": "住民も利用できる。",
+    "prefix": "この制度は正社員",
+    "suffix": "パートの方も利用できる。",
     "answer": [
-      "この図書館は",
-      "学生に",
-      "限らず",
-      "地域の"
+      "に",
+      "限ら",
+      "ず",
+      "アルバイトや"
     ],
-    "star": 3,
+    "star": 2,
     "grammar": "～に限らず",
     "explanation": "ある対象だけでなく、他の範囲にも同様に当てはまることを表す。",
-    "translation": "This library can be used not only by students but also by local residents."
+    "translation": "This system is available not only to full-time employees but also to part-time workers.",
+    "meaning_en": "not limited to ~; not only ~"
   },
   {
     "id": 54,
     "lesson": 6,
-    "prefix": "",
-    "suffix": "高く評価されている。",
+    "prefix": "この問題は一つの国",
+    "suffix": "世界全体で取り組むべきだ。",
     "answer": [
-      "彼は",
-      "国内の",
-      "みならず",
-      "海外でも"
+      "の",
+      "みなら",
+      "ず",
+      "国際社会"
     ],
-    "star": 3,
+    "star": 2,
     "grammar": "～のみならず",
     "explanation": "「だけでなく」の硬い表現で、範囲がさらに広がることを強調する書き言葉。",
-    "translation": "He is highly regarded not only domestically but also internationally."
+    "translation": "This problem should be addressed not only by one country but by the entire international community.",
+    "meaning_en": "not only ~ but also (formal)"
   },
   {
     "id": 55,
     "lesson": 6,
-    "prefix": "",
-    "suffix": "流暢に話せる。",
+    "prefix": "彼は日本語",
+    "suffix": "韓国語まで流暢に話す。",
     "answer": [
-      "彼女は",
+      "ばかり",
+      "か",
       "英語",
-      "ばかりか",
-      "中国語も"
+      "だけでなく"
     ],
-    "star": 3,
+    "star": 1,
     "grammar": "～ばかりか",
     "explanation": "一つだけでなくさらに別のことも加わることを驚きを込めて表す表現。",
-    "translation": "She can speak not only English but also Chinese fluently."
+    "translation": "He speaks not only Japanese but even Korean and English fluently.",
+    "meaning_en": "not only ~ but even; what's more"
   },
   {
     "id": 56,
     "lesson": 6,
-    "prefix": "",
-    "suffix": "この問題に取り組んでいる。",
+    "prefix": "この件については",
+    "suffix": "全社員に周知してください。",
     "answer": [
-      "社長は",
+      "管理職",
+      "は",
       "もとより",
-      "社員",
-      "全員が"
+      "一般"
     ],
-    "star": 2,
+    "star": 3,
     "grammar": "～はもとより",
     "explanation": "当然のことに加えて、さらに別のことも含まれることを示す。改まった表現。",
-    "translation": "Not only the president, but all employees are working on this issue."
+    "translation": "Please make this matter known to all employees, management included of course.",
+    "meaning_en": "not to mention ~; ~ goes without saying"
   },
   {
     "id": 57,
     "lesson": 6,
-    "prefix": "",
-    "suffix": "手ごろだ。",
+    "prefix": "彼女は仕事",
+    "suffix": "人柄も良い。",
     "answer": [
-      "この店は",
-      "味がいい",
-      "上に",
-      "値段も"
+      "が",
+      "できる",
+      "上",
+      "に"
     ],
     "star": 3,
     "grammar": "～上に",
     "explanation": "一つの好ましい（または悪い）点に加え、さらに別の点もあることを強調する。",
-    "translation": "This restaurant has good food, and on top of that, the prices are reasonable."
+    "translation": "She is not only good at her job but also has a great personality.",
+    "meaning_en": "on top of ~; in addition to ~"
   },
   {
     "id": 58,
     "lesson": 7,
-    "prefix": "",
-    "suffix": "調査を進めている。",
+    "prefix": "環境問題",
+    "suffix": "さまざまな意見が出された。",
     "answer": [
-      "その",
-      "事件に",
-      "関して",
-      "警察が"
+      "に",
+      "関し",
+      "て",
+      "は"
     ],
-    "star": 3,
+    "star": 2,
     "grammar": "～に関して",
     "explanation": "話題の対象を明確に示す硬い表現。「～について」のフォーマル版。",
-    "translation": "The police are conducting an investigation regarding that incident."
+    "translation": "Various opinions were put forward regarding environmental issues.",
+    "meaning_en": "regarding; concerning; about (formal)"
   },
   {
     "id": 59,
     "lesson": 7,
-    "prefix": "",
-    "suffix": "議論が行われている。",
+    "prefix": "新しいダムの建設",
+    "suffix": "住民の間で意見が分かれている。",
     "answer": [
-      "新しい",
-      "法案を",
-      "めぐって",
-      "激しい"
+      "を",
+      "めぐっ",
+      "て",
+      "地元"
     ],
-    "star": 3,
+    "star": 2,
     "grammar": "～をめぐって",
     "explanation": "ある問題や話題を中心に様々な意見や動きがあることを示す。",
-    "translation": "Intense debate is taking place surrounding the new bill."
+    "translation": "Local residents are divided in their opinions over the construction of a new dam.",
+    "meaning_en": "surrounding; over (a dispute/issue)"
   },
   {
     "id": 60,
     "lesson": 7,
-    "prefix": "",
-    "suffix": "かなう人はいない。",
+    "prefix": "語学力",
+    "suffix": "彼の右に出る者はいない。",
     "answer": [
-      "料理の",
-      "速さに",
-      "かけては",
-      "彼女に"
+      "に",
+      "かけて",
+      "は",
+      "この部署で"
     ],
     "star": 2,
     "grammar": "～にかけては",
     "explanation": "特定の能力や分野で他より優れていることを表す。自信や評価の表現。",
-    "translation": "When it comes to cooking speed, no one can match her."
+    "translation": "When it comes to language ability, no one in this department can match him.",
+    "meaning_en": "when it comes to ~; in terms of ~ (superiority)"
   },
   {
     "id": 61,
     "lesson": 7,
-    "prefix": "",
-    "suffix": "提供すべきだ。",
+    "prefix": "教師は生徒",
+    "suffix": "公平な態度で接するべきだ。",
     "answer": [
-      "若者に",
-      "対して",
-      "もっと",
-      "働く場を"
+      "一人",
+      "一人",
+      "に対して",
+      "常に"
     ],
-    "star": 2,
+    "star": 3,
     "grammar": "～に対して",
     "explanation": "動作や態度が向かう相手を示す。対象を明確にする表現。",
-    "translation": "We should provide more workplaces for young people."
+    "translation": "Teachers should always treat each individual student with a fair attitude.",
+    "meaning_en": "toward; against; in contrast to"
   },
   {
     "id": 62,
     "lesson": 7,
-    "prefix": "",
-    "suffix": "新しく整備された。",
+    "prefix": "住民の",
+    "suffix": "バス路線が新設された。",
     "answer": [
-      "市民の",
+      "長年",
+      "の",
       "要望に",
-      "こたえて",
-      "公園が"
+      "こたえて"
     ],
-    "star": 3,
+    "star": 4,
     "grammar": "～にこたえて",
     "explanation": "外部からの期待や求めに応じて何かを行うことを表す。",
-    "translation": "In response to citizens' requests, a park was newly developed."
+    "translation": "In response to residents' long-standing requests, a new bus route was established.",
+    "meaning_en": "in response to; answering (a request/need)"
   },
   {
     "id": 63,
     "lesson": 8,
-    "prefix": "",
-    "suffix": "映画は作られた。",
+    "prefix": "この小説は作者",
+    "suffix": "書かれたと言われている。",
     "answer": [
-      "実際の",
-      "事件を",
-      "もとに",
-      "この"
+      "自身",
+      "の",
+      "体験を",
+      "もとに"
     ],
-    "star": 3,
+    "star": 4,
     "grammar": "～をもとに",
     "explanation": "素材や材料としてあるものを参考にして何かを作ることを表す。",
-    "translation": "This movie was made based on an actual incident."
+    "translation": "This novel is said to have been written based on the author's own experiences.",
+    "meaning_en": "based on; using ~ as a basis"
   },
   {
     "id": 64,
     "lesson": 8,
-    "prefix": "",
-    "suffix": "決定すべきだ。",
+    "prefix": "法律",
+    "suffix": "すべての判断がなされるべきだ。",
     "answer": [
-      "科学的な",
-      "データに",
-      "基づいて",
-      "政策を"
+      "に",
+      "基づい",
+      "て",
+      "客観的な"
     ],
-    "star": 3,
+    "star": 2,
     "grammar": "～に基づいて",
     "explanation": "根拠や原則に従って何かを行うことを示す。信頼性を強調する表現。",
-    "translation": "Policies should be decided based on scientific data."
+    "translation": "All judgments should be made based on law and objectivity.",
+    "meaning_en": "based on; in accordance with (formal)"
   },
   {
     "id": 65,
     "lesson": 8,
-    "prefix": "",
-    "suffix": "植えられている。",
+    "prefix": "方針",
+    "suffix": "計画を進めてください。",
     "answer": [
-      "川に",
-      "沿って",
-      "桜の",
-      "木が"
+      "に",
+      "沿っ",
+      "て",
+      "この"
     ],
     "star": 2,
     "grammar": "～に沿って",
     "explanation": "ある方針や道筋に従って進むことを示す。物理的にも抽象的にも使える。",
-    "translation": "Cherry trees are planted along the river."
+    "translation": "Please proceed with the plan in line with this policy.",
+    "meaning_en": "along; in line with; following"
   },
   {
     "id": 66,
     "lesson": 8,
-    "prefix": "",
-    "suffix": "選手が成長している。",
+    "prefix": "厳しい",
+    "suffix": "彼は立派な医師になった。",
     "answer": [
-      "優れた",
-      "指導者の",
-      "もとで",
-      "若い"
+      "訓練",
+      "の",
+      "もと",
+      "で"
     ],
     "star": 3,
     "grammar": "～のもとで",
     "explanation": "影響や保護を受ける環境・条件を示す。権威や状況の下で行動することを表す。",
-    "translation": "Young athletes are developing under an excellent coach."
+    "translation": "Under rigorous training, he became a fine doctor.",
+    "meaning_en": "under (guidance/conditions/authority)"
   },
   {
     "id": 67,
     "lesson": 8,
-    "prefix": "",
-    "suffix": "ものです。",
+    "prefix": "この番組は",
+    "suffix": "わかりやすく作られている。",
     "answer": [
-      "この教材は",
-      "初心者",
-      "向けに",
-      "作られた"
+      "子供",
+      "向け",
+      "に",
+      "内容が"
     ],
-    "star": 3,
+    "star": 2,
     "grammar": "～向けに",
     "explanation": "対象となる層や目的に合わせて何かを設計・提供することを示す。",
-    "translation": "This textbook was made for beginners."
+    "translation": "This program is made in a way that is easy to understand, aimed at children.",
+    "meaning_en": "aimed at; designed for; targeted to"
   },
   {
     "id": 68,
     "lesson": 9,
-    "prefix": "",
-    "suffix": "衰えてくる。",
+    "prefix": "技術が",
+    "suffix": "新しい問題も生じてきた。",
     "answer": [
-      "年を",
-      "取るに",
-      "つれて",
-      "体力が"
+      "進歩する",
+      "に",
+      "つれ",
+      "て"
     ],
     "star": 3,
     "grammar": "～につれて",
     "explanation": "一方が変化すると、それに比例してもう一方も変化することを表す。",
-    "translation": "As you get older, your physical strength declines."
+    "translation": "As technology advances, new problems have also arisen.",
+    "meaning_en": "as ~; along with ~ (proportional change)"
   },
   {
     "id": 69,
     "lesson": 9,
-    "prefix": "",
-    "suffix": "下がっていく。",
+    "prefix": "経済が",
+    "suffix": "犯罪率も上昇する傾向がある。",
     "answer": [
-      "高度が",
-      "上がるに",
-      "したがって",
-      "気温が"
+      "悪化する",
+      "に",
+      "したがっ",
+      "て"
     ],
     "star": 3,
     "grammar": "～にしたがって",
     "explanation": "ある基準の変化に連動して別の変化が起きることを表す。規則や指示に従う意味もある。",
-    "translation": "As the altitude increases, the temperature drops."
+    "translation": "As the economy worsens, the crime rate also tends to rise.",
+    "meaning_en": "as ~; in accordance with; following"
   },
   {
     "id": 70,
     "lesson": 9,
-    "prefix": "",
-    "suffix": "需要も高まっている。",
+    "prefix": "都市化",
+    "suffix": "自然環境が失われつつある。",
     "answer": [
-      "人口の",
-      "増加に",
-      "伴って",
-      "住宅の"
+      "の",
+      "進行",
+      "に伴っ",
+      "て"
     ],
     "star": 3,
     "grammar": "～に伴って",
     "explanation": "ある変化や出来事と連動して別の事態も生じることを表す。フォーマルな表現。",
-    "translation": "Along with the population increase, the demand for housing is also rising."
+    "translation": "With the progression of urbanization, the natural environment is being lost.",
+    "meaning_en": "along with; accompanying (formal)"
   },
   {
     "id": 71,
     "lesson": 9,
-    "prefix": "",
-    "suffix": "仕組みになっている。",
+    "prefix": "難易度",
+    "suffix": "問題の配点が変わります。",
     "answer": [
-      "経験に",
-      "応じて",
-      "給料が",
-      "上がる"
+      "に",
+      "応じ",
+      "て",
+      "それぞれ"
     ],
     "star": 2,
     "grammar": "～に応じて",
     "explanation": "条件や状況の程度に合わせて対応が変わることを示す。柔軟な対応の表現。",
-    "translation": "The system is set up so that salary increases according to experience."
+    "translation": "The point allocation for each problem changes according to its difficulty level.",
+    "meaning_en": "according to; depending on; in response to"
   },
   {
     "id": 72,
     "lesson": 9,
-    "prefix": "",
-    "suffix": "思い出す。",
+    "prefix": "あの写真を",
+    "suffix": "故郷のことを思い出す。",
     "answer": [
-      "この曲を",
-      "聞く",
-      "につけ",
-      "学生時代を"
+      "見る",
+      "に",
+      "つけ",
+      "いつも"
     ],
-    "star": 3,
+    "star": 2,
     "grammar": "～につけ",
     "explanation": "ある動作や状況がきっかけとなり、いつもある感情や行動が生じることを表す。",
-    "translation": "Whenever I hear this song, I recall my student days."
+    "translation": "Whenever I see that photo, I always think of my hometown.",
+    "meaning_en": "whenever ~; every time ~ (triggers emotion)"
   },
   {
     "id": 73,
     "lesson": 10,
-    "prefix": "",
-    "suffix": "忙しい。",
+    "prefix": "明日のプレゼン",
+    "suffix": "で寝られなかった。",
     "answer": [
-      "引っ越しで",
-      "掃除やら",
-      "荷造りやら",
-      "とても"
+      "が",
+      "心配",
+      "やら",
+      "緊張やら"
     ],
     "star": 3,
     "grammar": "～やら",
     "explanation": "複数の事柄を曖昧に列挙し、煩雑さや大変さを表す口語的表現。",
-    "translation": "I'm very busy with cleaning, packing, and so on for the move."
+    "translation": "I couldn't sleep because of worrying and feeling nervous about tomorrow's presentation.",
+    "meaning_en": "~ and ~ and so on (vague listing, overwhelming)"
   },
   {
     "id": 74,
     "lesson": 10,
-    "prefix": "",
-    "suffix": "きかないタイプだ。",
+    "prefix": "あの人は",
+    "suffix": "少し変わったところがある。",
     "answer": [
-      "彼は",
-      "真面目",
+      "天然",
       "というか",
-      "融通が"
+      "不思議",
+      "というか"
     ],
-    "star": 3,
+    "star": 2,
     "grammar": "～というか",
     "explanation": "言い方を迷いながら、より適切な表現を探して言い換える話し言葉の表現。",
-    "translation": "He's serious, or rather, the inflexible type."
+    "translation": "That person is kind of natural, or rather, has a somewhat mysterious quality.",
+    "meaning_en": "or rather; or should I say; how to put it"
   },
   {
     "id": 75,
     "lesson": 10,
-    "prefix": "",
-    "suffix": "解決しなければならない。",
+    "prefix": "引っ越す",
+    "suffix": "まず物件を探さなければならない。",
     "answer": [
-      "留学する",
-      "にしても",
-      "費用の",
-      "問題を"
+      "に",
+      "して",
+      "も",
+      "何より"
     ],
     "star": 2,
     "grammar": "～にしても",
     "explanation": "仮にその選択をする場合でも、別の条件が必要であることを表す。",
-    "translation": "Even if you study abroad, you have to solve the cost issue."
+    "translation": "Even if we move, we first need to find a property above all else.",
+    "meaning_en": "even if; even assuming; granting that"
   },
   {
     "id": 76,
     "lesson": 10,
-    "prefix": "",
-    "suffix": "人口が多い。",
+    "prefix": "最近は",
+    "suffix": "SNSで情報を得る人が多い。",
     "answer": [
-      "東京や",
-      "大阪",
-      "といった",
-      "大都市は"
+      "新聞",
+      "や",
+      "テレビ",
+      "といった従来のメディアより"
     ],
-    "star": 3,
+    "star": 4,
     "grammar": "～といった",
     "explanation": "具体的な例を挙げて、同種のものが他にもあることを示す例示の表現。",
-    "translation": "Large cities such as Tokyo and Osaka have large populations."
+    "translation": "Recently, more people get information through SNS than traditional media like newspapers and TV.",
+    "meaning_en": "such as ~; like ~ (examples)"
   },
   {
     "id": 77,
     "lesson": 16,
-    "prefix": "",
-    "suffix": "設計された。",
+    "prefix": "この橋は100年前に",
+    "suffix": "今も使われている。",
     "answer": [
-      "この建物は",
-      "有名な",
-      "建築家に",
-      "よって"
+      "イギリス",
+      "の",
+      "技術者に",
+      "よって建設され"
     ],
     "star": 4,
     "grammar": "～によって",
     "explanation": "動作の主体や手段・原因を示す。受身文の動作主としてもよく使われる。",
-    "translation": "This building was designed by a famous architect."
+    "translation": "This bridge was built by a British engineer 100 years ago and is still in use today.",
+    "meaning_en": "by (agent); depending on; due to"
   },
   {
     "id": 78,
     "lesson": 16,
-    "prefix": "",
-    "suffix": "間に合わなかった。",
+    "prefix": "急に雨が",
+    "suffix": "びしょ濡れになってしまった。",
     "answer": [
-      "電車が",
-      "遅れた",
-      "ものだから",
-      "会議に"
+      "降り",
+      "出した",
+      "ものだ",
+      "から傘もなく"
     ],
     "star": 3,
     "grammar": "～ものだから",
     "explanation": "言い訳や弁解のニュアンスで理由を述べる口語的表現。予想外だった含みがある。",
-    "translation": "Because the train was delayed, I couldn't make it to the meeting on time."
+    "translation": "Because it suddenly started raining and I had no umbrella, I got soaking wet.",
+    "meaning_en": "because ~ (excuse/explanation, unexpected)"
   },
   {
     "id": 79,
     "lesson": 16,
-    "prefix": "",
-    "suffix": "することができた。",
+    "prefix": "皆さん",
+    "suffix": "無事に終えることができました。",
     "answer": [
-      "先生の",
-      "おかげで",
-      "試験に",
-      "合格"
+      "の",
+      "ご協力の",
+      "おかげ",
+      "でこのイベントを"
     ],
-    "star": 2,
+    "star": 3,
     "grammar": "～おかげで/せいで",
     "explanation": "良い結果が得られた原因を感謝を込めて示す。逆に悪い結果の場合は責任を示す。",
-    "translation": "Thanks to my teacher, I was able to pass the exam."
+    "translation": "Thanks to everyone's cooperation, we were able to conclude this event safely.",
+    "meaning_en": "thanks to / because of (positive or blame)"
   },
   {
     "id": 80,
     "lesson": 16,
-    "prefix": "",
-    "suffix": "きてしまった。",
+    "prefix": "緊張",
+    "suffix": "頭の中が真っ白になってしまった。",
     "answer": [
-      "嬉しさの",
+      "の",
       "あまり",
-      "涙が",
-      "出て"
+      "何を",
+      "言うべきか"
     ],
     "star": 2,
     "grammar": "～のあまり",
     "explanation": "感情が過度に強くなった結果、思わず何かが起きてしまうことを表す。",
-    "translation": "I was so happy that tears came to my eyes."
+    "translation": "I was so nervous that my mind went completely blank about what to say.",
+    "meaning_en": "so much ~ that; due to excess ~"
   },
   {
     "id": 81,
     "lesson": 16,
-    "prefix": "",
-    "suffix": "できません。",
+    "prefix": "改装",
+    "suffix": "当面の間休業いたします。",
     "answer": [
       "工事",
-      "につき",
-      "この道は",
-      "通行"
+      "に",
+      "つき",
+      "当店は"
     ],
-    "star": 2,
+    "star": 3,
     "grammar": "～につき",
     "explanation": "理由や原因を簡潔に示す硬い表現。掲示やお知らせでよく使われる。",
-    "translation": "Due to construction work, this road is closed to traffic."
+    "translation": "Due to renovation work, this store will be closed for the time being.",
+    "meaning_en": "due to; per; on account of (formal notice)"
   },
   {
     "id": 82,
     "lesson": 17,
-    "prefix": "",
-    "suffix": "出かけよう。",
+    "prefix": "せっかくの休みな",
+    "suffix": "どこかに出かけない？",
     "answer": [
-      "天気も",
-      "いい",
-      "ことだし",
-      "散歩に"
+      "こと",
+      "だ",
+      "し",
+      "たまには"
     ],
-    "star": 3,
+    "star": 2,
     "grammar": "～ことだし",
     "explanation": "ある事情を軽い理由として挙げ、次の行動を提案する口語的表現。",
-    "translation": "Since the weather is nice, let's go out for a walk."
+    "translation": "Since it's a rare day off, why don't we go somewhere for a change?",
+    "meaning_en": "since ~; seeing as ~ (light reason for suggestion)"
   },
   {
     "id": 83,
     "lesson": 17,
-    "prefix": "",
-    "suffix": "時間通りに来るだろう。",
+    "prefix": "責任感の強い",
+    "suffix": "最後までやり遂げるだろう。",
     "answer": [
-      "真面目な",
-      "彼の",
-      "ことだから",
-      "きっと"
+      "彼女",
+      "のこと",
+      "だから",
+      "必ず"
     ],
     "star": 3,
     "grammar": "～のことだから",
     "explanation": "相手の性格や特徴をよく知っている前提で、当然の推量をする表現。",
-    "translation": "Knowing him and how serious he is, he'll surely come on time."
+    "translation": "Knowing her strong sense of responsibility, she will surely see it through to the end.",
+    "meaning_en": "knowing ~ as we do; being ~ (prediction from character)"
   },
   {
     "id": 84,
     "lesson": 17,
-    "prefix": "",
-    "suffix": "丁寧だ。",
+    "prefix": "10年も",
+    "suffix": "説得力のある意見だった。",
     "answer": [
-      "さすが",
-      "プロな",
+      "研究して",
+      "きた",
       "だけに",
-      "仕事が"
+      "その分野に関しては"
     ],
     "star": 3,
     "grammar": "～だけに",
     "explanation": "前の事柄から当然そうなるという強い納得や期待通りの結果を表す。",
-    "translation": "As expected of a professional, the work is meticulous."
+    "translation": "Having researched for 10 years, the opinion carried conviction in that field.",
+    "meaning_en": "precisely because; as expected of"
   },
   {
     "id": 85,
     "lesson": 17,
-    "prefix": "",
-    "suffix": "友人を傷つけてしまった。",
+    "prefix": "うっかり",
+    "suffix": "大事な契約を逃してしまった。",
     "answer": [
-      "一言",
-      "余計なことを",
-      "言った",
+      "メール",
+      "を",
+      "見落とした",
       "ばかりに"
     ],
     "star": 4,
     "grammar": "～ばかりに",
     "explanation": "たった一つの原因で悪い結果を招いたことを後悔する表現。",
-    "translation": "Just because I said one unnecessary thing, I ended up hurting my friend."
+    "translation": "Just because I carelessly overlooked an email, I lost an important contract.",
+    "meaning_en": "just because of ~; simply because ~ (regret)"
   },
   {
     "id": 86,
     "lesson": 17,
-    "prefix": "",
-    "suffix": "持つべきだ。",
+    "prefix": "試合に出る",
+    "suffix": "毎日練習を欠かさないつもりだ。",
     "answer": [
-      "約束した",
-      "からには",
-      "最後まで",
-      "責任を"
+      "と",
+      "決めた",
+      "からに",
+      "は"
     ],
-    "star": 2,
+    "star": 4,
     "grammar": "～からには/以上",
     "explanation": "ある事実を前提として、そこから当然生じる義務や決意を表す。",
-    "translation": "Since you made a promise, you should take responsibility to the end."
+    "translation": "Since I've decided to compete, I intend to practice every day without fail.",
+    "meaning_en": "since; now that ~ (obligation follows)"
   },
   {
     "id": 87,
     "lesson": 18,
-    "prefix": "",
-    "suffix": "ものだった。",
+    "prefix": "戦争で亡くなった人々のことは",
+    "suffix": "記憶として残すべきだ。",
     "answer": [
-      "あの",
-      "事故の",
-      "光景は",
-      "忘れがたい"
+      "忘れ",
+      "がたい",
+      "もの",
+      "があり"
     ],
-    "star": 4,
+    "star": 2,
     "grammar": "～がたい",
     "explanation": "心理的に受け入れにくい、またはそうすることが困難であることを表す書き言葉的表現。",
-    "translation": "The sight of that accident was something hard to forget."
+    "translation": "The memory of those who died in the war is something hard to forget and should be preserved.",
+    "meaning_en": "hard to ~; difficult to ~ (psychological)"
   },
   {
     "id": 88,
     "lesson": 18,
-    "prefix": "",
+    "prefix": "申し訳ございませんが、その日程では",
     "suffix": "。",
     "answer": [
-      "その",
-      "ご要望には",
-      "お応え",
-      "しかねます"
+      "ご",
+      "対応",
+      "いたし",
+      "かねます"
     ],
     "star": 4,
     "grammar": "～かねる",
     "explanation": "丁寧に断る場面で「～できません」を柔らかく伝える表現。ビジネスでよく使われる。",
-    "translation": "We are unable to accommodate that request."
+    "translation": "We're very sorry, but we are unable to accommodate that schedule.",
+    "meaning_en": "unable to ~; cannot bring oneself to ~ (polite refusal)"
   },
   {
     "id": 89,
     "lesson": 18,
-    "prefix": "",
+    "prefix": "みんなが頑張っているのに、",
     "suffix": "。",
     "answer": [
-      "体調が",
-      "悪くても",
+      "自分",
+      "だけ",
       "休む",
       "わけにはいかない"
     ],
     "star": 4,
     "grammar": "～わけにはいかない",
     "explanation": "社会的・道徳的な制約があるため、そうしたくてもできないことを表す。",
-    "translation": "Even if I feel unwell, I cannot afford to take a day off."
+    "translation": "With everyone working so hard, I can't just take a break by myself.",
+    "meaning_en": "can't possibly ~; it won't do to ~"
   },
   {
     "id": 90,
     "lesson": 18,
-    "prefix": "",
+    "prefix": "名前も住所も分からない人を",
     "suffix": "。",
     "answer": [
-      "連絡先が",
-      "わからなければ",
-      "連絡の",
-      "しようがない"
+      "探し",
+      "よう",
+      "が",
+      "ない"
     ],
-    "star": 4,
+    "star": 2,
     "grammar": "～ようがない",
     "explanation": "方法や手段が存在しないため不可能であることを表す。",
-    "translation": "If you don't know the contact information, there's no way to get in touch."
+    "translation": "There's no way to search for someone whose name and address are unknown.",
+    "meaning_en": "no way to ~; there's no means of ~"
   },
   {
     "id": 91,
     "lesson": 18,
-    "prefix": "",
+    "prefix": "締め切りが明日なのに、",
     "suffix": "。",
     "answer": [
-      "仕事が",
-      "忙しくて",
-      "旅行",
+      "のんびり",
+      "休んで",
+      "いる",
       "どころではない"
     ],
     "star": 4,
     "grammar": "～どころではない",
     "explanation": "ある事情のせいで本来したいことが全くできない状況を強く表す。",
-    "translation": "I'm so busy with work that a trip is out of the question."
+    "translation": "With the deadline tomorrow, there's no way I can leisurely relax.",
+    "meaning_en": "this is no time for ~; ~ is out of the question"
   },
   {
     "id": 92,
     "lesson": 18,
-    "prefix": "",
+    "prefix": "長年の経験から言えば、",
     "suffix": "ことだ。",
     "answer": [
-      "そんな",
-      "ミスは",
-      "誰にでも",
-      "起こり得る"
+      "こういう",
+      "事故",
+      "は",
+      "十分起こり得る"
     ],
     "star": 4,
     "grammar": "～得る",
     "explanation": "あることが実現する可能性があることを表す書き言葉的表現。",
-    "translation": "Such a mistake is something that can happen to anyone."
+    "translation": "From years of experience, I can say that this kind of accident is entirely possible.",
+    "meaning_en": "can ~; it is possible that ~ (formal)"
   },
   {
     "id": 93,
     "lesson": 19,
-    "prefix": "",
-    "suffix": "あまりおいしくなかった。",
+    "prefix": "この店は評判の",
+    "suffix": "味は普通だった。",
     "answer": [
-      "この料理は",
-      "手間が",
-      "かかった",
-      "わりに"
+      "割",
+      "に",
+      "は",
+      "実際の"
     ],
-    "star": 4,
+    "star": 1,
     "grammar": "～わりに",
     "explanation": "前の事柄から予想される程度と実際の結果にギャップがあることを表す。",
-    "translation": "For the effort I put in, this dish didn't taste very good."
+    "translation": "For a restaurant with such a reputation, the actual taste was rather ordinary.",
+    "meaning_en": "for ~; considering ~; despite ~ (gap in expectation)"
   },
   {
     "id": 94,
     "lesson": 19,
-    "prefix": "",
-    "suffix": "上手にできた。",
+    "prefix": "日本語を始めて",
+    "suffix": "漢字をよく知っている。",
     "answer": [
-      "初めて",
-      "作った",
-      "にしては",
-      "なかなか"
+      "まだ",
+      "半年",
+      "にして",
+      "は"
     ],
     "star": 3,
     "grammar": "～にしては",
     "explanation": "その条件から期待される水準と違う結果であることを驚きを込めて表す。",
-    "translation": "For something you made for the first time, it turned out quite well."
+    "translation": "For someone who started Japanese only half a year ago, you know kanji quite well.",
+    "meaning_en": "for ~; considering that ~ (surprising gap)"
   },
   {
     "id": 95,
     "lesson": 19,
-    "prefix": "",
-    "suffix": "抜群だった。",
+    "prefix": "長年この道で",
+    "suffix": "技術は確かなものだ。",
     "answer": [
-      "有名な",
-      "シェフ",
-      "だけあって",
-      "味は"
+      "やって",
+      "きた",
+      "だけ",
+      "あってその"
     ],
     "star": 3,
     "grammar": "～だけあって",
     "explanation": "前の事柄にふさわしい結果であることを納得や評価を込めて表す。",
-    "translation": "As you'd expect from a famous chef, the taste was outstanding."
+    "translation": "As expected of someone who's been in this field for years, their skill is solid.",
+    "meaning_en": "as expected of ~; befitting ~ (justified result)"
   },
   {
     "id": 96,
     "lesson": 19,
-    "prefix": "",
-    "suffix": "貢献している。",
+    "prefix": "彼は",
+    "suffix": "国際会議で発言した。",
     "answer": [
-      "彼は",
-      "医師",
-      "として",
-      "地域に"
+      "日本",
+      "の",
+      "代表",
+      "として"
     ],
-    "star": 3,
+    "star": 4,
     "grammar": "～として",
     "explanation": "役割や立場・資格を示し、その立場で何かをすることを表す。",
-    "translation": "He is contributing to the community as a doctor."
+    "translation": "He spoke at the international conference as Japan's representative.",
+    "meaning_en": "as (a role/capacity/status)"
   },
   {
     "id": 97,
     "lesson": 19,
-    "prefix": "",
-    "suffix": "学びの場だ。",
+    "prefix": "外国人",
+    "suffix": "日本の敬語は非常に難しい。",
     "answer": [
-      "子供に",
-      "とって",
-      "遊びは",
-      "大切な"
+      "に",
+      "とっ",
+      "て",
+      "特に"
     ],
     "star": 2,
     "grammar": "～にとって",
     "explanation": "判断や評価の主体となる視点を示す。「～の立場から見ると」の意味。",
-    "translation": "For children, play is an important place of learning."
+    "translation": "For foreigners, Japanese honorific language is especially difficult.",
+    "meaning_en": "for ~; from ~'s standpoint"
   },
   {
     "id": 98,
     "lesson": 19,
-    "prefix": "",
-    "suffix": "一番心配だろう。",
+    "prefix": "子供",
+    "suffix": "親の離婚はつらい経験だろう。",
     "answer": [
-      "親に",
-      "したら",
-      "子供の",
-      "安全が"
+      "の",
+      "立場",
+      "にし",
+      "たら"
     ],
-    "star": 2,
+    "star": 4,
     "grammar": "～にしたら",
     "explanation": "ある人の立場に立って考えた場合の気持ちや判断を推量する表現。",
-    "translation": "From a parent's standpoint, their child's safety is probably the biggest concern."
+    "translation": "From a child's perspective, their parents' divorce must be a painful experience.",
+    "meaning_en": "from ~'s point of view; if you were ~"
   },
   {
     "id": 99,
     "lesson": 20,
-    "prefix": "",
-    "suffix": "アドバイスをもらえた。",
+    "prefix": "医者に",
+    "suffix": "特に異常はないと言われた。",
     "answer": [
-      "先生に",
-      "相談した",
+      "診て",
+      "もらった",
       "ところ",
-      "良い"
+      "検査の結果"
     ],
     "star": 3,
     "grammar": "～ところ",
     "explanation": "ある行動をした結果、何がわかったか・何が起きたかを述べる表現。",
-    "translation": "When I consulted my teacher, I received good advice."
+    "translation": "When I had the doctor examine me, I was told the test results showed nothing abnormal.",
+    "meaning_en": "when ~ (discovered); upon ~ing (result found)"
   },
   {
     "id": 100,
     "lesson": 20,
-    "prefix": "",
-    "suffix": "帰ってこない。",
+    "prefix": "あの人とは一度",
+    "suffix": "その後何の連絡もない。",
     "answer": [
-      "彼は",
-      "5年前に",
-      "出かけた",
-      "きり"
+      "会っ",
+      "た",
+      "きり",
+      "で"
     ],
-    "star": 4,
+    "star": 3,
     "grammar": "～きり",
     "explanation": "ある動作を最後に、その状態がずっと続いていることを表す。",
-    "translation": "He left five years ago and has not come back since."
+    "translation": "I met that person once, and since then there's been no contact at all.",
+    "meaning_en": "since ~; after ~ and nothing since"
   },
   {
     "id": 101,
     "lesson": 20,
-    "prefix": "",
-    "suffix": "何も決められなかった。",
+    "prefix": "さんざん",
+    "suffix": "結局離婚することになった。",
     "answer": [
-      "長時間",
-      "悩んだ",
+      "話し合っ",
+      "た",
       "あげく",
-      "結局"
+      "の果てに"
     ],
     "star": 3,
     "grammar": "～あげく",
     "explanation": "長い過程の後に望ましくない結果になったことを表す。マイナスの結末に使う。",
-    "translation": "After agonizing for a long time, I ultimately couldn't decide anything."
+    "translation": "After endless discussions, in the end they decided to divorce.",
+    "meaning_en": "after all that ~; in the end (negative result)"
   },
   {
     "id": 102,
     "lesson": 20,
-    "prefix": "",
-    "suffix": "合意に達した。",
+    "prefix": "数年間にわたる",
+    "suffix": "ようやく新薬が完成した。",
     "answer": [
-      "何度も",
-      "話し合った",
-      "末に",
-      "ようやく"
+      "研究",
+      "の",
+      "末",
+      "に"
     ],
     "star": 3,
     "grammar": "～末に",
     "explanation": "長い努力や苦労の後にようやく結果が出たことを表す。",
-    "translation": "After discussing it many times, we finally reached an agreement."
+    "translation": "After years of research, the new drug was finally completed.",
+    "meaning_en": "after (long effort/struggle); at the end of"
   },
   {
     "id": 103,
     "lesson": 20,
-    "prefix": "",
+    "prefix": "あと1分遅かったら",
     "suffix": "。",
     "answer": [
-      "もう少しで",
-      "電車に",
+      "飛行機",
+      "に",
       "乗り遅れる",
       "ところだった"
     ],
     "star": 4,
     "grammar": "～ところだった",
     "explanation": "悪い結果になりかけたが、ぎりぎりで回避できたことを表す。危機一髪の表現。",
-    "translation": "I almost missed the train."
+    "translation": "If I had been one more minute late, I would have missed the plane.",
+    "meaning_en": "almost ~; nearly ~ (close call)"
   },
   {
     "id": 104,
     "lesson": 20,
-    "prefix": "",
-    "suffix": "本棚に置いてある。",
+    "prefix": "せっかく旅行の計画を立てたのに、",
+    "suffix": "終わってしまった。",
     "answer": [
-      "買った",
-      "本を",
-      "読まず",
-      "じまいで"
+      "結局",
+      "行か",
+      "ずじまい",
+      "で"
     ],
-    "star": 4,
+    "star": 3,
     "grammar": "～ずじまい",
     "explanation": "するつもりだったことが結局できないまま終わってしまったことを表す。残念な気持ち。",
-    "translation": "The book I bought is sitting on the shelf, unread."
+    "translation": "Even though I made travel plans, I ended up not going at all.",
+    "meaning_en": "ended up not ~ing; never got to ~"
   },
   {
     "id": 105,
     "lesson": 21,
-    "prefix": "",
-    "suffix": "ことだ。",
+    "prefix": "こんな簡単な問題は",
+    "suffix": "解けるはずだ。",
     "answer": [
-      "漢字を",
-      "覚える",
-      "くらい",
-      "簡単な"
+      "子供",
+      "で",
+      "も",
+      "すぐに"
     ],
     "star": 3,
     "grammar": "～なんて/くらい",
     "explanation": "対象を軽く見たり、程度が低いことを強調したりする表現。",
-    "translation": "Something like memorizing kanji is an easy matter."
+    "translation": "Even a child should be able to solve a simple problem like this right away.",
+    "meaning_en": "something like ~; mere ~ (downplay)"
   },
   {
     "id": 106,
     "lesson": 21,
-    "prefix": "",
-    "suffix": "見たくない。",
+    "prefix": "お金",
+    "suffix": "手に入らないものもある。",
     "answer": [
-      "あんな",
-      "映画",
       "なんか",
-      "二度と"
+      "で",
+      "は",
+      "決して"
     ],
-    "star": 3,
+    "star": 1,
     "grammar": "～なんか",
     "explanation": "対象を低く評価し、軽蔑や否定的な気持ちを込める口語表現。",
-    "translation": "I never want to watch a movie like that again."
+    "translation": "There are things that money can never buy.",
+    "meaning_en": "something like ~ (dismissive/contemptuous)"
   },
   {
     "id": 107,
     "lesson": 21,
-    "prefix": "",
-    "suffix": "裏切るとは思わなかった。",
+    "prefix": "普段は温厚な",
+    "suffix": "怒り出した。",
     "answer": [
-      "信頼していた",
-      "友人",
+      "彼",
       "まで",
-      "私を"
+      "が",
+      "突然"
     ],
-    "star": 3,
+    "star": 2,
     "grammar": "～まで",
     "explanation": "意外なものや極端な例を挙げて、事態の深刻さを強調する表現。",
-    "translation": "I never thought that even a friend I trusted would betray me."
+    "translation": "Even the usually gentle him suddenly got angry.",
+    "meaning_en": "even ~; to the point of ~ (extreme example)"
   },
   {
     "id": 108,
     "lesson": 21,
-    "prefix": "",
-    "suffix": "できます。",
+    "prefix": "この薬は水",
+    "suffix": "飲めば効果がある。",
     "answer": [
-      "名前",
       "さえ",
-      "書けば",
-      "応募"
+      "あれ",
+      "ば",
+      "すぐに"
     ],
-    "star": 2,
+    "star": 1,
     "grammar": "～さえ",
     "explanation": "最小限の条件を提示し、「それだけで十分」または「それすらも」という意味を表す。",
-    "translation": "You can apply just by writing your name."
+    "translation": "As long as you have water, this medicine will take effect right away.",
+    "meaning_en": "even ~; if only ~; as long as ~"
   },
   {
     "id": 109,
     "lesson": 21,
-    "prefix": "",
-    "suffix": "。",
+    "prefix": "疲れた時は",
+    "suffix": "リラックスしましょう。",
     "answer": [
-      "コーヒー",
+      "お茶",
       "でも",
-      "飲みながら",
-      "話しましょう"
+      "飲み",
+      "ながら"
     ],
     "star": 2,
     "grammar": "～でも",
     "explanation": "軽い提案や例示を表し、「～のようなもの」という気軽さを示す。",
-    "translation": "Let's talk while having some coffee or something."
+    "translation": "When you're tired, let's relax while having some tea or something.",
+    "meaning_en": "~ or something; how about ~ (casual suggestion)"
   },
   {
     "id": 110,
     "lesson": 22,
-    "prefix": "",
-    "suffix": "帰っていった。",
+    "prefix": "彼女はだいぶ",
+    "suffix": "早退していった。",
     "answer": [
-      "彼は",
-      "疲れている",
-      "とみえて",
-      "早めに"
+      "疲れ",
+      "て",
+      "いる",
+      "とみえて"
     ],
-    "star": 3,
+    "star": 4,
     "grammar": "～とみえる",
     "explanation": "外見や状況から判断して推測する表現。客観的な観察に基づく。",
-    "translation": "He appeared to be tired, so he went home early."
+    "translation": "She appeared to be quite exhausted and left work early.",
+    "meaning_en": "it appears that ~; it seems ~ (observation)"
   },
   {
     "id": 111,
     "lesson": 22,
-    "prefix": "",
+    "prefix": "この問題を放置すれば、",
     "suffix": "。",
     "answer": [
-      "このまま",
-      "放置すれば",
-      "大事故に",
-      "なりかねない"
+      "会社",
+      "全体",
+      "に",
+      "影響しかねない"
     ],
     "star": 4,
     "grammar": "～かねない",
     "explanation": "悪い結果になる可能性が十分あることを警告する表現。否定的な推量。",
-    "translation": "If left as it is, it could easily turn into a serious accident."
+    "translation": "If this problem is left unaddressed, it could affect the entire company.",
+    "meaning_en": "could ~; might well ~ (negative possibility)"
   },
   {
     "id": 112,
     "lesson": 22,
-    "prefix": "",
+    "prefix": "この地域では地震による",
     "suffix": "。",
     "answer": [
-      "台風が",
-      "接近し",
-      "大雨の",
-      "おそれがある"
+      "大規模",
+      "な",
+      "土砂崩れ",
+      "のおそれがある"
     ],
     "star": 4,
     "grammar": "～おそれがある",
     "explanation": "望ましくない事態が起こる可能性があることをフォーマルに警告する表現。",
-    "translation": "A typhoon is approaching, and there is a risk of heavy rain."
+    "translation": "There is a risk of large-scale landslides from earthquakes in this area.",
+    "meaning_en": "there is a risk of ~; ~ may occur (formal warning)"
   },
   {
     "id": 113,
     "lesson": 22,
-    "prefix": "",
-    "suffix": "と心に誓った。",
+    "prefix": "こんな辛い思いは",
+    "suffix": "と固く誓った。",
     "answer": [
-      "あんな",
-      "失敗は",
-      "二度と",
-      "すまい"
+      "二度",
+      "と",
+      "する",
+      "まい"
     ],
     "star": 4,
     "grammar": "～まい",
     "explanation": "話し手の強い否定の意志や、そうならないだろうという推量を表す書き言葉。",
-    "translation": "I vowed to myself that I would never make such a mistake again."
+    "translation": "I firmly vowed that I would never go through such a painful experience again.",
+    "meaning_en": "will not ~; probably won't ~ (strong negative intent)"
   },
   {
     "id": 114,
     "lesson": 22,
-    "prefix": "",
+    "prefix": "この状況から判断すると、",
     "suffix": "。",
     "answer": [
-      "この足跡は",
-      "犯人の",
-      "ものに",
-      "違いない"
+      "犯人",
+      "は",
+      "内部",
+      "の人間に違いない"
     ],
     "star": 4,
     "grammar": "～に違いない",
     "explanation": "確信を持って断定する表現。証拠や状況から強く推測している。",
-    "translation": "These footprints must belong to the culprit."
+    "translation": "Judging from this situation, the culprit must be someone inside the organization.",
+    "meaning_en": "must be ~; no doubt ~ (strong conviction)"
   },
   {
     "id": 115,
     "lesson": 22,
-    "prefix": "",
+    "prefix": "あの会社に就職できたら",
     "suffix": "。",
     "answer": [
-      "あの店は",
-      "いつも",
-      "混んでいるに",
-      "きまっている"
+      "給料",
+      "が",
+      "いい",
+      "にきまっている"
     ],
     "star": 4,
     "grammar": "～にきまっている",
     "explanation": "経験や常識に基づいて当然そうだと断言する口語的表現。",
-    "translation": "That restaurant is obviously always crowded."
+    "translation": "If you could get a job at that company, the pay would obviously be good.",
+    "meaning_en": "obviously ~; it goes without saying that ~"
   },
   {
     "id": 116,
     "lesson": 23,
-    "prefix": "",
-    "suffix": "。",
+    "prefix": "私の発言は",
+    "suffix": "深い意味はない。",
     "answer": [
-      "私の",
-      "意見は",
-      "一つの",
-      "参考にすぎない"
+      "個人",
+      "的な",
+      "感想",
+      "にすぎず"
     ],
     "star": 4,
     "grammar": "～にすぎない",
     "explanation": "物事の程度や重要性を低く見積もり、「たったそれだけ」と控えめに述べる表現。",
-    "translation": "My opinion is nothing more than one reference."
+    "translation": "My comment is merely a personal impression and has no deeper meaning.",
+    "meaning_en": "merely ~; nothing more than ~"
   },
   {
     "id": 117,
     "lesson": 23,
-    "prefix": "",
+    "prefix": "この結果は偶然ではなく、",
     "suffix": "。",
     "answer": [
-      "この成功は",
-      "チーム",
-      "全員の",
-      "努力にほかならない"
+      "日々",
+      "の",
+      "努力の",
+      "たまものにほかならない"
     ],
     "star": 4,
     "grammar": "～にほかならない",
     "explanation": "それ以外に理由や正体はないと強く断定する表現。「まさにそれだ」という確信。",
-    "translation": "This success is nothing other than the effort of the whole team."
+    "translation": "This result is not a coincidence—it is nothing other than the fruit of daily effort.",
+    "meaning_en": "nothing other than ~; precisely ~"
   },
   {
     "id": 118,
     "lesson": 23,
-    "prefix": "",
-    "suffix": "。",
+    "prefix": "備えは",
+    "suffix": "災害対策をしておこう。",
     "answer": [
-      "健康の",
-      "ためには",
-      "運動するに",
-      "越したことはない"
+      "あるに",
+      "越した",
+      "こと",
+      "はないのでしっかり"
     ],
-    "star": 4,
+    "star": 2,
     "grammar": "～に越したことはない",
     "explanation": "それが最善の選択であることを表す。「できればそうすべき」という助言。",
-    "translation": "For your health, nothing is better than exercising."
+    "translation": "You can never be too prepared, so let's make thorough disaster preparations.",
+    "meaning_en": "nothing better than ~; the more ~ the better"
   },
   {
     "id": 119,
     "lesson": 23,
-    "prefix": "",
-    "suffix": "ほかない。",
+    "prefix": "ここまで来た",
+    "suffix": "最後までやるしかない。",
     "answer": [
-      "電車が",
-      "止まった",
       "以上",
-      "歩くより"
+      "は",
+      "もう",
+      "引き返すより"
     ],
-    "star": 4,
+    "star": 1,
     "grammar": "～よりほかない",
     "explanation": "他に選択肢がなく、それしかできないことを表す。やむを得ない状況。",
-    "translation": "Since the trains have stopped, there's no choice but to walk."
+    "translation": "Having come this far, there's no choice but to see it through to the end.",
+    "meaning_en": "no choice but to ~; can only ~"
   },
   {
     "id": 120,
     "lesson": 23,
-    "prefix": "",
+    "prefix": "社会人として、",
     "suffix": "。",
     "answer": [
-      "学生は",
-      "もっと",
-      "本を",
-      "読むべきだ"
+      "自分",
+      "の",
+      "言動",
+      "には責任を持つべきだ"
     ],
     "star": 4,
     "grammar": "～べきだ",
     "explanation": "道徳的・社会的に当然そうすべきだという義務や助言を表す。",
-    "translation": "Students should read more books."
+    "translation": "As a working adult, you should take responsibility for your own words and actions.",
+    "meaning_en": "should ~; ought to ~"
   },
   {
     "id": 121,
     "lesson": 23,
-    "prefix": "",
+    "prefix": "子供の成長は",
     "suffix": "。",
     "answer": [
-      "時間が",
-      "経つのは",
-      "本当に",
-      "早いものだ"
+      "親",
+      "にとって",
+      "何より",
+      "嬉しいものだ"
     ],
     "star": 4,
     "grammar": "～ものだ",
     "explanation": "一般的な真理や感慨を述べる表現。「つくづくそうだ」という実感。",
-    "translation": "Time really does pass quickly."
+    "translation": "A child's growth is the most joyful thing for a parent.",
+    "meaning_en": "it's natural that ~; how ~ (general truth/nostalgia)"
   },
   {
     "id": 122,
     "lesson": 23,
-    "prefix": "",
-    "suffix": "安心してください。",
+    "prefix": "少しくらいの失敗で",
+    "suffix": "また挑戦すればいい。",
     "answer": [
-      "そんなに",
-      "心配する",
-      "ことはない",
-      "から"
+      "落ち込む",
+      "こと",
+      "は",
+      "ないのだから"
     ],
-    "star": 3,
+    "star": 2,
     "grammar": "～ことはない",
     "explanation": "ある行動の必要性を否定する。「わざわざ～しなくてよい」という助言。",
-    "translation": "There's no need to worry so much, so please relax."
+    "translation": "There's no need to get down over a small failure—just try again.",
+    "meaning_en": "there's no need to ~; you don't have to ~"
   },
   {
     "id": 123,
     "lesson": 24,
-    "prefix": "",
+    "prefix": "もう少し",
     "suffix": "。",
     "answer": [
-      "もっと",
-      "自分を",
-      "信じてみては",
-      "いかがではないか"
+      "自分",
+      "の",
+      "可能性を",
+      "信じてみてはどうだろうか"
     ],
     "star": 4,
     "grammar": "～ではないか",
     "explanation": "相手に柔らかく提案や勧めをする表現。「～したらどうだろう」の意味。",
-    "translation": "Why don't you try believing in yourself more?"
+    "translation": "Why don't you believe in your own potential a little more?",
+    "meaning_en": "why not ~?; how about ~? (soft suggestion)"
   },
   {
     "id": 124,
     "lesson": 24,
-    "prefix": "",
+    "prefix": "試験に受かりたければ、",
     "suffix": "。",
     "answer": [
-      "健康で",
-      "いたければ",
-      "早く寝る",
+      "毎日",
+      "こつこつ",
+      "勉強する",
       "ことだ"
     ],
     "star": 4,
     "grammar": "～ことだ",
     "explanation": "当然すべきことを助言として述べる表現。「そうするのがよい」という意味。",
-    "translation": "If you want to stay healthy, the thing to do is go to bed early."
+    "translation": "If you want to pass the exam, you should study steadily every day.",
+    "meaning_en": "the thing to do is ~; you should ~ (advice)"
   },
   {
     "id": 125,
     "lesson": 25,
-    "prefix": "",
-    "suffix": "自然なことだ。",
+    "prefix": "海外に住んでいると",
+    "suffix": "たまらなくなることがある。",
     "answer": [
-      "故郷が",
-      "懐かしくて",
-      "しょうがない",
-      "のは"
+      "日本",
+      "の",
+      "食べ物が",
+      "恋しくてしょうがなく"
     ],
-    "star": 3,
+    "star": 4,
     "grammar": "～しょうがない/てならない",
     "explanation": "ある感情が抑えられないほど強く湧き上がることを表す。自然に生じる気持ち。",
-    "translation": "It's natural that you can't help missing your hometown."
+    "translation": "When living abroad, I sometimes can't help but miss Japanese food unbearably.",
+    "meaning_en": "can't help but ~; unbearably ~ (uncontrollable feeling)"
   },
   {
     "id": 126,
     "lesson": 25,
-    "prefix": "",
+    "prefix": "彼女の歌声を聞いたら、",
     "suffix": "だろう。",
     "answer": [
-      "あの映画を",
-      "見たら",
-      "泣かずには",
-      "いられない"
+      "誰",
+      "で",
+      "も",
+      "感動せずにはいられない"
     ],
     "star": 4,
     "grammar": "～ずにはいられない",
     "explanation": "自分の意志ではどうにもならず、つい行動してしまうことを表す。",
-    "translation": "If you watch that movie, you probably won't be able to help crying."
+    "translation": "If you heard her singing voice, anyone would be moved beyond their control.",
+    "meaning_en": "can't help ~ing; can't resist ~ing"
   },
   {
     "id": 127,
     "lesson": 25,
-    "prefix": "",
+    "prefix": "これだけの証拠を",
     "suffix": "。",
     "answer": [
-      "証拠が",
-      "ある",
+      "突きつけ",
+      "られた",
       "以上",
       "認めざるを得ない"
     ],
     "star": 4,
     "grammar": "～ざるを得ない",
     "explanation": "状況的にそうするしか選択肢がないことを表す。仕方なく受け入れる気持ち。",
-    "translation": "Given the evidence, I have no choice but to admit it."
+    "translation": "Having been presented with this much evidence, I have no choice but to admit it.",
+    "meaning_en": "have no choice but to ~; compelled to ~"
   },
   {
     "id": 128,
     "lesson": 26,
-    "prefix": "",
+    "prefix": "彼の作品には",
     "suffix": "。",
     "answer": [
-      "彼の",
-      "演奏には",
-      "人を",
-      "感動させるものがある"
+      "見る",
+      "人",
+      "の心を",
+      "揺さぶるものがある"
     ],
     "star": 4,
     "grammar": "～ものがある",
     "explanation": "心に深く響く特別な性質や印象を感じ取ることを表す。",
-    "translation": "There's something about his performance that moves people."
+    "translation": "There is something in his work that stirs the hearts of those who see it.",
+    "meaning_en": "there's something ~ about it; it has a quality of ~"
   },
   {
     "id": 129,
     "lesson": 26,
-    "prefix": "",
+    "prefix": "あの日、合格の知らせを受けた時は",
     "suffix": "。",
     "answer": [
-      "合格の",
-      "知らせを",
-      "聞いて",
-      "どんなに嬉しかったことか"
+      "どれ",
+      "ほど",
+      "嬉しかった",
+      "ことか"
     ],
     "star": 4,
     "grammar": "～ことか",
     "explanation": "強い感情を感嘆として表現する。程度が計り知れないことを示す。",
-    "translation": "How happy I was when I heard the news that I passed!"
+    "translation": "How happy I was when I received the news that I had passed that day!",
+    "meaning_en": "how ~!; what a ~! (strong emotion, rhetorical)"
   }
 ]
